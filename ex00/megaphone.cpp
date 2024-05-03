@@ -1,5 +1,4 @@
 #include <iostream>
-#include <algorithm>
 #include <string>
 
 int main (int argc, char **argv)
@@ -14,7 +13,11 @@ int main (int argc, char **argv)
 	{
 		result += argv[i];
 	}
-	std::transform(result.begin(), result.end(), result.begin(), toupper);
+	for (unsigned long i = 0; i < result.size(); i++)
+	{
+		if (result[i] >= 'a' && result [i] <= 'z')
+			result[i] -= 32;
+	}
 	std::cout << result << std::endl;
 	return 0;
 }
