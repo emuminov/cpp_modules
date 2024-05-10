@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:15:57 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/10 16:17:04 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/10 17:16:41 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ bool Contact::set_darkest_secret(std::string darkest_secret) {
     return true;
 }
 
-std::string Contact::get_first_name() { return this->first_name; }
+std::string Contact::get_first_name() const { return this->first_name; }
 
-std::string Contact::get_last_name() { return this->last_name; }
+std::string Contact::get_last_name() const { return this->last_name; }
 
-std::string Contact::get_nickname() { return this->nickname; }
+std::string Contact::get_nickname() const { return this->nickname; }
 
-std::string Contact::get_phone_number() { return this->phone_number; }
+std::string Contact::get_phone_number() const { return this->phone_number; }
 
-std::string Contact::get_darkest_secret() { return this->darkest_secret; }
+std::string Contact::get_darkest_secret() const { return this->darkest_secret; }

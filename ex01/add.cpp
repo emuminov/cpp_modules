@@ -6,21 +6,21 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 16:23:38 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/10 16:35:17 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/10 17:03:28 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "app.hpp"
 
 static std::string ask_for_contact_field(std::string field_name) {
-    std::string field_data{};
+    std::string field_data = "";
     std::cout << "Please enter " << field_name << ": ";
     input_command(field_data);
     return field_data;
 }
 
 void add(PhoneBook &pb) {
-    Contact c{Contact()};
+    Contact c = Contact();
     if (!c.set_first_name(ask_for_contact_field("first name"))) {
         std::cout << "Invalid first name!\n";
         return;

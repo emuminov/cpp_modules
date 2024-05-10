@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 16:16:51 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/10 16:31:23 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/10 17:18:12 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void execute_command(std::string command, PhoneBook &pb) {
 }
 
 int main(void) {
-    PhoneBook pb{PhoneBook()};
+    PhoneBook pb = PhoneBook();
     while (true) {
         std::string command = ask_for_command();
         execute_command(command, pb);
