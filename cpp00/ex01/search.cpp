@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 16:28:36 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/10 17:03:26 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/10 19:52:37 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void search(PhoneBook &pb) {
         display_row_borders();
     std::cout << "Please choose an entry with the correct index: ";
     std::string str_index = "";
-    input_command(str_index);
+    input_command(&str_index);
     int nbr_index = std::atoi(str_index.c_str());
     if (str_index.length() > 1 || !std::isdigit(str_index[0]) ||
         !(nbr_index >= 1 && nbr_index <= len)) {
