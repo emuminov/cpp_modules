@@ -8,15 +8,18 @@ OBJS=$(SRCS:%.cpp=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(OBJS) -o $@
+	$(CXX) $(CFLAGS) $(OBJS) -o $@
 
-%.o: %.c
-	$(CXX) -c $(SRCS) -o $@
+%.o: %.cpp
+	$(CXX) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)
+
+re: fclean
+	$(MAKE) all --no-print-directory
 
 .PHONY: all clean fclean re
