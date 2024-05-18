@@ -15,11 +15,11 @@
 Zombie* newZombie(std::string name);
 void randomChump(std::string name);
 
-int main (void) {
-	randomChump("Stan");
-	randomChump("Laura");
-	Zombie* z = newZombie("Gregory");
-	z->announce();
-	delete z;
-	return 0;
+int main(void) {
+    randomChump("Stan");
+    randomChump("Laura");
+    Zombie* z = newZombie("Gregory");
+    z->announce();
+    delete z;
+    return 0;
 }
