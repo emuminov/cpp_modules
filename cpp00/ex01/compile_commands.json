@@ -1,0 +1,110 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-I",
+      "includes",
+      "-c",
+      "-o",
+      "objs/PhoneBook.o",
+      "srcs/PhoneBook.cpp"
+    ],
+    "directory": "/home/emuminov/projects/cpp_modules/cpp00/ex01",
+    "file": "/home/emuminov/projects/cpp_modules/cpp00/ex01/srcs/PhoneBook.cpp",
+    "output": "/home/emuminov/projects/cpp_modules/cpp00/ex01/objs/PhoneBook.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-I",
+      "includes",
+      "-c",
+      "-o",
+      "objs/Contact.o",
+      "srcs/Contact.cpp"
+    ],
+    "directory": "/home/emuminov/projects/cpp_modules/cpp00/ex01",
+    "file": "/home/emuminov/projects/cpp_modules/cpp00/ex01/srcs/Contact.cpp",
+    "output": "/home/emuminov/projects/cpp_modules/cpp00/ex01/objs/Contact.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-I",
+      "includes",
+      "-c",
+      "-o",
+      "objs/main.o",
+      "srcs/main.cpp"
+    ],
+    "directory": "/home/emuminov/projects/cpp_modules/cpp00/ex01",
+    "file": "/home/emuminov/projects/cpp_modules/cpp00/ex01/srcs/main.cpp",
+    "output": "/home/emuminov/projects/cpp_modules/cpp00/ex01/objs/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-I",
+      "includes",
+      "-c",
+      "-o",
+      "objs/add.o",
+      "srcs/add.cpp"
+    ],
+    "directory": "/home/emuminov/projects/cpp_modules/cpp00/ex01",
+    "file": "/home/emuminov/projects/cpp_modules/cpp00/ex01/srcs/add.cpp",
+    "output": "/home/emuminov/projects/cpp_modules/cpp00/ex01/objs/add.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-I",
+      "includes",
+      "-c",
+      "-o",
+      "objs/search.o",
+      "srcs/search.cpp"
+    ],
+    "directory": "/home/emuminov/projects/cpp_modules/cpp00/ex01",
+    "file": "/home/emuminov/projects/cpp_modules/cpp00/ex01/srcs/search.cpp",
+    "output": "/home/emuminov/projects/cpp_modules/cpp00/ex01/objs/search.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-I",
+      "includes",
+      "-c",
+      "-o",
+      "objs/common.o",
+      "srcs/common.cpp"
+    ],
+    "directory": "/home/emuminov/projects/cpp_modules/cpp00/ex01",
+    "file": "/home/emuminov/projects/cpp_modules/cpp00/ex01/srcs/common.cpp",
+    "output": "/home/emuminov/projects/cpp_modules/cpp00/ex01/objs/common.o"
+  }
+]

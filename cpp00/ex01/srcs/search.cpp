@@ -6,11 +6,14 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 16:28:36 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/10 19:52:37 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/11 15:29:04 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "app.hpp"
+#include <iomanip>
+#include <iostream>
+#include <cstdlib>
 
 static void display_row_borders() {
     std::cout << "+----------";
