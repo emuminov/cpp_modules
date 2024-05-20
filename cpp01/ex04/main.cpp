@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 17:52:47 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/20 18:18:13 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/20 18:25:38 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int main(int argc, char* argv[]) {
 
     std::string* file_contents = read_file(filename);
     if (!file_contents) {
-        std::cerr << "Could not reat the file" << std::endl;
+        std::cerr << "Could not read the file" << std::endl;
         return EXIT_FAILURE;
     }
 
