@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 17:52:47 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/20 18:25:38 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/20 18:27:55 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ std::string* write_to_replaced_file(const std::string& filename,
         return NULL;
     }
     output_file << *file_contents;
+	output_file.close();
     return file_contents;
 }
 
