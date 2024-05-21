@@ -1,5 +1,8 @@
 *.o
+*.replace
 .cache
 megaphone
 phonebook
 main
+sad
+harl
