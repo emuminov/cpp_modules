@@ -6,10 +6,12 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 19:17:03 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/20 19:22:41 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:51:15 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef HARL_H
+#define HARL_H
 #include <string>
 
 class Harl {
@@ -24,3 +26,4 @@ class Harl {
     void warning(void);
     void error(void);
 };
+#endif
