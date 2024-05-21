@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 19:19:15 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/21 16:20:05 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/21 16:20:16 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,20 @@ Harl::Harl() { return; }
 Harl::~Harl() { return; }
 
 void Harl::complain(std::string level) {
-    void (Harl::*fn)(void);
 	switch (level[0]) {
 		case 'D':
-			fn = &Harl::debug;
-			break;
+			this->debug();
 		case 'I':
-			fn = &Harl::info;
-			break;
+			this->info();
 		case 'W':
-			fn = &Harl::warning;
-			break;
+			this->warning();
 		case 'E':
-			fn = &Harl::error;
+			this->error();
 			break;
 		default:
 			std::cerr << "[complain complain]\n";
 			return;
 	}
-	(this->*fn)();
 }
 
 void Harl::debug(void) {
