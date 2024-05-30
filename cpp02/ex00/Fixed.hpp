@@ -6,14 +6,13 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:39:13 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/28 16:57:04 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/30 02:10:36 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 class Fixed {
 public:
 	Fixed(void);
-	Fixed(int nbr);
 	Fixed(const Fixed& f);
 	Fixed &operator=(const Fixed& f);
 	~Fixed(void);
