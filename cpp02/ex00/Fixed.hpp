@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:39:13 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/30 02:10:36 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:33:03 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ public:
 
 private:
 	int _raw;
-	static const int fractional_bits = 8;
+	static const int scale = 8;
 };
 
