@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:39:11 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/30 02:10:24 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/30 12:20:10 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ Fixed::Fixed(void) : _raw(0) {
 	std::cout << "Default constructor called\n";
 	return; }
 
-Fixed::~Fixed(void) { return; }
+Fixed::~Fixed(void) {
+	std::cout << "Default destructor called\n";
+	return;
+}
 
 Fixed::Fixed(const Fixed &f) {
 	std::cout << "Copy constructor called\n";
