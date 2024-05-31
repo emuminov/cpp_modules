@@ -6,10 +6,12 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:39:13 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/31 13:58:50 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/31 14:28:18 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FIXED_H
+#define FIXED_H
 #include <iostream>
 
 class Fixed {
@@ -47,3 +49,4 @@ class Fixed {
 };
 
 std::ostream& operator<<(std::ostream& out, const Fixed& f);
+#endif
