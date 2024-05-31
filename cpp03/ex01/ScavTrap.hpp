@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/31 14:30:12 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/31 18:46:22 by emuminov         ###   ########.fr       */
+/*   Created: 2024/05/31 16:37:46 by emuminov          #+#    #+#             */
+/*   Updated: 2024/05/31 17:00:16 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_HPP
-#define CLAPTRAP_HPP
 
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
+
+#include "ClapTrap.hpp"
 #include <string>
 
-class ClapTrap {
-  public:
-    ClapTrap(std::string name);
-    ClapTrap(const ClapTrap& ct);
-    ClapTrap& operator=(const ClapTrap& ct);
-    ~ClapTrap();
-    void attack(const std::string& target);
-    void takeDamage(unsigned int amount);
-    void beRepaired(unsigned int amount);
+class ScavTrap : public ClapTrap {
+public:
+	ScavTrap(std::string name);
+	ScavTrap(const ScavTrap &st);
+	ScavTrap &operator=(const ScavTrap &st);
+	~ScavTrap();
 
-  private:
-    std::string m_name;
-    int m_hit_points;
-    int m_energy_points;
-    int m_attack_damage;
+private:
+	
 };
 
 #endif
