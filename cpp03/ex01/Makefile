@@ -2,8 +2,8 @@ CXX=c++
 CFLAGS=-Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 
 NAME=main
-SRCS=main.cpp ClapTrap.cpp
-HEADER=ClapTrap.hpp
+SRCS=main.cpp ClapTrap.cpp ScavTrap.cpp
+HEADER=ClapTrap.hpp ScavTrap.hpp
 OBJS=$(SRCS:%.cpp=objs/%.o)
 
 all: $(NAME)
