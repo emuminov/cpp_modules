@@ -6,16 +6,15 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 14:29:13 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/31 18:46:40 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/06/01 18:46:03 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "ClapTrap.hpp"
 #include <string>
 #include <iostream>
 
 ClapTrap::ClapTrap(std::string name)
-    : m_name(name), m_hit_points(10), m_energy_points(10), m_attack_damage(0) {
+    : m_name(name), m_hit_points(default_hit_points), m_energy_points(default_energy_points), m_attack_damage(default_attack_damage) {
 	std::cout << "A wild ClapTrap appears!\n";
     return;
 }
@@ -64,3 +63,4 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	std::cout << "ClapTrap " << m_name << " was repaired, and now gained " << amount << " hit points!\n";
 	m_hit_points += amount;
 }
+
