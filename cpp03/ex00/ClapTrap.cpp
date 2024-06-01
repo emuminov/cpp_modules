@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 14:29:13 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/01 22:18:38 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/06/01 22:46:01 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,6 @@ void ClapTrap::beRepaired(unsigned int amount) {
 		return;
 	}
 	m_energy_points--;
-	if (m_hit_points + amount > 10) {
-		amount = 10 - m_hit_points;
-	}
 	std::cout << "ClapTrap " << m_name << " was repaired, and now gained " << amount << " hit points!\n";
 	m_hit_points += amount;
 }
