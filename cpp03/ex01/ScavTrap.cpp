@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 16:38:04 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/03 13:39:57 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/06/03 13:41:03 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ScavTrap::guardGate(void) {
 		return;
 	}
 	m_energy_points--;
-	std::cout << "ScavTrap " << m_name << " is not in a guard keeper mode!";
+	std::cout << "ScavTrap " << m_name << " is now in a guard keeper mode!";
 }
 
 void ScavTrap::attack(const std::string& target) {
