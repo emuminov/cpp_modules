@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef FRAGTRAP_HPP
 #define FRAGTRAP_HPP
 
@@ -18,19 +17,19 @@
 #include <string>
 
 class FragTrap : public ClapTrap {
-public:
-	FragTrap(std::string name);
-	FragTrap(const FragTrap &st);
-	FragTrap &operator=(const FragTrap &st);
-	~FragTrap();
+  public:
+    FragTrap(std::string name);
+    FragTrap(const FragTrap& st);
+    FragTrap& operator=(const FragTrap& st);
+    ~FragTrap();
 
-	void		highFiveGuys(void);
-	void		attack(const std::string& target);
+    void highFiveGuys(void);
+    void attack(const std::string& target);
 
-private:
-	static const int default_hit_points = 100;
-	static const int default_energy_points = 100;
-	static const int default_attack_damage = 30;
+  private:
+    static const int default_hit_points = 100;
+    static const int default_energy_points = 100;
+    static const int default_attack_damage = 30;
 };
 
 #endif

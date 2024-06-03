@@ -12,26 +12,26 @@
 
 #include "ScavTrap.hpp"
 
-int main (void) {
-	ScavTrap st1("Leonard");
-	ScavTrap st2(st1);
-	ScavTrap st3 = st1;
-	std::string target = "training dummy";
-	st3.attack(target);
-	st3.attack(target);
-	st3.attack(target);
-	st3.attack(target);
-	st3.attack(target);
-	st3.takeDamage(8);
-	st3.beRepaired(3);
-	st3.beRepaired(15);
-	st3.attack(target);
-	st3.attack(target);
-	st3.attack(target);
-	st3.attack(target);
-	st3.attack(target);
-	st3.attack(target);
-	st3.takeDamage(17);
-	st3.attack(target);
-	return 0;
+int main(void) {
+    ScavTrap st1("Leonard");
+    ScavTrap st2(st1);
+    ScavTrap st3 = st1;
+    std::string target = "training dummy";
+    st3.attack(target);
+    st3.attack(target);
+    st3.attack(target);
+    st3.attack(target);
+    st3.attack(target);
+    st3.takeDamage(8);
+    st3.beRepaired(3);
+    st3.beRepaired(15);
+    st3.attack(target);
+    st3.attack(target);
+    st3.attack(target);
+    st3.attack(target);
+    st3.attack(target);
+    st3.attack(target);
+    st3.takeDamage(17);
+    st3.attack(target);
+    return 0;
 }
