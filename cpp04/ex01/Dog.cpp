@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:27:36 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/03 18:56:54 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/06/04 14:08:36 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,12 @@ Dog& Dog::operator=(const Dog& a) {
 
 void Dog::makeSound() const {
 	std::cout << "BARK BARK BARK!!!\n";
+}
+
+const std::string& Dog::get_idea(int index) const {
+	return m_brain->get_idea(index);
+}
+
+void Dog::set_idea(int index, std::string idea) {
+	m_brain->set_idea(index, idea);
 }
