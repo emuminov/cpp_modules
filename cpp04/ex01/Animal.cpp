@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:27:26 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/03 15:19:10 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/06/04 15:57:00 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,27 @@
 #include <iostream>
 
 Animal::Animal() : m_type("Animal") {
+	std::cout << "Animal constructor is called\n";
 	return;
 }
 
 Animal::Animal(std::string type) : m_type(type) {
+	std::cout << "Protected Animal constructor is called\n";
 	return;
 }
 
 Animal::~Animal() {
+	std::cout << "Animal destructor is called\n";
 	return;
 }
 
 Animal::Animal(const Animal& a) : m_type(a.m_type) {
+	std::cout << "Animal copy constructor is called\n";
 	return;
 }
 
 Animal& Animal::operator=(const Animal& a) {
+	std::cout << "Animal copy assign operator is called\n";
 	m_type = a.m_type;
 	return *this;
 }
