@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 16:28:36 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/11 15:29:04 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/06/17 02:09:28 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,18 @@ static void display_all_contact_fields(Contact &c) {
 }
 
 void search(PhoneBook &pb) {
+	int len = pb.get_len();
+	if (len == 0)
+	{
+		std::cout << "Phonebook is empty!\n";
+		return;
+	}
     display_row_borders();
     display_cell_content("Index", START);
     display_cell_content("First name", BETWEEN);
     display_cell_content("Last name", BETWEEN);
     display_cell_content("Nickname", END);
     display_row_borders();
-    int len = pb.get_len();
     for (int i = 0; i < len; i++) {
         display_cell_content(i + 1, START);
         display_cell_content(pb.get_contact(i).get_first_name(), BETWEEN);

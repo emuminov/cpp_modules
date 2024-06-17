@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:15:57 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/11 15:24:39 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/06/17 02:07:07 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ bool Contact::set_nickname(std::string nickname) {
     this->nickname = nickname;
     return true;
 }
+
 bool Contact::set_phone_number(std::string phone_number) {
     if (phone_number == "")
         return false;
