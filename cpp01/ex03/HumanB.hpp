@@ -6,12 +6,12 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 17:24:26 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/18 17:36:54 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/17 15:54:18 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_H
-#define HUMANB_H
+#ifndef HUMANB_HPP
+#define HUMANB_HPP
 #include <string>
 #include "Weapon.hpp"
 

@@ -6,12 +6,12 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 17:09:37 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/18 17:36:40 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/17 15:54:25 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_H
-#define HUMANA_H
+#ifndef HUMANA_HPP
+#define HUMANA_HPP
 #include "Weapon.hpp"
 
 class HumanA {
