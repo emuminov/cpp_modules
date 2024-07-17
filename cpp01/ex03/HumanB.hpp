@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 17:24:26 by emuminov          #+#    #+#             */
-/*   Updated: 2024/07/17 15:54:18 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/17 16:15:49 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class HumanB {
   public:
     HumanB(std::string name);
     ~HumanB();
-    void setWeapon(Weapon& weapon);
+    void setWeapon(Weapon& w);
     void attack() const;
 
   private:
