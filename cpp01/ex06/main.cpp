@@ -17,8 +17,8 @@
 int main(int argc, char* argv[]) {
     if (argc != 2) {
         std::cerr << "*mumble mumble*\n";
-		return EXIT_FAILURE;
-	}
+        return EXIT_FAILURE;
+    }
     Harl h = Harl();
     h.complain(argv[1]);
     return 0;

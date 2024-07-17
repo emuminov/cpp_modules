@@ -13,13 +13,10 @@
 #include "HumanA.hpp"
 #include <iostream>
 
-HumanA::HumanA(std::string name, Weapon& w) : name(name), weapon(w) {
-    return;
-}
+HumanA::HumanA(std::string name, Weapon& w) : name(name), weapon(w) { return; }
 
 HumanA::~HumanA() { return; }
 
 void HumanA::attack() const {
-    std::cout << name << " attacks with their " << weapon.getType()
-              << '\n';
+    std::cout << name << " attacks with their " << weapon.getType() << '\n';
 }
