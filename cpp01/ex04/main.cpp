@@ -40,8 +40,8 @@ std::string* read_file(const std::string& filename) {
                 *file_contents += '\n';
         }
     } else {
-		return NULL;
-	}
+        return NULL;
+    }
     input_file.close();
     return file_contents;
 }
@@ -55,7 +55,7 @@ std::string* write_to_replaced_file(const std::string& filename,
         return NULL;
     }
     output_file << *file_contents;
-	output_file.close();
+    output_file.close();
     return file_contents;
 }
 
@@ -81,11 +81,11 @@ int main(int argc, char* argv[]) {
     }
 
     search_and_replace(s1, s2, file_contents);
-    
-	if (!write_to_replaced_file(filename, file_contents)) {
+
+    if (!write_to_replaced_file(filename, file_contents)) {
         std::cerr << "Could not write to the file" << std::endl;
         return EXIT_FAILURE;
-	}
+    }
 
     delete file_contents;
     return 0;
