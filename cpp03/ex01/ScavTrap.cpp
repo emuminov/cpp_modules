@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 16:38:04 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/03 13:41:03 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/22 19:23:15 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 #include <iostream>
 #include <string>
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
-    m_hit_points = default_hit_points;
-    m_energy_points = default_energy_points;
-    m_attack_damage = default_attack_damage;
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name, default_hit_points, default_energy_points, default_attack_damage) {
     std::cout << "A wild ScavTrap appears!\n";
 }
 
@@ -26,10 +23,7 @@ ScavTrap::~ScavTrap() {
     return;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& ct) : ClapTrap(ct.m_name) {
-    m_hit_points = default_hit_points;
-    m_energy_points = default_energy_points;
-    m_attack_damage = default_attack_damage;
+ScavTrap::ScavTrap(const ScavTrap& ct) : ClapTrap(ct.m_name, default_hit_points, default_energy_points, default_attack_damage) {
     std::cout << "ScavTrap " << m_name << " clones itself!\n";
     return;
 }
@@ -41,8 +35,11 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& ct) {
 }
 
 void ScavTrap::guardGate(void) {
-    if (m_energy_points <= 0) {
-        std::cout << "Not enought energy...\n";
+    if (m_hit_points <= 0) {
+        std::cout << "ScavTrap is dead!..\n";
+        return;
+	} else if (m_energy_points <= 0) {
+        std::cout << "Not enough energy...\n";
         return;
     }
     m_energy_points--;
@@ -54,7 +51,7 @@ void ScavTrap::attack(const std::string& target) {
         std::cout << "ScavTrap is dead!..\n";
         return;
     } else if (m_energy_points <= 0) {
-        std::cout << "Not enought energy...\n";
+        std::cout << "Not enough energy...\n";
         return;
     }
     m_energy_points--;

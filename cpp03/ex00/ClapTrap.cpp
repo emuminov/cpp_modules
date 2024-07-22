@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 14:29:13 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/01 22:46:01 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/20 18:41:12 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void ClapTrap::attack(const std::string& target) {
         std::cout << "ClapTrap is dead!..\n";
         return;
     } else if (m_energy_points <= 0) {
-        std::cout << "Not enought energy...\n";
+        std::cout << "Not enough energy...\n";
         return;
     }
     m_energy_points--;
@@ -69,7 +69,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
         std::cout << "ClapTrap is already dead. Stop.\n";
         return;
     } else if (m_energy_points <= 0) {
-        std::cout << "Not enought energy...\n";
+        std::cout << "Not enough energy...\n";
         return;
     }
     m_energy_points--;

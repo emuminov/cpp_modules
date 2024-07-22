@@ -6,13 +6,12 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 16:37:46 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/01 22:36:11 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/22 18:54:52 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCAVTRAP_HPP
 #define SCAVTRAP_HPP
-
 #include "ClapTrap.hpp"
 #include <string>
 
@@ -31,5 +30,4 @@ class ScavTrap : public ClapTrap {
     static const int default_energy_points = 50;
     static const int default_attack_damage = 20;
 };
-
 #endif

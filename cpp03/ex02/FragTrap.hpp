@@ -6,13 +6,12 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 16:37:46 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/03 13:38:42 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/22 18:54:48 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRAGTRAP_HPP
 #define FRAGTRAP_HPP
-
 #include "ClapTrap.hpp"
 #include <string>
 
@@ -31,5 +30,4 @@ class FragTrap : public ClapTrap {
     static const int default_energy_points = 100;
     static const int default_attack_damage = 30;
 };
-
 #endif

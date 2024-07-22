@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 14:29:13 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/01 22:45:51 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/22 19:16:22 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ ClapTrap::ClapTrap(std::string name)
     : m_name(name), m_hit_points(default_hit_points),
       m_energy_points(default_energy_points),
       m_attack_damage(default_attack_damage) {
+    std::cout << "A wild ClapTrap appears!\n";
+    return;
+}
+
+ClapTrap::ClapTrap(std::string name, int hit_points, int energy_points, int attack_damage) : m_name(name), m_hit_points(hit_points), m_energy_points(energy_points), m_attack_damage(attack_damage) {
     std::cout << "A wild ClapTrap appears!\n";
     return;
 }
@@ -43,7 +48,7 @@ void ClapTrap::attack(const std::string& target) {
         std::cout << "ClapTrap is dead!..\n";
         return;
     } else if (m_energy_points <= 0) {
-        std::cout << "Not enought energy...\n";
+        std::cout << "Not enough energy...\n";
         return;
     }
     m_energy_points--;
@@ -69,7 +74,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
         std::cout << "ClapTrap is already dead. Stop.\n";
         return;
     } else if (m_energy_points <= 0) {
-        std::cout << "Not enought energy...\n";
+        std::cout << "Not enough energy...\n";
         return;
     }
     std::cout << "Hit points: " << m_hit_points << "\n";
