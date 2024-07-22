@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:39:11 by emuminov          #+#    #+#             */
-/*   Updated: 2024/07/18 18:48:07 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/19 19:15:40 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,15 @@ Fixed Fixed::operator-(const Fixed& f) const {
 }
 
 Fixed Fixed::operator*(const Fixed& f) const {
-    return Fixed(this->toFloat() * f.toFloat());
+	Fixed res(0);
+	res._raw = (_raw * f._raw) >> _scale;
+    return res;
 }
 
 Fixed Fixed::operator/(const Fixed& f) const {
-    return Fixed(this->toFloat() / f.toFloat());
+	Fixed res(0);
+	res._raw = _raw * (1 << _scale) / f._raw;
+    return res;
 }
 
 Fixed Fixed::operator++(void) {
