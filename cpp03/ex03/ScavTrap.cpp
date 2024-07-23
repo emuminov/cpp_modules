@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 16:38:04 by emuminov          #+#    #+#             */
-/*   Updated: 2024/07/22 19:23:15 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/23 18:54:45 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ ScavTrap::~ScavTrap() {
     return;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& ct) : ClapTrap(ct.m_name, default_hit_points, default_energy_points, default_attack_damage) {
+ScavTrap::ScavTrap(const ScavTrap& st) : ClapTrap(st.m_name, default_hit_points, default_energy_points, default_attack_damage) {
     std::cout << "ScavTrap " << m_name << " clones itself!\n";
     return;
 }
 
-ScavTrap& ScavTrap::operator=(const ScavTrap& ct) {
-    m_name = ct.m_name;
+ScavTrap& ScavTrap::operator=(const ScavTrap& st) {
+    m_name = st.m_name;
     std::cout << "ScavTrap " << m_name << " clones itself!\n";
     return *this;
 }

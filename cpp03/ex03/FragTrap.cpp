@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 16:38:04 by emuminov          #+#    #+#             */
-/*   Updated: 2024/07/22 19:24:36 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/23 18:56:03 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ FragTrap::~FragTrap() {
     return;
 }
 
-FragTrap::FragTrap(const FragTrap& ct) : ClapTrap(ct.m_name, default_hit_points, default_energy_points, default_attack_damage) {
+FragTrap::FragTrap(const FragTrap& ft) : ClapTrap(ft.m_name, default_hit_points, default_energy_points, default_attack_damage) {
     std::cout << "FragTrap " << m_name << " clones itself!\n";
     return;
 }
 
-FragTrap& FragTrap::operator=(const FragTrap& ct) {
-    m_name = ct.m_name;
+FragTrap& FragTrap::operator=(const FragTrap& ft) {
+    m_name = ft.m_name;
     std::cout << "FragTrap " << m_name << " clones itself!\n";
     return *this;
 }
@@ -43,7 +43,7 @@ void FragTrap::highFiveGuys() {
         return;
     }
     m_energy_points--;
-    std::cout << "FragTrap " << m_name << " gives high five!";
+    std::cout << "FragTrap " << m_name << " gives high five!\n";
 }
 
 void FragTrap::attack(const std::string& target) {
