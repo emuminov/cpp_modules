@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:27:33 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/04 16:00:02 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:07:23 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ Cat::Cat(const Cat& a) : m_type(a.m_type) {
 
 Cat& Cat::operator=(const Cat& a) {
 	std::cout << "Cat copy assign operator is called\n";
-	m_type = a.m_type;
+	if (this != &a)
+		m_type = a.m_type;
 	return *this;
 }
 

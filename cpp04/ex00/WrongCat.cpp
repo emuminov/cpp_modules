@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:55:43 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/04 16:03:19 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:07:14 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ WrongCat::WrongCat(const WrongCat& a) : m_type(a.m_type) {
 
 WrongCat& WrongCat::operator=(const WrongCat& a) {
 	std::cout << "WrongCat copy assign operator is called\n";
-	m_type = a.m_type;
+	if (this != &a)
+		m_type = a.m_type;
 	return *this;
 }
 
