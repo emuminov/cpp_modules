@@ -22,7 +22,10 @@ ClapTrap::ClapTrap(std::string name)
     return;
 }
 
-ClapTrap::ClapTrap(std::string name, int hit_points, int energy_points, int attack_damage) : m_name(name), m_hit_points(hit_points), m_energy_points(energy_points), m_attack_damage(attack_damage) {
+ClapTrap::ClapTrap(std::string name, int hit_points, int energy_points,
+                   int attack_damage)
+    : m_name(name), m_hit_points(hit_points), m_energy_points(energy_points),
+      m_attack_damage(attack_damage) {
     std::cout << "A wild ClapTrap appears!\n";
     return;
 }

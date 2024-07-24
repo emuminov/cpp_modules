@@ -10,14 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
 #include "DiamondTrap.hpp"
+#include "ClapTrap.hpp"
+#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 #include <iostream>
 #include <string>
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name", FragTrap::default_hit_points, ScavTrap::default_energy_points, FragTrap::default_attack_damage), FragTrap(name), ScavTrap(name), m_name(name) {
+DiamondTrap::DiamondTrap(std::string name)
+    : ClapTrap(name + "_clap_name", FragTrap::default_hit_points,
+               ScavTrap::default_energy_points,
+               FragTrap::default_attack_damage),
+      FragTrap(name), ScavTrap(name), m_name(name) {
     std::cout << "A wild DiamondTrap appears!\n";
 }
 
@@ -26,18 +30,23 @@ DiamondTrap::~DiamondTrap() {
     return;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& dt) : ClapTrap(dt.ClapTrap::m_name, FragTrap::default_hit_points, ScavTrap::default_energy_points, FragTrap::default_attack_damage), FragTrap(dt), ScavTrap(dt), m_name(dt.m_name) {
+DiamondTrap::DiamondTrap(const DiamondTrap& dt)
+    : ClapTrap(dt.ClapTrap::m_name, FragTrap::default_hit_points,
+               ScavTrap::default_energy_points,
+               FragTrap::default_attack_damage),
+      FragTrap(dt), ScavTrap(dt), m_name(dt.m_name) {
     std::cout << "DiamondTrap " << m_name << " clones itself!\n";
     return;
 }
 
 DiamondTrap& DiamondTrap::operator=(const DiamondTrap& ct) {
     m_name = ct.m_name;
-	ClapTrap::m_name = ct.ClapTrap::m_name;
+    ClapTrap::m_name = ct.ClapTrap::m_name;
     std::cout << "DiamondTrap " << m_name << " clones itself!\n";
     return *this;
 }
 
 void DiamondTrap::whoAmI() {
-	std::cout << "I am... " << ClapTrap::m_name << "! No, wait... I am " << m_name << "!\n";
+    std::cout << "I am... " << ClapTrap::m_name << "! No, wait... I am "
+              << m_name << "!\n";
 }
