@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 17:22:01 by emuminov          #+#    #+#             */
-/*   Updated: 2024/07/23 18:23:14 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/24 17:26:29 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class DiamondTrap : public FragTrap, public ScavTrap {
     DiamondTrap(const DiamondTrap& dt);
     DiamondTrap& operator=(const DiamondTrap& dt);
     ~DiamondTrap();
-    using FragTrap::attack;
+    using ScavTrap::attack;
     void whoAmI();
 
   private:
