@@ -14,27 +14,25 @@
 #include <iostream>
 
 WrongCat::WrongCat() : WrongAnimal("WrongCat") {
-	std::cout << "WrongCat constructor is called\n";
-	return;
+    std::cout << "WrongCat constructor is called\n";
+    return;
 }
 
 WrongCat::~WrongCat() {
-	std::cout << "WrongCat destructor is called\n";
-	return;
+    std::cout << "WrongCat destructor is called\n";
+    return;
 }
 
 WrongCat::WrongCat(const WrongCat& a) : m_type(a.m_type) {
-	std::cout << "WrongCat copy constructor is called\n";
-	return;
+    std::cout << "WrongCat copy constructor is called\n";
+    return;
 }
 
 WrongCat& WrongCat::operator=(const WrongCat& a) {
-	std::cout << "WrongCat copy assign operator is called\n";
-	if (this != &a)
-		m_type = a.m_type;
-	return *this;
+    std::cout << "WrongCat copy assign operator is called\n";
+    if (this != &a)
+        m_type = a.m_type;
+    return *this;
 }
 
-void WrongCat::makeSound() const {
-	std::cout << "Meow\n";
-}
+void WrongCat::makeSound() const { std::cout << "Meow\n"; }

@@ -11,40 +11,36 @@
 /* ************************************************************************** */
 
 #include "Animal.hpp"
-#include <string>
 #include <iostream>
+#include <string>
 
 Animal::Animal() : m_type("Animal") {
-	std::cout << "Animal constructor is called\n";
-	return;
+    std::cout << "Animal constructor is called\n";
+    return;
 }
 
 Animal::Animal(std::string type) : m_type(type) {
-	std::cout << "Protected Animal constructor is called\n";
-	return;
+    std::cout << "Protected Animal constructor is called\n";
+    return;
 }
 
 Animal::~Animal() {
-	std::cout << "Animal destructor is called\n";
-	return;
+    std::cout << "Animal destructor is called\n";
+    return;
 }
 
 Animal::Animal(const Animal& a) : m_type(a.m_type) {
-	std::cout << "Animal copy constructor is called\n";
-	return;
+    std::cout << "Animal copy constructor is called\n";
+    return;
 }
 
 Animal& Animal::operator=(const Animal& a) {
-	std::cout << "Animal copy assign operator is called\n";
-	if (this != &a)
-		m_type = a.m_type;
-	return *this;
+    std::cout << "Animal copy assign operator is called\n";
+    if (this != &a)
+        m_type = a.m_type;
+    return *this;
 }
 
-const std::string& Animal::getType() const {
-	return m_type;
-}
+const std::string& Animal::getType() const { return m_type; }
 
-void Animal::makeSound() const {
-	std::cout << "<dead silence>\n";
-}
+void Animal::makeSound() const { std::cout << "<dead silence>\n"; }

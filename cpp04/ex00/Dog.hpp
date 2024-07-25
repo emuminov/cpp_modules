@@ -22,10 +22,10 @@ class Dog : public Animal {
     Dog(const Dog& a);
     Dog& operator=(const Dog& a);
     ~Dog();
-	void makeSound() const;
+    void makeSound() const;
 
   protected:
-	std::string m_type;
+    std::string m_type;
 };
 
 #endif
