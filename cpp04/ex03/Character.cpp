@@ -14,7 +14,7 @@ Character::Character(Character const& c) : m_name(c.m_name), m_items() {
 		if (c.m_items[i])
 			m_items[i] = c.m_items[i]->clone();
 		else
-			m_items[i] = nullptr;
+			m_items[i] = NULL;
 	}
 	return;
 }
@@ -23,10 +23,11 @@ Character& Character::operator=(Character const& c) {
 	if (this != &c) {
 		m_name = c.m_name;
 		for (int i = 0; i < items_capacity; i++) {
+			delete m_items[i];
 			if (c.m_items[i])
 				m_items[i] = c.m_items[i]->clone();
 			else
-				m_items[i] = nullptr;
+				m_items[i] = NULL;
 		}
 	}
 	return *this;
@@ -36,15 +37,17 @@ std::string const& Character::getName() const { return m_name; }
 
 void Character::equip(AMateria* m) {
 	for (int i = 0; i < items_capacity; i++) {
-		if (!m_items[i])
+		if (!m_items[i]) {
 			m_items[i] = m;
+			return;
+		}
 	}
 }
 
 void Character::unequip(int idx) {
 	if (idx < 0 || idx > (items_capacity - 1))
 		return;
-	m_items[idx] = nullptr;
+	m_items[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target) {
@@ -55,6 +58,6 @@ void Character::use(int idx, ICharacter& target) {
 
 AMateria* Character::get_materia(int idx) {
 	if (idx < 0 || idx > (items_capacity - 1))
-		return nullptr;
+		return NULL;
 	return m_items[idx];
 }
