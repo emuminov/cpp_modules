@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include <string>
 #include <iostream>
 
@@ -25,6 +26,17 @@ Bureaucrat Bureaucrat::operator=(const Bureaucrat &b) {
 }
 
 Bureaucrat::~Bureaucrat() { return; }
+
+void Bureaucrat::signForm(Form &f) {
+	try {
+		f.beSigned(*this);
+		std::cout << m_name << " signed " << f.get_name() << '\n';
+	}
+	catch (const std::exception& e) {
+		std::cerr << m_name << " couldn't sign a form " << f.get_name()
+			<< " because " << e.what() << '\n';
+	}
+}
 
 int Bureaucrat::getGrade() const { return m_grade; }
 

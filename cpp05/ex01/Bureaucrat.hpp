@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <exception>
+class Form;
 class Bureaucrat {
 	public:
 		Bureaucrat(std::string name, int grade);
@@ -10,6 +11,7 @@ class Bureaucrat {
 		Bureaucrat operator=(const Bureaucrat &b);
 		~Bureaucrat();
 
+		void signForm(Form &f);
 		int getGrade() const;
 		const std::string& getName() const;
 		void increaseGrade();
