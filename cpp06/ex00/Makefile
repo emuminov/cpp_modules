@@ -2,8 +2,8 @@ CXX=c++
 CFLAGS=-Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 
 NAME=main
-SRCS=main.cpp Bureaucrat.cpp
-HEADER=Bureaucrat.hpp
+SRCS=main.cpp ScalarConverter.cpp
+HEADER=ScalarConverter.hpp
 OBJS=$(SRCS:%.cpp=objs/%.o)
 
 all: $(NAME)
