@@ -20,7 +20,7 @@ Contact::Contact()
 
 Contact::~Contact() { return; }
 
-bool Contact::set_first_name(const std::string &first_name) {
+bool Contact::set_first_name(const std::string& first_name) {
     if (first_name == "")
         return false;
     this->first_name = first_name;

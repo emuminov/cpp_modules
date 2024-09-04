@@ -28,10 +28,10 @@ int main(void) {
     std::cout << c << "\n";
     std::cout << d << "\n";
     std::cout << f << "\n";
-	std::cout << (a <= b) << "\n";
-	std::cout << (c >= d) << "\n";
-	std::cout << (f > d) << "\n";
-	std::cout << (f < c) << "\n";
+    std::cout << (a <= b) << "\n";
+    std::cout << (c >= d) << "\n";
+    std::cout << (f > d) << "\n";
+    std::cout << (f < c) << "\n";
     std::cout << Fixed::max(a, b) << "\n";
     return 0;
 }

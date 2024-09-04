@@ -11,15 +11,15 @@
 /* ************************************************************************** */
 
 #include "app.hpp"
-#include <iostream>
 #include <cstdlib>
+#include <iostream>
 
 void exit_phonebook() {
     std::cout << "EXIT\n";
     exit(EXIT_SUCCESS);
 }
 
-void input_command(std::string *s) {
+void input_command(std::string* s) {
     std::getline(std::cin, *s);
     if (!std::cin) {
         if (std::cin.eof())

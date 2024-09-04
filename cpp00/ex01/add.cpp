@@ -13,14 +13,14 @@
 #include "app.hpp"
 #include <iostream>
 
-static std::string ask_for_contact_field(const std::string &field_name) {
+static std::string ask_for_contact_field(const std::string& field_name) {
     std::string field_data = "";
     std::cout << "Please enter " << field_name << ": ";
     input_command(&field_data);
     return field_data;
 }
 
-void add(PhoneBook &pb) {
+void add(PhoneBook& pb) {
     Contact c = Contact();
     if (!c.set_first_name(ask_for_contact_field("first name"))) {
         std::cout << "Invalid first name!\n";

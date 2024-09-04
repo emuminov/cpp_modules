@@ -22,13 +22,11 @@ Fixed::Fixed(const float nbr) : _raw(roundf(nbr * (1 << _scale))) { return; }
 
 Fixed::~Fixed(void) { return; }
 
-Fixed::Fixed(const Fixed& f) : _raw(f._raw) {
-    return;
-}
+Fixed::Fixed(const Fixed& f) : _raw(f._raw) { return; }
 
 Fixed& Fixed::operator=(const Fixed& f) {
-	if (this != &f)
-		_raw = f._raw;
+    if (this != &f)
+        _raw = f._raw;
     return (*this);
 }
 
@@ -45,26 +43,26 @@ bool Fixed::operator==(const Fixed& f) const { return _raw == f._raw; }
 bool Fixed::operator!=(const Fixed& f) const { return _raw != f._raw; }
 
 Fixed Fixed::operator+(const Fixed& f) const {
-	Fixed result(0);
-	result._raw = _raw + f._raw;
+    Fixed result(0);
+    result._raw = _raw + f._raw;
     return result;
 }
 
 Fixed Fixed::operator-(const Fixed& f) const {
-	Fixed result(0);
-	result._raw = _raw - f._raw;
+    Fixed result(0);
+    result._raw = _raw - f._raw;
     return result;
 }
 
 Fixed Fixed::operator*(const Fixed& f) const {
-	Fixed res(0);
-	res._raw = (_raw * f._raw) >> _scale;
+    Fixed res(0);
+    res._raw = (_raw * f._raw) >> _scale;
     return res;
 }
 
 Fixed Fixed::operator/(const Fixed& f) const {
-	Fixed res(0);
-	res._raw = _raw * (1 << _scale) / f._raw;
+    Fixed res(0);
+    res._raw = _raw * (1 << _scale) / f._raw;
     return res;
 }
 
