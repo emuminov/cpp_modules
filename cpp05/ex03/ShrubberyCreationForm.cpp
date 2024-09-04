@@ -36,6 +36,7 @@ void ShrubberyCreationForm::do_execution() const {
 "⠀⠀⠀⠀⠀⠀⠀⢀⠆⠀⠀⠀⠀⠀⠀⠀⠀⠙⠷⠦⠤⠶⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
 "⠀⠀⠀⠀⠀⠀⠀⠘⠒⠂⠒⠒⠂⠒⠤⠤⠤⢄⣀⣀⡀⠀⠀⠀⠀⠀⠘⡄⠀⠀⠀⠀⠀⠀⠀⠀\n"
 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠒⠒⠲⠤⠇⠀⠀⠀⠀⠀⠀⠀⠀\n";
+	output_file.close();
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() { return; }
