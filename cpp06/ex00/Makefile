@@ -1,7 +1,7 @@
 CXX=c++
 CFLAGS=-Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 
-NAME=main
+NAME=convert
 SRCS=main.cpp ScalarConverter.cpp convert.cpp
 HEADER=ScalarConverter.hpp convert.hpp
 OBJS=$(SRCS:%.cpp=objs/%.o)
