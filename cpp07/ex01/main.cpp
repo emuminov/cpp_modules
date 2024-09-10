@@ -1,10 +1,9 @@
 #include "iter.hpp"
+#include <string>
 
-void add_number(std::string* str_ptr, int i) {
-	if (str_ptr) {
-		*str_ptr += (i + '0');
+void add_number(std::string& str, int i) {
+		str += (i + '0');
 	}
-}
 
 void test_iter() {
 	{
