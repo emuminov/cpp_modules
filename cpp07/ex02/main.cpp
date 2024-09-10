@@ -1,5 +1,6 @@
 #include "Array.hpp"
 #include <iostream>
+#include <string>
 #include <cstdlib>
 
 #define MAX_VAL 750
@@ -7,12 +8,14 @@ int main(int, char**)
 {
 		Array<int> empty_arr;
     Array<int> numbers(MAX_VAL);
+    Array<std::string> strings(MAX_VAL);
     int* mirror = new int[MAX_VAL];
     srand(time(NULL));
     for (int i = 0; i < MAX_VAL; i++)
     {
         const int value = rand();
         numbers[i] = value;
+				strings[i] = value;
         mirror[i] = value;
     }
     //SCOPE
