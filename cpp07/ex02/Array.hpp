@@ -7,9 +7,9 @@ class Array {
 	public:
 		Array() : m_data(NULL), m_size(0) { return; }
 
-		Array(unsigned int n) : m_data(new T[n]), m_size(n) { return; }
+		Array(unsigned int n) : m_data(new T[n]()), m_size(n) { return; }
 
-		Array(const Array& arr) : m_data(new T[arr.m_size]), m_size(arr.m_size) {
+		Array(const Array& arr) : m_data(new T[arr.m_size]()), m_size(arr.m_size) {
 			for (int i = 0; i < m_size; i++) {
 				m_data[i] = arr.m_data[i];
 			}
@@ -20,7 +20,7 @@ class Array {
 				return *this;
 			m_size = arr.m_size;
 			delete[] m_data;
-			m_data = new T[m_size];
+			m_data = new T[m_size]();
 			for (int i = 0; i < m_size; i++) {
 				m_data[i] = arr.m_data[i];
 			}
@@ -37,9 +37,17 @@ class Array {
 			}
 		};
 
+		class EmptyArrayException : public std::exception {
+			virtual const char* what() const throw() {
+				return "Array is empty";
+			}
+		};
+
 		T& operator[](const int index) {
 			if (index < 0 || index >= m_size)
 				throw OutOfBoundsException();
+			else if (m_size == 0)
+				throw EmptyArrayException();
 			return m_data[index];
 		}
 
