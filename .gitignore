@@ -1,3 +1,4 @@
+*.txt
 *.o
 *.replace
 *.out
@@ -7,6 +8,8 @@ phonebook
 main
 convert
 sad
+btc
+RNP
 harl
 harlFilter
 .direnv
