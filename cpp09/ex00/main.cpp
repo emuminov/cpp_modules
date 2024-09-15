@@ -1,10 +1,12 @@
 #include "BitcoinExchange.hpp"
+#include <iostream>
 
 int main(int argc, char** argv) {
-	// TODO: do args validation
+	if (argc != 2) {
+		std::cout << "Usage: ./btc [input_file]\n";
+		return 1;
+	}
 
 	BitcoinExchange bc;
-
-	if (argc == 2)
-		bc.print_exchange_rate_from_input(argv[1]);
+	return bc.print_exchange_rate_from_input(argv[1]);
 }
