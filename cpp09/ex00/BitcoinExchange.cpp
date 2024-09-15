@@ -27,7 +27,7 @@ void BitcoinExchange::print_exchange_rate_from_input(const std::string& file_nam
 
 // TODO: turn this function to date validation function that uses mktime()
 // https://stackoverflow.com/questions/9436697/c-check-if-a-date-is-valid
-BitcoinExchange::t_date BitcoinExchange::_str_to_date(const std::string& str) {
+BitcoinExchange::t_date BitcoinExchange::_str_to_date(const std::string& str) const {
 	BitcoinExchange::t_date date;
 
 	size_t year_end_pos = str.find("-");
@@ -38,6 +38,40 @@ BitcoinExchange::t_date BitcoinExchange::_str_to_date(const std::string& str) {
 	std::string day_str = str.substr(month_end_pos + 1, std::string::npos);
 
 	return date;
+}
+
+void BitcoinExchange::_print_exchange_rate_line(double value, double rate, const std::string& date_str) const {
+	std::cout << date_str << " => " << value << " = " << value * rate << "\n";
+}
+
+void BitcoinExchange::_resolve_printing_exchange_rate_line(double value, const std::string& date_str) {
+	if (value > 1000) {
+		std::cout << "Error: too large a number.\n" ;
+		return;
+	} else if (value < 0) {
+		std::cout << "Error: not a positive number.\n" ;
+		return;
+	}
+		
+	iterator res = m_data.find(date_str);
+	if (res != m_data.end()) {
+		_print_exchange_rate_line(value, res->second, date_str);
+		return;
+	}
+	// TODO: what if it's empty?
+	if ((--m_data.end())->first < date_str) {
+		_print_exchange_rate_line(value, (--m_data.end())->second, date_str);
+		return;
+	}
+
+	iterator curr = m_data.begin();
+	for (iterator it = m_data.begin(); it != m_data.end(); it++) {
+		if (it->first > date_str) {
+			_print_exchange_rate_line(value, curr->second, date_str);
+			return;
+		}
+		curr = it;
+	}
 }
 
 enum BitcoinExchange::e_error BitcoinExchange::_read_db() {
@@ -85,35 +119,7 @@ enum BitcoinExchange::e_error BitcoinExchange::_read_input(const std::string& fi
 		double value = atof(value_str.c_str()); // TODO: maybe convert either to an int or to a float
 		// TODO: do value validation
 		// should be from 0 to 1000
-		if (value > 1000) {
-			std::cout << "Error: too large a number.\n" ;
-			continue;
-		} else if (value < 0) {
-			std::cout << "Error: not a positive number.\n" ;
-			continue;
-		}
-		
-		iterator res = m_data.find(date_str);
-		if (res != m_data.end())
-			std::cout << date_str << " => " << value << " = " << value * res->second << "\n";
-		else {
-			// TODO: what if it's empty?
-			if (m_data.begin()->first > date_str) {
-				std::cout << date_str << " => " << value << " = " << value * m_data.begin()->second << "\n";
-				continue;
-			} else if ((--m_data.end())->first < date_str) {
-				std::cout << date_str << " => " << value << " = " << value * (--m_data.end())->second << "\n";
-				continue;
-			}
-			iterator curr = m_data.begin();
-			for (iterator it = m_data.begin(); it != m_data.end(); it++) {
-				if (it->first > date_str) {
-					std::cout << date_str << " => " << value << " = " << value * curr->second << "\n";
-					break;
-				}
-				curr = it;
-			}
-		}
+		_resolve_printing_exchange_rate_line(value, date_str);
 	}
 
 	file.close();
