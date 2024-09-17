@@ -2,7 +2,7 @@
 #define MUTANT_STACK_HPP
 #include <deque>
 #include <stack>
-template <typename T> class MutantStack : public std::stack<T, std::deque<T>> {
+template <typename T> class MutantStack : public std::stack<T, std::deque<T> > {
   public:
     typedef typename std::deque<T>::iterator iterator;
 
