@@ -44,10 +44,10 @@ class Array {
 		};
 
 		T& operator[](const int index) {
-			if (index < 0 || index >= m_size)
-				throw OutOfBoundsException();
-			else if (m_size == 0)
+			if (m_size == 0)
 				throw EmptyArrayException();
+			else if (index < 0 || index >= m_size)
+				throw OutOfBoundsException();
 			return m_data[index];
 		}
 
