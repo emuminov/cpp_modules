@@ -17,6 +17,11 @@ class Span {
             addNumber(*it);
     }
 
+    template <typename T> void insert(T* begin, T* end) {
+        for (T* it = begin; it != end; it++)
+            addNumber(*it);
+    }
+
     int shortestSpan() const;
     int longestSpan() const;
     std::list<int>::const_iterator begin() const;
