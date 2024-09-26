@@ -122,14 +122,19 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 
 	std::list<int> main;
 	std::list<int> pend;
+	std::list<std::list<int>::iterator> insertion_range;
 	
-	// insert b1, a1, a2...aN
-	// if pair_level = 1, insert 0
-	// insert b1
+	// CONCEPT: <int> main, <int> pend
 	main.insert(main.end(), vec.begin(), vec.begin() + pair_level);
-	// if pair_level = 1, insert 1
-	// insert a1
+	insertion_range.insert(insertion_range.end(), --main.end());
 	main.insert(main.end(), vec.begin() + pair_level, vec.begin() + pair_level * 2);
+	insertion_range.insert(insertion_range.end(), --main.end());
+
+	// CONCEPT: <Iterator> main, <Iterator> pend
+	// main.insert(main.end(), vec.begin() + pair_level - 1);
+	// main.insert(main.end(), vec.begin() + pair_level * 2 - 1);
+	
+
 	// if pair_level = 1, insert 3
 	// if pair_level = 1, insert 5
 	// insert the rest of a's, starting from the a2
@@ -142,7 +147,14 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 		// (0 2) (4 5) (3 8) (1 9) 7
 		// b1 a1 b2 a2 b3 a3 b4 a4
 		// insert a2, a3, a4 ... a(n/2)
-		main.insert(main.end(), vec.begin() + pair_level * 3,  vec.begin() + pair_level * 3 + pair_level);
+		// CONCEPT: <int> main, <int> pend
+		main.insert(main.end(), vec.begin() + pair_level * i,  vec.begin() + pair_level * i + pair_level);
+		insertion_range.insert(insertion_range.end(), --main.end());
+		pend.insert(pend.end(), vec.begin() + pair_level * (i - 1), vec.begin() + pair_level * (i - 1) + pair_level);
+
+		// CONCEPT: <Iterator> main, <Iterator> pend
+		// main.insert(main.end(), vec.begin() + pair_level * i,  vec.begin() + pair_level * i + pair_level);
+		// pend.insert(pend.end(), vec.begin() + pair_level * (i - 1), vec.begin() + pair_level * (i - 1) + pair_level);
 		// [0 2 5 8 9]
 		// insert b2, b3, b4 ... b(n/2)
 		// [4 3 1]
@@ -159,7 +171,6 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 	// 	pend.insert(pend.end(), vec.back());
 	// }
 
-	
 	// === 3 === insert the remaing pend numbers to S
 	// (((0 2) (3 8)) ((4 5) (1 9))) 7
 	//       b1            a1
