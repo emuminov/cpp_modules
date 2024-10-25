@@ -29,13 +29,21 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 	if (pair_units_nbr < 2)
 		return;
 
-	Iterator last = vec.begin() + pair_level * (pair_units_nbr);
+	/* If there is an odd pair, we ignore it during swapping.
+	It will go to the pend as the last pair. */
 	bool is_odd = pair_units_nbr % 2 == 1;
+
+	/* It's important to caluclate the end position until we iterate.
+	We can have a set of values like:
+	((1 2) (3 4)) ((3 8) (2 6)) | 0
+	where the are numbers (0 in this case) which can't even form a pair.
+	Those values should be ignored. */
+	Iterator start = vec.begin();
+	Iterator last = vec.begin() + pair_level * (pair_units_nbr);
+	Iterator end = last - (is_odd * pair_level);
 
 	/* Swap pairs of numbers, pairs, pairs of pairs etc by the biggest pair
 	number. After each swap we recurse. */
-	Iterator start = vec.begin();
-	Iterator end = last - (is_odd * pair_level);
 	int jump = 2 * pair_level;
 	for (Iterator it = start; it != end; it += jump) {
 		Iterator this_pair = it + pair_level - 1;
@@ -54,24 +62,23 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 	ranges of numbers. */
 	std::list<Iterator> main;
 	std::vector<Iterator> pend;
-	
+
 	/* Initialize the main chain with the {b1, a1}. */
 	main.insert(main.end(), vec.begin() + pair_level - 1);
 	main.insert(main.end(), vec.begin() + pair_level * 2 - 1);
-	
+
 	/* Insert the rest of a's into the main chain. */
 	for (int i = 4; i <= pair_units_nbr; i += 2) {
 		pend.insert(pend.end(), vec.begin() + pair_level * (i - 1) - 1);
 		main.insert(main.end(), vec.begin() + pair_level * i - 1);
 	}
 
-	/* Insert an odd number to the pend */
-	if (is_odd) {
-		pend.insert(pend.end(), --vec.end());
-	}
-
 	/* Insert the pend into the main in the order determined by the
-	Jacobsthal numbers. For example: 3 2 -> 5 4 -> 11 10 9 8 7 6 -> etc */
+	Jacobsthal numbers. For example: 3 2 -> 5 4 -> 11 10 9 8 7 6 -> etc.
+	During insertion, main numbers serve as an upper bound for inserting numbers,
+	in order to save number of comparisons, as we know already that, for example,
+	b5 is lesser than a5, we binary search only until a5, not until the end
+	of the container. */
 	std::list<Iterator>::iterator curr_bound = main.begin();
 	std::vector<Iterator>::iterator curr_pend = pend.begin();
 	std::advance(curr_bound, 2);
@@ -80,11 +87,11 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 		int curr_jacobsthal = jacobsthal_number(k);
 		int jacobsthal_diff = curr_jacobsthal - prev_jacobsthal;
 		(void)jacobsthal_diff;
-		if (curr_jacobsthal > static_cast<int>(pend.size()))
+		if (jacobsthal_diff > static_cast<int>(pend.size()))
 			break;
 		std::list<Iterator>::iterator bound_it = curr_bound;
 		std::vector<Iterator>::iterator pend_it = curr_pend;
-		std::advance(bound_it, jacobsthal_diff - 1);
+		std::advance(bound_it, jacobsthal_diff * 2 - 1);
 		std::advance(pend_it, jacobsthal_diff - 1);
 		while (jacobsthal_diff)
 		{
@@ -103,20 +110,27 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 			std::list<Iterator>::iterator idx = std::upper_bound(main.begin(), bound_it, *pend_it, comp);
 			main.insert(idx, *pend_it);
 			jacobsthal_diff--;
-			std::advance(bound_it, -1);
 			pend_it = pend.erase(pend_it);
 			std::advance(pend_it, -1);
+			std::advance(bound_it, -1);
 		}
 		prev_jacobsthal = curr_jacobsthal;
 	}
 
-	// Insert the remaining elements in the sequential order.
+	/* Insert the remaining elements in the sequential order. */
 	while (!pend.empty()) {
 		std::list<Iterator>::iterator idx = std::upper_bound(main.begin(), curr_bound, *curr_pend, comp);
 		main.insert(idx, *curr_pend);
 		pend.erase(curr_pend);
 		curr_pend = pend.begin();
 		std::advance(curr_bound, 1);
+	}
+
+	/* Insert an odd number to the main. */
+	if (is_odd) {
+		std::vector<int>::iterator odd_pair = end + pair_level - 1;
+		std::list<Iterator>::iterator idx = std::upper_bound(main.begin(), main.end(), odd_pair, comp);
+		main.insert(idx, odd_pair);
 	}
 
 	/* Use copy vector to store all the numbers, in order not to overwrite the
@@ -131,7 +145,7 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 		}
 	}
 
-	// Replace values in the original container
+	/* Replace values in the original container. */
 	Iterator vec_it = vec.begin();
 	Iterator copy_it = copy.begin();
 	while (copy_it != copy.end()) {
