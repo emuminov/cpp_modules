@@ -3,88 +3,7 @@
 #include <algorithm>
 #include <list>
 
-// 2 0 3 8 1 9 5 4 7
-// === 1 === swap pairs of numbers
-// (2 0) (3 8) (1 9) (5 4) 7
-// b1 a1 b2 a2 b3 a3 b4 a4
-// (0 2) (3 8) (1 9) (4 5) 7
-
-// === 2 === swap pairs of pairs of numbers
-// ((0 2) (3 8)) ((1 9) (4 5)) 7
-//   b1    a1      b2    a2
-// ((0 2) (3 8)) ((4 5) (1 9)) 7
-
-// === 3 === swap pairs of pairs of pairs of numbers
-// (((0 2) (3 8)) ((4 5) (1 9))) 7
-//       b1            a1
-// (((0 2) (3 8)) ((4 5) (1 9))) 7
-// pair_level = 4
-// size = 8 / 4
-// we want to compare 3 and 7
-// 8 9
-
-// === 4 === swap pairs of pairs of pairs of pairs of numbers
-// ((((0 2) (3 8) (4 5) (1 9)))) 7
-//              a1
-// pair_level = 8
-// size = 8 / 8
-// we want to compare 7
-// 9
-// RETURN
-
-// === 3 === insert at the start of S the smallest number of the smallest pair (b1)
-// (((0 2) (3 8)) ((4 5) (1 9))) 7
-//       b1            a1
-// (((0 2) (3 8)) ((4 5) (1 9))) 7
-// we want to insert 4 elements starting from 0
-// we want to insert 4 elements starting from 4
-// main.insert(b1, a1);
-// main: [0 2 3 8 4 5 1 9]
-
-// === 3 === insert the remaing pend numbers to S
-// (((0 2) (3 8)) ((4 5) (1 9))) 7
-//       b1            a1
-// (((0 2) (3 8)) ((4 5) (1 9))) 7
-// main: [0 2 3 8 4 5 1 9]
-
-// === 2 === insert at the start of S the smallest number of the smallest pair (b1)
-// ((0 2) (3 8)) ((4 5) (1 9)) 7
-//   b1    a1      b2    a2
-// ((0 2) (3 8)) ((4 5) (1 9)) 7
-// main.insert(b1, a1, a2);
-// main: [0 2 3 8 1 9]
-
-// === 2 === insert the remaing pend numbers to S
-// ((0 2) (3 8)) ((4 5) (1 9)) 7
-//   b1    a1      b2    a2
-// ((0 2) (4 5)) ((3 8) (1 9)) 7
-// main.insert(b2);
-// main: [0 2 4 5 3 8 1 9]
-
-// === 1 === insert at the start of S the smallest number of the smallest pair (b1)
-// (0 2) (4 5) (3 8) (1 9) 7
-// b1 a1 b2 a2 b3 a3 b4 a4
-// main: [0 2 5 8 9]
-
-// === 1 === insert the remaing pend numbers to S
-// (0 2) (4 5) (3 8) (1 9) 7
-// b1 a1 b2 a2 b3 a3 b4 a4
-// main: [0 1 2 3 4 5 7 8 9]
-
 typedef std::vector<int>::iterator Iterator;
-
-// === 1 === insert the remaing pend numbers to S
-// (0 2) (4 5) (3 8) (1 9) 7
-// b1 a1 b2 a2 b3 a3 b4 a4
-// [0 2 5 8 9]
-// [0 2 5 8 9] insert b3 (3), area of search: 0..2
-// we need to insert idx 4
-// [0 2 3 5 8 9] insert b2 (4), area of search: 0..3
-// we need to insert idx 2
-// void insert_smallest_from_pair(const std::vector<int>& pend, std::vector<int>& main, Iterator pair_to_insert, int pair_level) {
-// 	
-// 	
-// }
 
 void swap_pair(Iterator it, int pair_level) {
 	Iterator start = it - pair_level + 1;
@@ -110,18 +29,19 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 	if (pair_units_nbr < 2)
 		return;
 
+	Iterator last = vec.begin() + pair_level * (pair_units_nbr);
 	bool is_odd = pair_units_nbr % 2 == 1;
-
 
 	/* Swap pairs of numbers, pairs, pairs of pairs etc by the biggest pair
 	number. After each swap we recurse. */
-	Iterator start = vec.begin() + (pair_level - 1);
-	Iterator end = vec.end() - is_odd;
+	Iterator start = vec.begin();
+	Iterator end = last - (is_odd * pair_level);
 	int jump = 2 * pair_level;
-	for (Iterator it = start; it < end; it += jump) {
-		Iterator next_pair = it + pair_level;
-		if (*it > *next_pair) {
-			swap_pair(it, pair_level);
+	for (Iterator it = start; it != end; it += jump) {
+		Iterator this_pair = it + pair_level - 1;
+		Iterator next_pair = it + pair_level * 2 - 1;
+		if (*this_pair > *next_pair) {
+			swap_pair(this_pair, pair_level);
 		}
 	}
 	_merge_insertion_sort(vec, pair_level * 2);
@@ -154,17 +74,19 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 	Jacobsthal numbers. For example: 3 2 -> 5 4 -> 11 10 9 8 7 6 -> etc */
 	std::list<Iterator>::iterator curr_bound = main.begin();
 	std::vector<Iterator>::iterator curr_pend = pend.begin();
+	std::advance(curr_bound, 2);
 	int prev_jacobsthal = jacobsthal_number(1);
 	for (int k = 2; ; k++) {
 		int curr_jacobsthal = jacobsthal_number(k);
-		int jacobstal_diff = curr_jacobsthal - prev_jacobsthal;
+		int jacobsthal_diff = curr_jacobsthal - prev_jacobsthal;
+		(void)jacobsthal_diff;
 		if (curr_jacobsthal > static_cast<int>(pend.size()))
 			break;
 		std::list<Iterator>::iterator bound_it = curr_bound;
 		std::vector<Iterator>::iterator pend_it = curr_pend;
-		std::advance(bound_it, jacobstal_diff);
-		std::advance(pend_it, jacobstal_diff - 1);
-		while (jacobstal_diff)
+		std::advance(bound_it, jacobsthal_diff - 1);
+		std::advance(pend_it, jacobsthal_diff - 1);
+		while (jacobsthal_diff)
 		{
 			// insert b3 b2; b5 b4; b11 b10 b9 b8 b7 b6;
 			// until  a3 a2; a5 a4; a11 a10 a9 a8 a7 a6;
@@ -177,8 +99,12 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 			// 2. we try to insert b2 to {b1, a1, b3}
 			// 3. we try to insert b5 to {b1, a1, b2, a2, b3, a3, a4}
 			// 4. we try to insert b4 to {b1, a1, b2, a2, b3, a3, b5}
-			jacobstal_diff--;
+			// ...
+			std::list<Iterator>::iterator idx = std::upper_bound(main.begin(), bound_it, *pend_it, comp);
+			main.insert(idx, *pend_it);
+			jacobsthal_diff--;
 			std::advance(bound_it, -1);
+			pend_it = pend.erase(pend_it);
 			std::advance(pend_it, -1);
 		}
 		prev_jacobsthal = curr_jacobsthal;
