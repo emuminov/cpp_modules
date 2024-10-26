@@ -81,9 +81,9 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 	of the container. */
 	std::list<Iterator>::iterator curr_bound = main.begin();
 	std::vector<Iterator>::iterator curr_pend = pend.begin();
+	/* Bound to insert elements start with a2, since pend starts with b2. */
 	std::advance(curr_bound, 2);
 	int prev_jacobsthal = jacobsthal_number(1);
-	// int inserted_numbers = 0;
 	for (int k = 2; ; k++) {
 		int curr_jacobsthal = jacobsthal_number(k);
 		int jacobsthal_diff = curr_jacobsthal - prev_jacobsthal;
@@ -114,7 +114,6 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 			pend_it = pend.erase(pend_it);
 			std::advance(pend_it, -1);
 			std::advance(bound_it, -1);
-			// inserted_numbers++;
 		}
 		std::advance(curr_bound, jacobsthal_diff);
 		prev_jacobsthal = curr_jacobsthal;
