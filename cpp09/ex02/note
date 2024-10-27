@@ -144,7 +144,7 @@ pend:
 insert b3 2 - a3 11 | 1 index of pend, 3 index of main
 insert b2 3 - a2 10 | 0 index of pend, 3 index of main
 
-
+ 
 Jacobsthal number: 5
 Jacobsthal diff:   2
 inserted 2

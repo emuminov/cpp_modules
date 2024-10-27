@@ -1,4 +1,7 @@
-#include "ford_johnson.hpp"
+#include "PmergeMe.hpp"
+#include <climits>
+#include <cstdlib>
+#include <cerrno>
 #include <iostream>
 // 11 2 17 0 16 8 6 15 10 3 8 1 18 9 14 19 12 5 4 20 13 7
 // === 1 === swap pairs of numbers
@@ -94,20 +97,83 @@
 
 
 
-int main(void) {
-	// int arr[] = {11, 2, 17, 0, 16, 8, 6, 15, 10, 3, 1, 8, 18, 9, 14, 19, 12, 5, 4, 20, 13, 7};
-	int arr[] = {11, 36, 21, 2, 22, 35, 17, 0, 34, 16, 8, 23, 6, 24, 32, 37, 15, 38, 25, 39, 10, 40, 26, 41, 31, 42, 3, 43, 8, 44, 1, 27, 18, 9, 14, 45, 28, 48, 19, 12, 5, 4, 29, 20, 13, 30, 7};
-	// {35, 36, 37, 41, 44, 48}
-    //         {34, 39, 43, 45}
-	// int arr[] = {35, 36, 34, 37, 39, 41, 43, 44, 45, 48};
+static std::string validate_arg(std::string arg)
+{
+	if (arg[0] == '-')
+		return "Negative numbers are not allowed";
+	long nbr = strtol(arg.c_str(), NULL, 10);
+	if (nbr == 0 && arg != "0")
+		return "Non-number arguments not allowed";
+	if (nbr > INT_MAX || errno == ERANGE)
+		return "Too big arguments are not allowed";
+	return "";
+}
 
-	int len = sizeof(arr) / sizeof(int); 
-	std::vector<int> vec;
-	vec.insert(vec.begin(), arr, arr + len);
+std::string validate(int argc, char** argv)
+{
+	if (argc == 1)
+		return "No arguments were provided";
+	for (int i = 1; i < argc; i++)
+	{
+		std::string status = validate_arg(argv[i]);
+		if (status != "")
+			return status;
+	}
+	return "";
+}
 
-	sort(vec);
+std::vector<int> argv_to_vector(int argc, char** argv)
+{
+	std::vector<int> res;
+	res.reserve(argc - 1);
+	for (int i = 0; i < argc - 1; i++)
+	{
+		res.push_back(atoi(argv[i + 1]));
+	}
+	return res;
+}
 
-	for (int i = 0; i < len; i++) {
+template <typename T>
+bool is_sorted(const T& container)
+{
+	if (container.size() == 0 || container.size() == 1)
+		return true;
+	typename T::const_iterator end = container.end();
+	std::advance(end, -1);
+	for (typename T::const_iterator it = container.begin(); it != end; it++)
+	{
+		typename T::const_iterator next = it;
+		std::advance(next, 1);
+		if (*it > *next)
+			return false;
+	}
+	return true;
+}
+
+// 11 2 17 0 16 8 6 15 10 3 1 8 18 9 14 19 12 5 4 20 13 7
+// int arr[] = {11, 36, 21, 2, 22, 35, 17, 0, 34, 16, 8, 23, 6, 24, 32, 37, 15, 38, 25, 39, 10, 40, 26, 41, 31, 42, 3, 43, 8, 44, 1, 27, 18, 9, 14, 45, 28, 48, 19, 12, 5, 4, 29, 20, 13, 30, 7};
+// int arr[] = {35, 36, 34, 37, 39, 41, 43, 44, 45, 48};
+int main(int argc, char** argv) {
+	PmergeMe pm;
+	std::string status = validate(argc, argv);
+	if (status != "")
+	{
+		std::cerr << "Error: " << status << "\n";
+		return EXIT_FAILURE;
+	}
+
+	std::vector<int> vec = argv_to_vector(argc, argv);
+	pm.sort(vec);
+
+	for (size_t i = 0; i < vec.size(); i++) {
 		std::cout << vec[i] << "\n";
+	}
+	if (is_sorted(vec))
+	{
+		std::cout << "Success!\n";
+	}
+	else
+	{
+		std::cout << "Fail...\n";
 	}
 }
