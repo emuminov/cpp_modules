@@ -11,7 +11,7 @@ pend:
       b2 b3 b4 b5 | b6
 
 insert b3 39 - a3 41 | 1 index of pend, 3 index of main
-insert b2 34 - a2 37 | 0 index of pend, 3 index of main
+insert b2 34 - a2 39 | 0 index of pend, 3 index of main
 
 
 Jacobsthal number: 5
@@ -23,8 +23,8 @@ main:
 b2 b1 a1 a2 b3 a3 a4 a5
 
 pend:
-      43 45 | 29
-      b4 b5 | b6
+                  43 45 | 29
+                  b4 b5 | b6
 insert b5 45 - a5 48 | 1 index of pend, 7 index of main
 insert b4 43 - a4 44 | 0 index of pend, 7 index of main
 
