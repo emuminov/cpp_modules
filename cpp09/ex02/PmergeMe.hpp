@@ -87,13 +87,13 @@ void PmergeMe::_merge_insertion_sort(T& container, int pair_level) {
 	std::vector<Iterator> pend;
 
 	/* Initialize the main chain with the {b1, a1}. */
-	main.insert(main.end(), container.begin() + pair_level - 1);
-	main.insert(main.end(), container.begin() + pair_level * 2 - 1);
+	main.insert(main.end(), next(container.begin(), pair_level - 1));
+	main.insert(main.end(), next(container.begin(), pair_level * 2 - 1));
 
 	/* Insert the rest of a's into the main chain. */
 	for (int i = 4; i <= pair_units_nbr; i += 2) {
-		pend.insert(pend.end(), container.begin() + pair_level * (i - 1) - 1);
-		main.insert(main.end(), container.begin() + pair_level * i - 1);
+		pend.insert(pend.end(), next(container.begin(), pair_level * (i - 1) - 1));
+		main.insert(main.end(), next(container.begin(), pair_level * i - 1));
 	}
 
 	/* Insert the pend into the main in the order determined by the
@@ -110,10 +110,8 @@ void PmergeMe::_merge_insertion_sort(T& container, int pair_level) {
 		if (jacobsthal_diff > static_cast<int>(pend.size()))
 			break;
 		int nbr_of_times = jacobsthal_diff;
-		typename std::vector<Iterator>::iterator pend_it = pend.begin();
-		typename std::list<Iterator>::iterator bound_it = main.begin();
-		std::advance(pend_it, jacobsthal_diff - 1);
-		std::advance(bound_it, curr_jacobsthal + inserted_numbers);
+		typename std::vector<Iterator>::iterator pend_it = next(pend.begin(), jacobsthal_diff - 1);
+		typename std::list<Iterator>::iterator bound_it = next(main.begin(), curr_jacobsthal + inserted_numbers);
 		while (nbr_of_times)
 		{
 			typename std::list<Iterator>::iterator idx = std::upper_bound(main.begin(), bound_it, *pend_it, _comp<Iterator>);
@@ -123,7 +121,6 @@ void PmergeMe::_merge_insertion_sort(T& container, int pair_level) {
 			std::advance(pend_it, -1);
 			std::advance(bound_it, -1);
 		}
-		pend_it = pend.begin();
 		prev_jacobsthal = curr_jacobsthal;
 		inserted_numbers += jacobsthal_diff;
 	}
