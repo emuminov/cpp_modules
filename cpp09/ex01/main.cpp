@@ -1,8 +1,14 @@
 #include "RNP.hpp"
+#include <iostream>
+#include <cstdlib>
 
-int main(void) {
+int main(int argc, char** argv) {
+	if (argc == 1 || argc > 2)
+	{
+		std::cout << "Usage: [equation to resolve]\n";
+		return EXIT_FAILURE;
+	}
 	RNP rnp;
 
-	rnp.solve("8 9 * 9 - 9 - 9 - 4 - 1 +");
-	return 0;
+	return rnp.solve(argv[1]);
 }
