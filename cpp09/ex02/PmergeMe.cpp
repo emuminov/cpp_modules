@@ -1,5 +1,6 @@
 #include "PmergeMe.hpp"
 #include <cmath>
+#include <deque>
 
 PmergeMe::PmergeMe() {}
 PmergeMe::PmergeMe(const PmergeMe& pm) { (void)pm; }
@@ -19,6 +20,6 @@ void PmergeMe::sort_vec(std::vector<int>& vec) {
 	_merge_insertion_sort<std::vector<int> >(vec, 1);
 }
 
-void PmergeMe::sort_list(std::list<int>& lst) {
-	_merge_insertion_sort<std::list<int> >(lst, 1);
+void PmergeMe::sort_deque(std::deque<int>& deque) {
+	_merge_insertion_sort<std::deque<int> >(deque, 1);
 }

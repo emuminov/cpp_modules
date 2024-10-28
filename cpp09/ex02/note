@@ -189,8 +189,12 @@ insert b6  6 -  a6 15  | 0 index of pend, 15 index of main
 
 
 
+                                              
+1  2  3  5  7  8  10 11 12 13 15 16 17 18 19  20
+b1 b3 b2 b4 b5 a1 a2 a3 a4 a5 a6 a7 a8 a9 a10 a11
 
-
+                              6  8  0  9  14  4
+                              b6 b7 b8 b9 b10 b11
 
 
 

@@ -1,7 +1,7 @@
 #ifndef PMERGEME_HPP
 #define PMERGEME_HPP
 #include <algorithm>
-#include <list>
+#include <deque>
 #include <vector>
 class PmergeMe {
 	public:
@@ -11,7 +11,7 @@ class PmergeMe {
 	~PmergeMe();
 
 	void sort_vec(std::vector<int>& vec);
-	void sort_list(std::list<int>& lst);
+	void sort_deque(std::deque<int>& deque);
 
 	private:
 	template <typename T>
