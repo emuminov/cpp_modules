@@ -1,5 +1,5 @@
 CXX=c++
-CFLAGS=-Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3 -O0
+CFLAGS=-Wall -Wextra -Werror -std=c++98 -g3
 
 NAME=btc
 SRCS=main.cpp BitcoinExchange.cpp
