@@ -14,7 +14,8 @@
 #define HARL_HPP
 #include <string>
 
-class Harl {
+class Harl
+{
   public:
     Harl();
     ~Harl();

@@ -15,7 +15,8 @@
 //                               Account Class                                //
 // ************************************************************************** //
 
-class Account {
+class Account
+{
 
   public:
     typedef Account t;

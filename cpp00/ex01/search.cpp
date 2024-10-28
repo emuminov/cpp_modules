@@ -15,14 +15,16 @@
 #include <iomanip>
 #include <iostream>
 
-static void display_row_borders() {
+static void display_row_borders()
+{
     std::cout << "+----------";
     std::cout << "+----------";
     std::cout << "+----------";
     std::cout << "+----------+\n";
 }
 
-static void display_cell_content(int s, enum column_position pos) {
+static void display_cell_content(int s, enum column_position pos)
+{
     if (pos == START)
         std::cout << '|';
     std::cout << std::setw(10) << std::right << s << '|';
@@ -30,23 +32,27 @@ static void display_cell_content(int s, enum column_position pos) {
         std::cout << '\n';
 }
 
-static void display_cell_content(const std::string& s,
-                                 enum column_position pos) {
+static void display_cell_content(const std::string& s, enum column_position pos)
+{
     std::string s_to_print = "";
-    if (s.size() > 10) {
+    if (s.size() > 10)
+    {
         s_to_print = s.substr(0, 9);
         s_to_print += '.';
-    } else
+    }
+    else
         s_to_print = s;
     if (pos == START)
         std::cout << '|';
     std::cout << std::setw(10) << std::right << s_to_print << '|';
-    if (pos == END) {
+    if (pos == END)
+    {
         std::cout << '\n';
     }
 }
 
-static void display_all_contact_fields(Contact& c) {
+static void display_all_contact_fields(Contact& c)
+{
     std::cout << "First name:     " << c.get_first_name() << '\n';
     std::cout << "Last name:      " << c.get_last_name() << '\n';
     std::cout << "Nickname:       " << c.get_nickname() << '\n';
@@ -54,9 +60,11 @@ static void display_all_contact_fields(Contact& c) {
     std::cout << "Darkest secret: " << c.get_darkest_secret() << '\n';
 }
 
-void search(PhoneBook& pb) {
+void search(PhoneBook& pb)
+{
     int len = pb.get_len();
-    if (len == 0) {
+    if (len == 0)
+    {
         std::cout << "Phonebook is empty!\n";
         return;
     }
@@ -66,7 +74,8 @@ void search(PhoneBook& pb) {
     display_cell_content("Last name", BETWEEN);
     display_cell_content("Nickname", END);
     display_row_borders();
-    for (int i = 0; i < len; i++) {
+    for (int i = 0; i < len; i++)
+    {
         display_cell_content(i + 1, START);
         display_cell_content(pb.get_contact(i).get_first_name(), BETWEEN);
         display_cell_content(pb.get_contact(i).get_last_name(), BETWEEN);
@@ -79,7 +88,8 @@ void search(PhoneBook& pb) {
     input_command(&str_index);
     int nbr_index = std::atoi(str_index.c_str());
     if (str_index.length() > 1 || !std::isdigit(str_index[0]) ||
-        !(nbr_index >= 1 && nbr_index <= len)) {
+        !(nbr_index >= 1 && nbr_index <= len))
+    {
         std::cout << "Incorrect index!\n";
         return;
     }

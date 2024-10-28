@@ -2,7 +2,8 @@
 #define CURE_HPP
 #include "AMateria.hpp"
 #include <string>
-class Cure : public AMateria {
+class Cure : public AMateria
+{
   public:
     Cure(void);
     ~Cure(void);

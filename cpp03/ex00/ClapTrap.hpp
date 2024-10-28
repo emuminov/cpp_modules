@@ -14,7 +14,8 @@
 #define CLAPTRAP_HPP
 #include <string>
 
-class ClapTrap {
+class ClapTrap
+{
   public:
     ClapTrap(std::string name);
     ClapTrap(const ClapTrap& ct);

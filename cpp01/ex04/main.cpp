@@ -15,9 +15,11 @@
 #include <stdlib.h>
 
 std::string* search_and_replace(const std::string& s1, const std::string& s2,
-                                std::string* file_contents) {
+                                std::string* file_contents)
+{
     size_t pos = file_contents->find(s1);
-    while (pos != std::string::npos) {
+    while (pos != std::string::npos)
+    {
         file_contents->erase(pos, s1.length());
         file_contents->insert(pos, s2);
         pos = file_contents->find(s1, pos + s2.length());
@@ -25,33 +27,40 @@ std::string* search_and_replace(const std::string& s1, const std::string& s2,
     return file_contents;
 }
 
-std::string* read_file(const std::string& filename) {
+std::string* read_file(const std::string& filename)
+{
     std::ifstream input_file(filename.c_str());
-    if (!input_file) {
+    if (!input_file)
+    {
         return NULL;
     }
     std::string* file_contents = new std::string("");
     std::string file_current_line = "";
-    if (input_file.is_open()) {
-        while (!input_file.eof()) {
+    if (input_file.is_open())
+    {
+        while (!input_file.eof())
+        {
             std::getline(input_file, file_current_line);
             *file_contents += file_current_line;
             if (!input_file.eof())
                 *file_contents += '\n';
         }
-    } else {
+    }
+    else
+    {
         return NULL;
     }
     input_file.close();
     return file_contents;
 }
 
-std::string* write_to_replaced_file(const std::string& filename,
-                                    std::string* file_contents) {
+std::string* write_to_replaced_file(const std::string& filename, std::string* file_contents)
+{
     std::string new_filename = filename;
     new_filename += ".replace";
     std::ofstream output_file(new_filename.c_str());
-    if (!output_file) {
+    if (!output_file)
+    {
         return NULL;
     }
     output_file << *file_contents;
@@ -59,8 +68,10 @@ std::string* write_to_replaced_file(const std::string& filename,
     return file_contents;
 }
 
-int main(int argc, char* argv[]) {
-    if (argc != 4) {
+int main(int argc, char* argv[])
+{
+    if (argc != 4)
+    {
         std::cerr << "Correct usage: [filename, s1, s2]" << std::endl;
         return EXIT_FAILURE;
     }
@@ -69,20 +80,23 @@ int main(int argc, char* argv[]) {
     const std::string s1 = argv[2];
     const std::string s2 = argv[3];
 
-    if (s1 == "") {
+    if (s1 == "")
+    {
         std::cerr << "s1 cannot be empty" << std::endl;
         return EXIT_FAILURE;
     }
 
     std::string* file_contents = read_file(filename);
-    if (!file_contents) {
+    if (!file_contents)
+    {
         std::cerr << "Could not read the file" << std::endl;
         return EXIT_FAILURE;
     }
 
     search_and_replace(s1, s2, file_contents);
 
-    if (!write_to_replaced_file(filename, file_contents)) {
+    if (!write_to_replaced_file(filename, file_contents))
+    {
         std::cerr << "Could not write to the file" << std::endl;
         return EXIT_FAILURE;
     }

@@ -2,7 +2,8 @@
 #include <cassert>
 #include <iostream>
 
-void subject_tests() {
+void subject_tests()
+{
     int a = 2;
     int b = 3;
 
@@ -20,7 +21,8 @@ void subject_tests() {
     std::cout << "max( c, d ) = " << ::max(c, d) << std::endl;
 }
 
-void my_tests() {
+void my_tests()
+{
     {
         int v1 = 0;
         int v2 = 1;
@@ -78,7 +80,8 @@ void my_tests() {
     }
 }
 
-int main(void) {
+int main(void)
+{
     subject_tests();
     std::cout << "----------------------\n";
     my_tests();

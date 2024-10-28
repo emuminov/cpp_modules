@@ -17,6 +17,7 @@ HumanA::HumanA(std::string name, Weapon& w) : name(name), weapon(w) { return; }
 
 HumanA::~HumanA() { return; }
 
-void HumanA::attack() const {
+void HumanA::attack() const
+{
     std::cout << name << " attacks with their " << weapon.getType() << '\n';
 }

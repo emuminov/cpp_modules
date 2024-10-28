@@ -14,7 +14,8 @@
 #define ZOMBIE_HPP
 #include <string>
 
-class Zombie {
+class Zombie
+{
   public:
     Zombie(std::string name);
     Zombie(void);

@@ -14,7 +14,8 @@
 #define APP_H
 #include "PhoneBook.hpp"
 
-enum column_position {
+enum column_position
+{
     START,
     BETWEEN,
     END,

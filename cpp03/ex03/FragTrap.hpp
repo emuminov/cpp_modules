@@ -15,7 +15,8 @@
 #include "ClapTrap.hpp"
 #include <string>
 
-class FragTrap : virtual public ClapTrap {
+class FragTrap : virtual public ClapTrap
+{
   public:
     FragTrap(std::string name);
     FragTrap(const FragTrap& ft);

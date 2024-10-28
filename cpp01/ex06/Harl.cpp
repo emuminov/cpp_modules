@@ -18,21 +18,25 @@ Harl::Harl() { return; }
 
 Harl::~Harl() { return; }
 
-void Harl::complain(std::string level) {
+void Harl::complain(std::string level)
+{
     size_t hash = 0;
     size_t len = level.length();
-    for (size_t i = 0; i < len; i++) {
+    for (size_t i = 0; i < len; i++)
+    {
         hash = hash + level[i] + len;
         hash ^= 13;
     }
-    enum LevelsHash {
+    enum LevelsHash
+    {
         debug = 373,
         info = 314,
         warning = 530,
         error = 384,
     };
 
-    switch (hash) {
+    switch (hash)
+    {
     case debug:
         this->debug();
     case info:
@@ -48,7 +52,8 @@ void Harl::complain(std::string level) {
     }
 }
 
-void Harl::debug(void) {
+void Harl::debug(void)
+{
     std::cout << "[DEBUG]\n";
     std::cout << "I love having extra bacon for my "
                  "7XL-double-cheese-triple-pickle-special-ketchup burger. I "
@@ -56,7 +61,8 @@ void Harl::debug(void) {
               << std::endl;
 }
 
-void Harl::info(void) {
+void Harl::info(void)
+{
     std::cout << "[INFO]\n";
     std::cout << "I cannot believe adding extra bacon costs more money. You "
                  "didn’t put enough bacon in my burger! If you did, I wouldn’t "
@@ -64,17 +70,17 @@ void Harl::info(void) {
               << std::endl;
 }
 
-void Harl::warning(void) {
+void Harl::warning(void)
+{
     std::cout << "[WARNING]\n";
-    std::cout
-        << "I think I deserve to have some extra bacon for free. I’ve "
-           "been coming for years whereas you started working here since last "
-           "month."
-        << std::endl;
+    std::cout << "I think I deserve to have some extra bacon for free. I’ve "
+                 "been coming for years whereas you started working here since last "
+                 "month."
+              << std::endl;
 }
 
-void Harl::error(void) {
+void Harl::error(void)
+{
     std::cout << "[ERROR]\n";
-    std::cout << "This is unacceptable! I want to speak to the manager now."
-              << std::endl;
+    std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }

@@ -12,7 +12,8 @@
 
 #include "DiamondTrap.hpp"
 
-int main(void) {
+int main(void)
+{
     DiamondTrap dt1("Leonard");
     DiamondTrap dt2(dt1);
     DiamondTrap dt3("Don");

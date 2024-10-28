@@ -1,0 +1,11 @@
+BasedOnStyle: LLVM
+IndentWidth: 4
+UseTab: Never
+BreakBeforeBraces: Allman
+AllowShortIfStatementsOnASingleLine: Never
+AlignTrailingComments: false
+PointerAlignment: Left
+ColumnLimit: 100
+IndentCaseLabels: false
+PackConstructorInitializers: NextLine
+AlignAfterOpenBracket: Align

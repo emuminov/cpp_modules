@@ -14,27 +14,32 @@
 #include <iostream>
 #include <string>
 
-Animal::Animal() : m_type("Animal") {
+Animal::Animal() : m_type("Animal")
+{
     std::cout << "Animal constructor is called\n";
     return;
 }
 
-Animal::Animal(std::string type) : m_type(type) {
+Animal::Animal(std::string type) : m_type(type)
+{
     std::cout << "Protected Animal constructor is called\n";
     return;
 }
 
-Animal::~Animal() {
+Animal::~Animal()
+{
     std::cout << "Animal destructor is called\n";
     return;
 }
 
-Animal::Animal(const Animal& a) : m_type(a.m_type) {
+Animal::Animal(const Animal& a) : m_type(a.m_type)
+{
     std::cout << "Animal copy constructor is called\n";
     return;
 }
 
-Animal& Animal::operator=(const Animal& a) {
+Animal& Animal::operator=(const Animal& a)
+{
     std::cout << "Animal copy assign operator is called\n";
     if (this != &a)
         m_type = a.m_type;

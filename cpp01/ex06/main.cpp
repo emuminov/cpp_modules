@@ -14,8 +14,10 @@
 #include <iostream>
 #include <stdlib.h>
 
-int main(int argc, char* argv[]) {
-    if (argc != 2) {
+int main(int argc, char* argv[])
+{
+    if (argc != 2)
+    {
         std::cerr << "*mumble mumble*\n";
         return EXIT_FAILURE;
     }

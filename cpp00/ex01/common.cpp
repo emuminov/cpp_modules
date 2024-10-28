@@ -14,24 +14,29 @@
 #include <cstdlib>
 #include <iostream>
 
-void exit_phonebook() {
+void exit_phonebook()
+{
     std::cout << "EXIT\n";
     exit(EXIT_SUCCESS);
 }
 
-void input_command(std::string* s) {
+void input_command(std::string* s)
+{
     std::getline(std::cin, *s);
-    if (!std::cin) {
+    if (!std::cin)
+    {
         if (std::cin.eof())
             exit_phonebook();
-        else {
+        else
+        {
             std::cout << "\nIO error\n";
             exit(EXIT_FAILURE);
         }
     }
 }
 
-std::string ask_for_command() {
+std::string ask_for_command()
+{
     std::string command = "";
     std::cout << "Enter a new command: ";
     input_command(&command);

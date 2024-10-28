@@ -13,22 +13,26 @@
 #include "Cat.hpp"
 #include <iostream>
 
-Cat::Cat() : Animal("Cat") {
+Cat::Cat() : Animal("Cat")
+{
     std::cout << "Cat constructor is called\n";
     return;
 }
 
-Cat::~Cat() {
+Cat::~Cat()
+{
     std::cout << "Cat destructor is called\n";
     return;
 }
 
-Cat::Cat(const Cat& a) : m_type(a.m_type) {
+Cat::Cat(const Cat& a) : m_type(a.m_type)
+{
     std::cout << "Cat copy constructor is called\n";
     return;
 }
 
-Cat& Cat::operator=(const Cat& a) {
+Cat& Cat::operator=(const Cat& a)
+{
     std::cout << "Cat copy assign operator is called\n";
     if (this != &a)
         m_type = a.m_type;

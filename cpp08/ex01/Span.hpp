@@ -3,7 +3,8 @@
 #include <exception>
 #include <list>
 #include <ostream>
-class Span {
+class Span
+{
   public:
     Span(unsigned int n);
     Span(const Span& s);
@@ -12,12 +13,14 @@ class Span {
 
     void addNumber(int nbr);
 
-    template <typename Iterator> void insert(Iterator begin, Iterator end) {
+    template <typename Iterator> void insert(Iterator begin, Iterator end)
+    {
         for (Iterator it = begin; it != end; it++)
             addNumber(*it);
     }
 
-    template <typename T> void insert(T* begin, T* end) {
+    template <typename T> void insert(T* begin, T* end)
+    {
         for (T* it = begin; it != end; it++)
             addNumber(*it);
     }
@@ -27,7 +30,8 @@ class Span {
     std::list<int>::const_iterator begin() const;
     std::list<int>::const_iterator end() const;
 
-    class CapacityExceededException : public std::exception {
+    class CapacityExceededException : public std::exception
+    {
         virtual const char* what() const throw();
     };
 

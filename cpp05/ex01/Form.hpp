@@ -2,7 +2,8 @@
 #define FORM_HPP
 #include "Bureaucrat.hpp"
 #include <string>
-class Form {
+class Form
+{
   public:
     Form(std::string name, int signing_grade, int executing_grade);
     Form(const Form& f);
@@ -15,11 +16,13 @@ class Form {
     int get_signing_grade() const;
     int get_executing_grade() const;
 
-    class GradeTooHighException : public std::exception {
+    class GradeTooHighException : public std::exception
+    {
         virtual const char* what() const throw();
     };
 
-    class GradeTooLowException : public std::exception {
+    class GradeTooLowException : public std::exception
+    {
         virtual const char* what() const throw();
     };
 

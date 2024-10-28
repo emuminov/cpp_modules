@@ -4,7 +4,8 @@
 #include "ShrubberyCreationForm.hpp"
 #include <iostream>
 
-int main(void) {
+int main(void)
+{
     Bureaucrat b0("Vasya", 146);
     Bureaucrat b1("Bob", 142);
     Bureaucrat b2("Daniel", 42);

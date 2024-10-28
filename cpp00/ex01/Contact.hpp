@@ -14,7 +14,8 @@
 #define CONTACT_H
 #include <string>
 
-class Contact {
+class Contact
+{
   public:
     Contact();
     ~Contact();
