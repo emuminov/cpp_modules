@@ -1,6 +1,7 @@
 #ifndef PMERGEME_HPP
 #define PMERGEME_HPP
 #include <algorithm>
+#include <list>
 #include <vector>
 class PmergeMe {
 	public:
@@ -9,7 +10,8 @@ class PmergeMe {
 	PmergeMe& operator=(const PmergeMe& pm);
 	~PmergeMe();
 
-	void sort(std::vector<int>& vec);
+	void sort_vec(std::vector<int>& vec);
+	void sort_list(std::list<int>& lst);
 
 	private:
 	template <typename T>
@@ -22,16 +24,6 @@ class PmergeMe {
 long _jacobsthal_number(long n);
 
 template <typename T>
-void PmergeMe::_swap_pair(T it, int pair_level) {
-	T start = it - pair_level + 1;
-	T end = start + pair_level;
-	while (start < end) {
-		std::iter_swap(start, (start + pair_level));
-		start++;
-	}
-}
-
-template <typename T>
 bool _comp(T lv, T rv) {
 	return *lv < *rv;
 }
@@ -41,6 +33,16 @@ T next(T it, int steps)
 {
 	std::advance(it, steps);
 	return it;
+}
+
+template <typename T>
+void PmergeMe::_swap_pair(T it, int pair_level) {
+	T start = next(it, -pair_level + 1);
+	T end = next(start, pair_level);
+	while (start != end) {
+		std::iter_swap(start, next(start, pair_level));
+		start++;
+	}
 }
 
 template <typename T>
@@ -139,7 +141,7 @@ void PmergeMe::_merge_insertion_sort(T& container, int pair_level) {
 	/* Insert an odd number to the main. We can make no assumptions over the odd number,
 	   since it can be as low or as big as anything. Hence the bound is the end of the main chain. */
 	if (is_odd) {
-		std::vector<int>::iterator odd_pair = end + pair_level - 1;
+		typename T::iterator odd_pair = next(end, pair_level - 1);
 		typename std::vector<Iterator>::iterator idx = std::upper_bound(main.begin(), main.end(), odd_pair, _comp<Iterator>);
 		main.insert(idx, odd_pair);
 	}
@@ -158,7 +160,7 @@ void PmergeMe::_merge_insertion_sort(T& container, int pair_level) {
 
 	/* Replace values in the original container. */
 	Iterator container_it = container.begin();
-	Iterator copy_it = copy.begin();
+	std::vector<int>::iterator copy_it = copy.begin();
 	while (copy_it != copy.end()) {
 		*container_it = *copy_it;
 		container_it++;
