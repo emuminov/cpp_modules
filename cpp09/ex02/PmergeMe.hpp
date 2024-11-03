@@ -111,6 +111,7 @@ template <typename T> void PmergeMe::_merge_insertion_sort(T& container, int pai
     {
         int curr_jacobsthal = _jacobsthal_number(k);
         int jacobsthal_diff = curr_jacobsthal - prev_jacobsthal;
+		int offset = 0;
         if (jacobsthal_diff > static_cast<int>(pend.size()))
             break;
         int nbr_of_times = jacobsthal_diff;
@@ -128,11 +129,12 @@ template <typename T> void PmergeMe::_merge_insertion_sort(T& container, int pai
             /* Sometimes the inserted number in inserted at the exact index of where the bound should be.
 			   When this happens, it eclipses the bound of the next pend, and it does more comparisons
 			   than it should. We need to offset when this happens. */
-            int distance = (inserted - main.begin()) == curr_jacobsthal + inserted_numbers;
-			bound_it = next(main.begin(), curr_jacobsthal + inserted_numbers - distance);
+            offset += (inserted - main.begin()) == curr_jacobsthal + inserted_numbers;
+			bound_it = next(main.begin(), curr_jacobsthal + inserted_numbers - offset);
         }
         prev_jacobsthal = curr_jacobsthal;
         inserted_numbers += jacobsthal_diff;
+		offset = 0;
     }
 
     /* Insert the remaining elements in the sequential order. Here we also want to
