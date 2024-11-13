@@ -70,11 +70,11 @@ template <typename T> static bool is_sorted(const T& container)
 
 static std::string argv_to_str(int argc, char** argv)
 {
-    std::string res;
+    std::string res("");
     res.reserve(argc + 1);
     res += "[";
     res += argv[1];
-    for (int i = 2; i < argc; i++)
+    for (int i = 2; argv[i]; i++)
     {
         res += " ";
         res += argv[i];
