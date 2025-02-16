@@ -29,5 +29,5 @@ class Bureaucrat {
 		int m_grade;
 		static void check_grade(int grade);
 };
-std::ostream operator<<(std::ostream &o, const Bureaucrat &b);
+std::ostream& operator<<(std::ostream &o, const Bureaucrat &b);
 #endif

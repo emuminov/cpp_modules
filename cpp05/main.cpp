@@ -10,6 +10,8 @@ int main (void) {
 		b2.increaseGrade();
 		std::cout << b1.getName() << "'s grade was decreased to " << b1.getGrade() << '\n';
 		std::cout << b2.getName() << "'s grade was increased to " << b2.getGrade() << '\n';
+		std::cout << b1;
+		std::cout << b2;
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';

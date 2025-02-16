@@ -1,5 +1,6 @@
 #include "Bureaucrat.hpp"
 #include <string>
+#include <iostream>
 
 void Bureaucrat::check_grade(int grade) {
 	if (grade < highest_grade)
@@ -47,4 +48,7 @@ void Bureaucrat::dereaseGrade() {
 	m_grade++;
 }
 
-std::ostream operator<<(std::ostream &o, const Bureaucrat &b);
+std::ostream& operator<<(std::ostream &o, const Bureaucrat &b) {
+	o << b.getName() << ", bureaucrat grade " << b.getGrade() << '\n';
+	return o;
+}
