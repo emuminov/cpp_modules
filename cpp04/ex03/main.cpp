@@ -4,7 +4,8 @@
 #include "Ice.hpp"
 #include "MateriaSource.hpp"
 
-void subject_test() {
+void subject_test()
+{
     IMateriaSource* src = new MateriaSource();
     src->learnMateria(new Ice());
     src->learnMateria(new Cure());
@@ -24,7 +25,8 @@ void subject_test() {
 }
 
 // ensures that all copied objects are copied deeply
-void copy_test() {
+void copy_test()
+{
     MateriaSource* src = new MateriaSource();
     src->learnMateria(new Ice());
     src->learnMateria(new Cure());
@@ -60,7 +62,8 @@ void copy_test() {
     delete src_clone2;
 }
 
-int main() {
+int main()
+{
     subject_test();
     copy_test();
     return 0;

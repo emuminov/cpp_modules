@@ -12,7 +12,8 @@
 
 #include "FragTrap.hpp"
 
-int main(void) {
+int main(void)
+{
     FragTrap ft1("Leonard");
     FragTrap ft2(ft1);
     FragTrap ft3("Don");

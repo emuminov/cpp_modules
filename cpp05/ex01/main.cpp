@@ -2,7 +2,8 @@
 #include "Form.hpp"
 #include <iostream>
 
-int main(void) {
+int main(void)
+{
     Form f1("billing form", 1, 10);
     Bureaucrat b1("Daniel", 1);
     std::cout << f1 << '\n';
@@ -20,24 +21,30 @@ int main(void) {
     std::cout << "===\n";
 
     // will throw
-    try {
+    try
+    {
         Form f3("billing form", 0, 10);
         std::cout << f3 << '\n';
         b1.signForm(f3);
         std::cout << f3 << '\n';
-    } catch (std::exception& e) {
+    }
+    catch (std::exception& e)
+    {
         std::cerr << e.what() << '\n';
     }
 
     std::cout << "===\n";
 
     // will throw
-    try {
+    try
+    {
         Form f3("billing form", 1, 151);
         std::cout << f3 << '\n';
         b1.signForm(f3);
         std::cout << f3 << '\n';
-    } catch (std::exception& e) {
+    }
+    catch (std::exception& e)
+    {
         std::cerr << e.what() << '\n';
     }
     return 0;

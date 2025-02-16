@@ -14,7 +14,8 @@
 #define WEAPON_HPP
 #include <string>
 
-class Weapon {
+class Weapon
+{
   public:
     Weapon(std::string type);
     ~Weapon();

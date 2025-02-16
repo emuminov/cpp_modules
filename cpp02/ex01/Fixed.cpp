@@ -14,32 +14,38 @@
 #include <cmath>
 #include <iostream>
 
-Fixed::Fixed(void) : _raw(0) {
+Fixed::Fixed(void) : _raw(0)
+{
     std::cout << "Default constructor called\n";
     return;
 }
 
-Fixed::Fixed(const int nbr) : _raw(nbr << _scale) {
+Fixed::Fixed(const int nbr) : _raw(nbr << _scale)
+{
     std::cout << "Int constructor called\n";
     return;
 }
 
-Fixed::Fixed(const float nbr) : _raw(roundf(nbr * (1 << _scale))) {
+Fixed::Fixed(const float nbr) : _raw(roundf(nbr * (1 << _scale)))
+{
     std::cout << "Float constructor called\n";
     return;
 }
 
-Fixed::~Fixed(void) {
+Fixed::~Fixed(void)
+{
     std::cout << "Destructor is called\n";
     return;
 }
 
-Fixed::Fixed(const Fixed& f) : _raw(f._raw) {
+Fixed::Fixed(const Fixed& f) : _raw(f._raw)
+{
     std::cout << "Copy constructor called\n";
     return;
 }
 
-Fixed& Fixed::operator=(const Fixed& f) {
+Fixed& Fixed::operator=(const Fixed& f)
+{
     std::cout << "Copy assignment operator called\n";
     if (this != &f)
         _raw = f.getRawBits();
@@ -54,7 +60,8 @@ float Fixed::toFloat(void) const { return (float)_raw / (1 << _scale); }
 
 int Fixed::toInt(void) const { return _raw >> _scale; }
 
-std::ostream& operator<<(std::ostream& out, const Fixed& f) {
+std::ostream& operator<<(std::ostream& out, const Fixed& f)
+{
     out << f.toFloat();
     return out;
 }

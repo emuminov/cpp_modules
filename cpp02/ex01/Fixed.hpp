@@ -14,7 +14,8 @@
 #define FIXED_HPP
 #include <iostream>
 
-class Fixed {
+class Fixed
+{
   public:
     Fixed(void);
     Fixed(const int raw);

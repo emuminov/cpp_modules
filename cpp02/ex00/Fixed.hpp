@@ -12,7 +12,8 @@
 
 #ifndef FIXED_HPP
 #define FIXED_HPP
-class Fixed {
+class Fixed
+{
   public:
     Fixed(void);
     Fixed(const Fixed& f);

@@ -19,11 +19,14 @@ HumanB::HumanB(std::string name) : name(name), weapon(NULL) { return; }
 
 HumanB::~HumanB() { return; }
 
-void HumanB::attack() const {
-    if (weapon) {
-        std::cout << name << " attacks with their " << weapon->getType()
-                  << '\n';
-    } else {
+void HumanB::attack() const
+{
+    if (weapon)
+    {
+        std::cout << name << " attacks with their " << weapon->getType() << '\n';
+    }
+    else
+    {
         std::cout << name << " attacks with their "
                   << "fist" << '\n';
     }

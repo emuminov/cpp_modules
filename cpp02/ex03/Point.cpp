@@ -22,7 +22,8 @@ Point::~Point() { return; }
 
 Point::Point(const Point& p) : m_x(p.m_x), m_y(p.m_y) { return; }
 
-Point& Point::operator=(const Point& p) {
+Point& Point::operator=(const Point& p)
+{
     (void)p;
     std::cerr << "Error! Cannot copy assign.\n";
     return *this;

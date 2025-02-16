@@ -13,22 +13,26 @@
 #include "WrongCat.hpp"
 #include <iostream>
 
-WrongCat::WrongCat() : WrongAnimal("WrongCat") {
+WrongCat::WrongCat() : WrongAnimal("WrongCat")
+{
     std::cout << "WrongCat constructor is called\n";
     return;
 }
 
-WrongCat::~WrongCat() {
+WrongCat::~WrongCat()
+{
     std::cout << "WrongCat destructor is called\n";
     return;
 }
 
-WrongCat::WrongCat(const WrongCat& a) : m_type(a.m_type) {
+WrongCat::WrongCat(const WrongCat& a) : m_type(a.m_type)
+{
     std::cout << "WrongCat copy constructor is called\n";
     return;
 }
 
-WrongCat& WrongCat::operator=(const WrongCat& a) {
+WrongCat& WrongCat::operator=(const WrongCat& a)
+{
     std::cout << "WrongCat copy assign operator is called\n";
     if (this != &a)
         m_type = a.m_type;

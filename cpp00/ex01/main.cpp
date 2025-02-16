@@ -12,7 +12,8 @@
 
 #include "app.hpp"
 
-void execute_command(std::string command, PhoneBook& pb) {
+void execute_command(std::string command, PhoneBook& pb)
+{
     if (command == "ADD")
         add(pb);
     else if (command == "SEARCH")
@@ -22,9 +23,11 @@ void execute_command(std::string command, PhoneBook& pb) {
     return;
 }
 
-int main(void) {
+int main(void)
+{
     PhoneBook pb = PhoneBook();
-    while (true) {
+    while (true)
+    {
         std::string command = ask_for_command();
         execute_command(command, pb);
     }

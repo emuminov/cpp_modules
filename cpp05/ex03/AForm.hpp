@@ -2,7 +2,8 @@
 #define AFORM_HPP
 #include "Bureaucrat.hpp"
 #include <string>
-class AForm {
+class AForm
+{
   public:
     AForm(std::string name, int signing_grade, int executing_grade);
     AForm(const AForm& f);
@@ -16,15 +17,18 @@ class AForm {
     int get_signing_grade() const;
     int get_executing_grade() const;
 
-    class GradeTooHighException : public std::exception {
+    class GradeTooHighException : public std::exception
+    {
         virtual const char* what() const throw();
     };
 
-    class GradeTooLowException : public std::exception {
+    class GradeTooLowException : public std::exception
+    {
         virtual const char* what() const throw();
     };
 
-    class NotSignedException : public std::exception {
+    class NotSignedException : public std::exception
+    {
         virtual const char* what() const throw();
     };
 

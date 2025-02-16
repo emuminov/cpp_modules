@@ -14,7 +14,8 @@
 #define PHONEBOOK_H
 #include "Contact.hpp"
 
-class PhoneBook {
+class PhoneBook
+{
   public:
     PhoneBook();
     ~PhoneBook();

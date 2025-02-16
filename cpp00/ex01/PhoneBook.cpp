@@ -16,7 +16,8 @@ PhoneBook::PhoneBook() : _contacts_pointer(0), _len(0) { return; }
 
 PhoneBook::~PhoneBook() { return; }
 
-void PhoneBook::add_contact(Contact contact) {
+void PhoneBook::add_contact(Contact contact)
+{
     this->_contacts[this->_contacts_pointer] = contact;
     this->_contacts_pointer++;
     if (this->_contacts_pointer >= 8)
@@ -26,8 +27,10 @@ void PhoneBook::add_contact(Contact contact) {
     return;
 }
 
-Contact PhoneBook::get_contact(unsigned int index) const {
-    if (index > this->_len - 1) {
+Contact PhoneBook::get_contact(unsigned int index) const
+{
+    if (index > this->_len - 1)
+    {
         return this->_contacts[this->_len - 1];
     }
     return this->_contacts[index];

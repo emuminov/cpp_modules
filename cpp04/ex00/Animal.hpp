@@ -15,7 +15,8 @@
 
 #include <string>
 
-class Animal {
+class Animal
+{
   public:
     Animal();
     Animal(const Animal& a);

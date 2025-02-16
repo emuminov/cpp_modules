@@ -3,7 +3,8 @@
 #include <exception>
 #include <iostream>
 #include <string>
-class Bureaucrat {
+class Bureaucrat
+{
   public:
     Bureaucrat(std::string name, int grade);
     Bureaucrat(const Bureaucrat& b);
@@ -15,11 +16,13 @@ class Bureaucrat {
     void increaseGrade();
     void dereaseGrade();
 
-    class GradeTooHighException : public std::exception {
+    class GradeTooHighException : public std::exception
+    {
         virtual const char* what() const throw();
     };
 
-    class GradeTooLowException : public std::exception {
+    class GradeTooLowException : public std::exception
+    {
         virtual const char* what() const throw();
     };
 

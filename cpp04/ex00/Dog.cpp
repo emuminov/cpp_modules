@@ -13,22 +13,26 @@
 #include "Dog.hpp"
 #include <iostream>
 
-Dog::Dog() : Animal("Dog") {
+Dog::Dog() : Animal("Dog")
+{
     std::cout << "Dog constructor is called\n";
     return;
 }
 
-Dog::~Dog() {
+Dog::~Dog()
+{
     std::cout << "Dog destructor is called\n";
     return;
 }
 
-Dog::Dog(const Dog& a) : m_type(a.m_type) {
+Dog::Dog(const Dog& a) : m_type(a.m_type)
+{
     std::cout << "Dog copy constructor is called\n";
     return;
 }
 
-Dog& Dog::operator=(const Dog& a) {
+Dog& Dog::operator=(const Dog& a)
+{
     std::cout << "Dog copy assign operator is called\n";
     if (this != &a)
         m_type = a.m_type;

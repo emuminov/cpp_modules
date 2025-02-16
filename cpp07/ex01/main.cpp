@@ -3,7 +3,8 @@
 
 void add_number(std::string& str, int i) { str += (i + '0'); }
 
-void test_iter() {
+void test_iter()
+{
     {
         const int arr_len = 9;
         int arr[arr_len] = {0};
@@ -33,7 +34,8 @@ void test_iter() {
     }
 }
 
-int main(void) {
+int main(void)
+{
     test_iter();
     return 0;
 }

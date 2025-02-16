@@ -13,7 +13,8 @@
 #ifndef POINT_HPP
 #define POINT_HPP
 #include "Fixed.hpp"
-class Point {
+class Point
+{
   public:
     Point();
     Point(Fixed x, Fixed y);

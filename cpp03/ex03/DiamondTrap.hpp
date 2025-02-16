@@ -16,7 +16,8 @@
 #include "ScavTrap.hpp"
 #include <string>
 
-class DiamondTrap : public FragTrap, public ScavTrap {
+class DiamondTrap : public FragTrap, public ScavTrap
+{
   public:
     DiamondTrap(std::string name);
     DiamondTrap(const DiamondTrap& dt);

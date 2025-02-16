@@ -16,17 +16,20 @@
 
 bool bsp(const Point a, const Point b, const Point c, const Point p);
 
-void test_bsp(const Point a, const Point b, const Point c, const Point p) {
-    if (bsp(a, b, c, p)) {
-        std::cout << p.get_x() << " " << p.get_y()
-                  << " is inside the triangle.\n";
-    } else {
-        std::cout << p.get_x() << " " << p.get_y()
-                  << " is not inside the triangle.\n";
+void test_bsp(const Point a, const Point b, const Point c, const Point p)
+{
+    if (bsp(a, b, c, p))
+    {
+        std::cout << p.get_x() << " " << p.get_y() << " is inside the triangle.\n";
+    }
+    else
+    {
+        std::cout << p.get_x() << " " << p.get_y() << " is not inside the triangle.\n";
     }
 }
 
-int main(void) {
+int main(void)
+{
     Point a(0, 0);
     Point b(0, 5);
     Point c(5, 0);

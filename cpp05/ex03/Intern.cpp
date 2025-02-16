@@ -5,32 +5,37 @@
 
 Intern::Intern() { return; }
 
-Intern::Intern(const Intern& i) {
+Intern::Intern(const Intern& i)
+{
     (void)i;
     return;
 }
 
-Intern& Intern::operator=(const Intern& i) {
+Intern& Intern::operator=(const Intern& i)
+{
     (void)i;
     return *this;
 }
 
 Intern::~Intern() { return; }
 
-AForm* Intern::make_robotomy_request_form(const std::string& target) const {
+AForm* Intern::make_robotomy_request_form(const std::string& target) const
+{
     return new RobotomyRequestForm(target);
 }
 
-AForm* Intern::make_presidential_pardon_form(const std::string& target) const {
+AForm* Intern::make_presidential_pardon_form(const std::string& target) const
+{
     return new PresidentialPardonForm(target);
 }
 
-AForm* Intern::make_shrubbery_creation_form(const std::string& target) const {
+AForm* Intern::make_shrubbery_creation_form(const std::string& target) const
+{
     return new ShrubberyCreationForm(target);
 }
 
-AForm* Intern::makeForm(const std::string& target_form_name,
-                        const std::string& target) const {
+AForm* Intern::makeForm(const std::string& target_form_name, const std::string& target) const
+{
     const t_form_creator form_creators[] = {
         {"robotomy request", &Intern::make_robotomy_request_form},
         {"presidential pardon", &Intern::make_presidential_pardon_form},
@@ -38,11 +43,13 @@ AForm* Intern::makeForm(const std::string& target_form_name,
 
     int i = 0;
     int l = ((int)sizeof(form_creators) / (int)sizeof(t_form_creator));
-    while ((i < l && (form_creators[i].name != target_form_name))) {
+    while ((i < l && (form_creators[i].name != target_form_name)))
+    {
         i++;
     }
 
-    switch (i) {
+    switch (i)
+    {
     case 0:
     case 1:
     case 2:
@@ -54,6 +61,4 @@ AForm* Intern::makeForm(const std::string& target_form_name,
     }
 }
 
-const char* Intern::InvalidFormNameException::what() const throw() {
-    return "Invalid form name";
-}
+const char* Intern::InvalidFormNameException::what() const throw() { return "Invalid form name"; }

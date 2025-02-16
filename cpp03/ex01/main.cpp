@@ -12,7 +12,8 @@
 
 #include "ScavTrap.hpp"
 
-int main(void) {
+int main(void)
+{
     ScavTrap st1("Leonard");
     ScavTrap st2(st1);
     ScavTrap st3("Don");

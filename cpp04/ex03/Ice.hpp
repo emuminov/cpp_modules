@@ -2,7 +2,8 @@
 #define ICE_HPP
 #include "AMateria.hpp"
 #include <string>
-class Ice : public AMateria {
+class Ice : public AMateria
+{
   public:
     Ice(void);
     ~Ice(void);

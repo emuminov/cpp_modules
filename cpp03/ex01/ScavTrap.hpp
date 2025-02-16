@@ -15,7 +15,8 @@
 #include "ClapTrap.hpp"
 #include <string>
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : public ClapTrap
+{
   public:
     ScavTrap(std::string name);
     ScavTrap(const ScavTrap& st);

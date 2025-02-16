@@ -3,7 +3,8 @@
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
 #include <string>
-class Character : public ICharacter {
+class Character : public ICharacter
+{
   public:
     Character(std::string name);
     ~Character(void);

@@ -2,13 +2,15 @@
 #define MUTANT_STACK_HPP
 #include <deque>
 #include <stack>
-template <typename T> class MutantStack : public std::stack<T, std::deque<T> > {
+template <typename T> class MutantStack : public std::stack<T, std::deque<T>>
+{
   public:
     typedef typename std::deque<T>::iterator iterator;
 
     MutantStack() : std::stack<T>() { return; }
     MutantStack(const MutantStack& ms) : std::stack<T>(ms.c) { return; }
-    MutantStack& operator=(const MutantStack& ms) {
+    MutantStack& operator=(const MutantStack& ms)
+    {
         if (this == &ms)
             return *this;
         this->c = ms.c;

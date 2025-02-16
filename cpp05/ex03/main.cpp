@@ -2,7 +2,8 @@
 #include "Bureaucrat.hpp"
 #include "Intern.hpp"
 
-int main(void) {
+int main(void)
+{
     {
         Bureaucrat b("Chad", 2);
         Intern i;
@@ -18,13 +19,16 @@ int main(void) {
         Bureaucrat b("Chad", 2);
         Intern i;
 
-        try {
+        try
+        {
             AForm* f = i.makeForm("some nonsense", "Chad's Home");
 
             b.signForm(*f);
             b.executeForm(*f);
             delete f;
-        } catch (std::exception& e) {
+        }
+        catch (std::exception& e)
+        {
             std::cerr << e.what() << "\n";
         }
     }

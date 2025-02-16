@@ -15,7 +15,8 @@
 Zombie* newZombie(std::string name);
 void randomChump(std::string name);
 
-int main(void) {
+int main(void)
+{
     randomChump("Stan");
     randomChump("Laura");
     Zombie* z = newZombie("Gregory");
