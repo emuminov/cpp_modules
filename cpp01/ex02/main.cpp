@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
 #include <iostream>
+#include <string>
 
 int main(void) {
-	std::string str = "HI THIS IS BRAIN";
-	std::string* stringPTR = &str;
-	std::string& stringREF = str;
+    std::string str = "HI THIS IS BRAIN";
+    std::string* stringPTR = &str;
+    std::string& stringREF = str;
 
-	std::cout << "str:       " << std::hex << &str << '\n';
-	std::cout << "stringPTR: " << std::hex << stringPTR << '\n';
-	std::cout << "stringREF: " << std::hex << &stringREF << '\n';
+    std::cout << "str:       " << std::hex << &str << '\n';
+    std::cout << "stringPTR: " << std::hex << stringPTR << '\n';
+    std::cout << "stringREF: " << std::hex << &stringREF << '\n';
 
-	std::cout << "str:       " << str << '\n';
-	std::cout << "stringPTR: " << *stringPTR << '\n';
-	std::cout << "stringREF: " << stringREF << '\n';
-	return 0;
+    std::cout << "str:       " << str << '\n';
+    std::cout << "stringPTR: " << *stringPTR << '\n';
+    std::cout << "stringREF: " << stringREF << '\n';
+    return 0;
 }

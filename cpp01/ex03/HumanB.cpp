@@ -12,25 +12,21 @@
 
 #include "HumanB.hpp"
 #include "Weapon.hpp"
-#include <string>
 #include <iostream>
+#include <string>
 
-HumanB::HumanB(std::string name) : name(name),  weapon(NULL) {
-	return;
-}
+HumanB::HumanB(std::string name) : name(name), weapon(NULL) { return; }
 
-HumanB::~HumanB() {
-	return;
-}
+HumanB::~HumanB() { return; }
 
 void HumanB::attack() const {
-	if (weapon) {
-		std::cout << this->name << " attacks with their " << this->weapon->getType() << '\n';
-	} else {
-		std::cout << this->name << " attacks with their " << "fist" << '\n';
-	}
+    if (weapon) {
+        std::cout << this->name << " attacks with their "
+                  << this->weapon->getType() << '\n';
+    } else {
+        std::cout << this->name << " attacks with their "
+                  << "fist" << '\n';
+    }
 }
 
-void HumanB::setWeapon(Weapon& weapon) {
-	this->weapon = &weapon;
-}
+void HumanB::setWeapon(Weapon& weapon) { this->weapon = &weapon; }
