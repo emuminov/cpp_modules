@@ -83,7 +83,7 @@ void PmergeMe::_merge_insertion_sort(T& container, int pair_level) {
 	   They contain iterators instead of the numbers themselves because
 	   iterators + pair_level contain all the information about the stored
 	   ranges of numbers. */
-	std::list<Iterator> main;
+	std::vector<Iterator> main;
 	std::vector<Iterator> pend;
 
 	/* Initialize the main chain with the {b1, a1}. */
@@ -111,15 +111,15 @@ void PmergeMe::_merge_insertion_sort(T& container, int pair_level) {
 			break;
 		int nbr_of_times = jacobsthal_diff;
 		typename std::vector<Iterator>::iterator pend_it = next(pend.begin(), jacobsthal_diff - 1);
-		typename std::list<Iterator>::iterator bound_it = next(main.begin(), curr_jacobsthal + inserted_numbers);
+		typename std::vector<Iterator>::iterator bound_it = next(main.begin(), curr_jacobsthal + inserted_numbers);
 		while (nbr_of_times)
 		{
-			typename std::list<Iterator>::iterator idx = std::upper_bound(main.begin(), bound_it, *pend_it, _comp<Iterator>);
+			typename std::vector<Iterator>::iterator idx = std::upper_bound(main.begin(), bound_it, *pend_it, _comp<Iterator>);
 			main.insert(idx, *pend_it);
 			nbr_of_times--;
 			pend_it = pend.erase(pend_it);
 			std::advance(pend_it, -1);
-			std::advance(bound_it, -1);
+			bound_it = next(main.begin(), curr_jacobsthal + inserted_numbers);
 		}
 		prev_jacobsthal = curr_jacobsthal;
 		inserted_numbers += jacobsthal_diff;
@@ -129,22 +129,19 @@ void PmergeMe::_merge_insertion_sort(T& container, int pair_level) {
 	   perform as less comparisons as possible, so we calculate the starting bound
 	   to insert pend number to be the pair of the first pend number. If the first
 	   pend number is b6, the bound is a6, if the pend number is b8, the bound is a8 etc. */
-	typename std::list<Iterator>::iterator curr_bound = main.begin();
-	typename std::vector<Iterator>::iterator curr_pend = pend.begin();
-	std::advance(curr_bound, main.size() - pend.size());
-	while (!pend.empty()) {
-		typename std::list<Iterator>::iterator idx = std::upper_bound(main.begin(), curr_bound, *curr_pend, _comp<Iterator>);
+	for (size_t i = 0; i < pend.size(); i++)
+	{
+		typename std::vector<Iterator>::iterator curr_pend = next(pend.begin(), i);
+		typename std::vector<Iterator>::iterator curr_bound = next(main.begin(), main.size() - pend.size() + i);
+		typename std::vector<Iterator>::iterator idx = std::upper_bound(main.begin(), curr_bound, *curr_pend, _comp<Iterator>);
 		main.insert(idx, *curr_pend);
-		pend.erase(curr_pend);
-		curr_pend = pend.begin();
-		std::advance(curr_bound, 1);
 	}
 
 	/* Insert an odd number to the main. We can make no assumptions over the odd number,
 	   since it can be as low or as big as anything. Hence the bound is the end of the main chain. */
 	if (is_odd) {
 		std::vector<int>::iterator odd_pair = end + pair_level - 1;
-		typename std::list<Iterator>::iterator idx = std::upper_bound(main.begin(), main.end(), odd_pair, _comp<Iterator>);
+		typename std::vector<Iterator>::iterator idx = std::upper_bound(main.begin(), main.end(), odd_pair, _comp<Iterator>);
 		main.insert(idx, odd_pair);
 	}
 
@@ -152,7 +149,7 @@ void PmergeMe::_merge_insertion_sort(T& container, int pair_level) {
 	   original iterators. */
 	std::vector<int> copy;
 	copy.reserve(container.size());
-	for (typename std::list<Iterator>::iterator it = main.begin(); it != main.end(); it++) {
+	for (typename std::vector<Iterator>::iterator it = main.begin(); it != main.end(); it++) {
 		for (int i = 0; i < pair_level; i++) {
 			Iterator pair_start = *it;
 			std::advance(pair_start, -pair_level + i + 1);
