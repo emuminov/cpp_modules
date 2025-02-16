@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 16:38:04 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/01 22:39:20 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/06/01 22:51:27 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ ScavTrap::~ScavTrap() {
 }
 
 ScavTrap::ScavTrap(const ScavTrap& ct) : ClapTrap(ct.m_name) {
+	m_hit_points = default_hit_points;
+	m_energy_points = default_energy_points;
+	m_attack_damage = default_attack_damage;
 	std::cout << "ScavTrap " << m_name << " clones itself!\n";
 	return;
 }
