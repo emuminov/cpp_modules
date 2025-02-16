@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:39:11 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/31 14:05:45 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/06/01 16:44:06 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,8 @@ Fixed::Fixed(const float nbr) : _raw(roundf(nbr * (1 << scale))) {
 
 Fixed::~Fixed(void) { return; }
 
-Fixed::Fixed(const Fixed& f) {
+Fixed::Fixed(const Fixed& f) : _raw(f._raw) {
     std::cout << "Copy constructor called\n";
-    *this = f;
     return;
 }
 
