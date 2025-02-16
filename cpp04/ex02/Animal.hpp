@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:27:31 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/03 15:59:22 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/06/10 19:04:27 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Animal {
     Animal(const Animal& a);
     Animal& operator=(const Animal& a);
     virtual ~Animal();
-	virtual void makeSound() const;
+	virtual void makeSound() const = 0;
 	const std::string& getType() const;
 
   protected:

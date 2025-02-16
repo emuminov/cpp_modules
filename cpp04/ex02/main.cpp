@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:55:28 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/04 16:04:52 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/06/10 19:08:04 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ void base_test() {
 	std::cout << "Subject Test Start\n";
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
-	const Animal k = *j;
-	const Animal l = *i;
 
-	l.makeSound();
-	k.makeSound();
+	j->makeSound();
+	i->makeSound();
 
 	delete j;
 	delete i;
