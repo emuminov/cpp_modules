@@ -2,7 +2,7 @@ CXX=g++
 CFLAGS=-Wall -Wextra -Werror -std=c++98 -g
 
 NAME=phonebook
-SRCS=PhoneBook.cpp Contact.cpp main.cpp
+SRCS=PhoneBook.cpp Contact.cpp main.cpp add.cpp search.cpp common.cpp
 OBJS=$(SRCS:%.cpp=%.o)
 
 all: $(NAME)
