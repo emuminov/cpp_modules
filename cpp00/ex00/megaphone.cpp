@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 19:33:41 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/15 12:42:26 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/15 14:39:43 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int main(int argc, char **argv) {
         result += argv[i];
 	}
     for (unsigned long i = 0; i < result.size(); i++) {
-        std::cout << toupper(result[i]);
+        result[i] = toupper(result[i]);
 	}
-	std::cout << std::endl;
+	std::cout << result << std::endl;
     return 0;
 }
