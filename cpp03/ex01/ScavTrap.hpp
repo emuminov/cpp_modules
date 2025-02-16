@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef SCAVTRAP_HPP
 #define SCAVTRAP_HPP
 
@@ -18,19 +17,19 @@
 #include <string>
 
 class ScavTrap : public ClapTrap {
-public:
-	ScavTrap(std::string name);
-	ScavTrap(const ScavTrap &st);
-	ScavTrap &operator=(const ScavTrap &st);
-	~ScavTrap();
+  public:
+    ScavTrap(std::string name);
+    ScavTrap(const ScavTrap& st);
+    ScavTrap& operator=(const ScavTrap& st);
+    ~ScavTrap();
 
-	void		guardGate(void);
-	void		attack(const std::string& target);
+    void guardGate(void);
+    void attack(const std::string& target);
 
-private:
-	static const int default_hit_points = 100;
-	static const int default_energy_points = 50;
-	static const int default_attack_damage = 20;
+  private:
+    static const int default_hit_points = 100;
+    static const int default_energy_points = 50;
+    static const int default_attack_damage = 20;
 };
 
 #endif

@@ -24,7 +24,7 @@ class ClapTrap {
     void attack(const std::string& target);
     void takeDamage(unsigned int amount);
     void beRepaired(unsigned int amount);
-	
+
   protected:
     std::string m_name;
     int m_hit_points;
@@ -32,9 +32,9 @@ class ClapTrap {
     int m_attack_damage;
 
   private:
-	static const int default_hit_points = 10;
-	static const int default_energy_points = 10;
-	static const int default_attack_damage = 0;
+    static const int default_hit_points = 10;
+    static const int default_energy_points = 10;
+    static const int default_attack_damage = 0;
 };
 
 #endif
