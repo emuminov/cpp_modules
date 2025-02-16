@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:27:36 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/04 14:08:36 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/06/04 16:04:14 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,25 @@
 #include <iostream>
 
 Dog::Dog() : Animal("Dog"), m_brain(new Brain) {
+	std::cout << "Dog constructor is called\n";
 	return;
 }
 
 Dog::~Dog() {
+	std::cout << "Dog destructor is called\n";
 	delete m_brain;
 	return;
 }
 
-Dog::Dog(const Dog& a) : m_type(a.m_type) {
+Dog::Dog(const Dog& a) : m_type(a.m_type), m_brain(new Brain(*a.m_brain)) {
+	std::cout << "Dog copy constructor is called\n";
 	return;
 }
 
 Dog& Dog::operator=(const Dog& a) {
+	std::cout << "Dog copy assign operator is called\n";
 	m_type = a.m_type;
+	*m_brain = *a.m_brain;
 	return *this;
 }
 
