@@ -6,12 +6,12 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:39:13 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/31 14:28:04 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/18 18:15:08 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_H
-#define FIXED_H
+#ifndef FIXED_HPP
+#define FIXED_HPP
 class Fixed {
   public:
     Fixed(void);
@@ -23,6 +23,6 @@ class Fixed {
 
   private:
     int _raw;
-    static const int scale = 8;
+    static const int _scale = 8;
 };
 #endif

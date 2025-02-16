@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:39:11 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/11 22:01:37 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/18 18:48:07 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 Fixed::Fixed(void) : _raw(0) { return; }
 
-Fixed::Fixed(const int nbr) : _raw(nbr << scale) { return; }
+Fixed::Fixed(const int nbr) : _raw(nbr << _scale) { return; }
 
-Fixed::Fixed(const float nbr) : _raw(roundf(nbr * (1 << scale))) { return; }
+Fixed::Fixed(const float nbr) : _raw(roundf(nbr * (1 << _scale))) { return; }
 
 Fixed::~Fixed(void) { return; }
 
@@ -27,75 +27,72 @@ Fixed::Fixed(const Fixed& f) : _raw(f._raw) {
 }
 
 Fixed& Fixed::operator=(const Fixed& f) {
-    this->_raw = f._raw;
+	if (this != &f)
+		_raw = f._raw;
     return (*this);
 }
 
-bool Fixed::operator>(const Fixed& f) const { return this->_raw > f._raw; }
+bool Fixed::operator>(const Fixed& f) const { return _raw > f._raw; }
 
-bool Fixed::operator<(const Fixed& f) const { return this->_raw < f._raw; }
+bool Fixed::operator<(const Fixed& f) const { return _raw < f._raw; }
 
-bool Fixed::operator>=(const Fixed& f) const { return this->_raw >= f._raw; }
+bool Fixed::operator>=(const Fixed& f) const { return _raw >= f._raw; }
 
-bool Fixed::operator<=(const Fixed& f) const { return this->_raw <= f._raw; }
+bool Fixed::operator<=(const Fixed& f) const { return _raw <= f._raw; }
 
-bool Fixed::operator==(const Fixed& f) const { return this->_raw == f._raw; }
+bool Fixed::operator==(const Fixed& f) const { return _raw == f._raw; }
 
-bool Fixed::operator!=(const Fixed& f) const { return this->_raw != f._raw; }
+bool Fixed::operator!=(const Fixed& f) const { return _raw != f._raw; }
 
 Fixed Fixed::operator+(const Fixed& f) const {
 	Fixed result(0);
-	result._raw = this->_raw + f._raw;
+	result._raw = _raw + f._raw;
     return result;
 }
 
 Fixed Fixed::operator-(const Fixed& f) const {
 	Fixed result(0);
-	result._raw = this->_raw - f._raw;
+	result._raw = _raw - f._raw;
     return result;
 }
 
 Fixed Fixed::operator*(const Fixed& f) const {
-	Fixed result(0);
-	result._raw = this->_raw * f._raw;
-    return result;
+    return Fixed(this->toFloat() * f.toFloat());
 }
 
 Fixed Fixed::operator/(const Fixed& f) const {
-	Fixed result(0);
-	result._raw = this->_raw / f._raw;
-    return result;
+    return Fixed(this->toFloat() / f.toFloat());
 }
 
 Fixed Fixed::operator++(void) {
-    this->_raw++;
+    _raw++;
     return *this;
 }
 
 Fixed Fixed::operator++(int) {
     Fixed tmp = *this;
-    this->_raw++;
+    _raw++;
     return tmp;
 }
 
 Fixed Fixed::operator--(void) {
-    this->_raw--;
+    _raw--;
     return *this;
 }
 
 Fixed Fixed::operator--(int) {
     Fixed tmp = *this;
-    this->_raw--;
+    _raw--;
     return tmp;
 }
 
-int Fixed::getRawBits(void) const { return this->_raw; }
+int Fixed::getRawBits(void) const { return _raw; }
 
-void Fixed::setRawBits(int raw) { this->_raw = raw; }
+void Fixed::setRawBits(int raw) { _raw = raw; }
 
-float Fixed::toFloat(void) const { return (float)this->_raw / (1 << scale); }
+float Fixed::toFloat(void) const { return (float)_raw / (1 << _scale); }
 
-int Fixed::toInt(void) const { return this->_raw >> scale; }
+int Fixed::toInt(void) const { return _raw >> _scale; }
 
 const Fixed& Fixed::max(const Fixed& f1, const Fixed& f2) {
     return (f1._raw > f2._raw) ? f1 : f2;

@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 22:35:28 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/10 23:20:35 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/18 19:28:33 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ Point& Point::operator=(const Point& p) {
 const Fixed& Point::get_x() const {
 	return m_x;
 }
+
 const Fixed& Point::get_y() const {
 	return m_y;
 }
