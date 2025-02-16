@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:27:37 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/03 18:56:45 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/06/04 12:16:31 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ class Dog : public Animal {
     Dog& operator=(const Dog& a);
     ~Dog();
 	void makeSound() const;
+	const std::string& get_idea(int index) const;
+	void set_idea(int index, std::string idea);
 
   protected:
 	std::string m_type;

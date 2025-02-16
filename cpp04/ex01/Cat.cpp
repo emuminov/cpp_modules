@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:27:33 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/03 19:02:51 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/06/04 14:58:55 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ Cat::~Cat() {
 	return;
 }
 
-Cat::Cat(const Cat& a) : m_type(a.m_type) {
+Cat::Cat(const Cat& a) : m_type(a.m_type), m_brain(a.m_brain) {
 	return;
 }
 
 Cat& Cat::operator=(const Cat& a) {
 	m_type = a.m_type;
+	*m_brain = *a.m_brain;
 	return *this;
 }
 
@@ -37,17 +38,9 @@ void Cat::makeSound() const {
 }
 
 const std::string& Cat::get_idea(int index) const {
-	if (index < 0)
-		index = 0;
-	else if (index >= 100)
-		index = 99;
-	return m_brain->ideas[index];
+	return m_brain->get_idea(index);
 }
 
 void Cat::set_idea(int index, std::string idea) {
-	if (index < 0)
-		index = 0;
-	else if (index >= 100)
-		index = 99;
-	m_brain->ideas[index] = idea;
+	m_brain->set_idea(index, idea);
 }
