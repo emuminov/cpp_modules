@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:39:11 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/01 16:45:08 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/06/10 21:52:28 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,14 @@ const Fixed& Fixed::max(const Fixed& f1, const Fixed& f2) {
 }
 
 const Fixed& Fixed::min(const Fixed& f1, const Fixed& f2) {
+    return (f1._raw < f2._raw) ? f1 : f2;
+}
+
+Fixed& Fixed::max(Fixed& f1, Fixed& f2) {
+    return (f1._raw > f2._raw) ? f1 : f2;
+}
+
+Fixed& Fixed::min(Fixed& f1, Fixed& f2) {
     return (f1._raw < f2._raw) ? f1 : f2;
 }
 
