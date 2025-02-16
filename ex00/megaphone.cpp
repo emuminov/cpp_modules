@@ -14,7 +14,7 @@ int main (int argc, char **argv)
 	{
 		result += argv[i];
 	}
-	std::transform(result.begin(), result.end(), result.begin(), ::toupper);
+	std::transform(result.begin(), result.end(), result.begin(), toupper);
 	std::cout << result << std::endl;
 	return 0;
 }
