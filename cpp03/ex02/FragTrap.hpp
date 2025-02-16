@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 16:37:46 by emuminov          #+#    #+#             */
-/*   Updated: 2024/07/22 18:54:48 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/23 18:57:11 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 class FragTrap : public ClapTrap {
   public:
     FragTrap(std::string name);
-    FragTrap(const FragTrap& st);
-    FragTrap& operator=(const FragTrap& st);
+    FragTrap(const FragTrap& ft);
+    FragTrap& operator=(const FragTrap& ft);
     ~FragTrap();
 
     void highFiveGuys(void);
