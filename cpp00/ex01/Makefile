@@ -2,9 +2,9 @@ CXX=c++
 CFLAGS=-Wall -Wextra -Werror -std=c++98
 
 NAME=phonebook
-FILES=PhoneBook.cpp Contact.cpp main.cpp add.cpp search.cpp common.cpp
+SRCS=PhoneBook.cpp Contact.cpp main.cpp add.cpp search.cpp common.cpp
 HEADERS=app.hpp Contact.hpp PhoneBook.hpp
-OBJS=$(FILES:%.cpp=objs/%.o)
+OBJS=$(SRCS:%.cpp=objs/%.o)
 
 all: $(NAME)
 
