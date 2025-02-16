@@ -6,18 +6,20 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 16:31:16 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/10 19:52:29 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/11 15:29:48 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "app.hpp"
+#include <iostream>
+#include <cstdlib>
 
 void exit_phonebook() {
     std::cout << "EXIT\n";
     exit(EXIT_SUCCESS);
 }
 
-void input_command(std::string* s) {
+void input_command(std::string *s) {
     std::getline(std::cin, *s);
     if (!std::cin) {
         if (std::cin.eof())

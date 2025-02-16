@@ -6,13 +6,11 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:15:57 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/10 19:49:16 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/11 15:24:39 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
-
-#include "iostream"
 
 Contact::Contact()
     : first_name(""), last_name(""), nickname(""), phone_number(""),
@@ -22,7 +20,7 @@ Contact::Contact()
 
 Contact::~Contact() { return; }
 
-bool Contact::set_first_name(const std::string& first_name) {
+bool Contact::set_first_name(const std::string &first_name) {
     if (first_name == "")
         return false;
     this->first_name = first_name;

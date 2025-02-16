@@ -6,13 +6,14 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 16:23:38 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/10 19:51:44 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/11 15:25:46 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "app.hpp"
+#include <iostream>
 
-static std::string ask_for_contact_field(const std::string& field_name) {
+static std::string ask_for_contact_field(const std::string &field_name) {
     std::string field_data = "";
     std::cout << "Please enter " << field_name << ": ";
     input_command(&field_data);
