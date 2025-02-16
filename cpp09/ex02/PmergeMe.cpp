@@ -2,6 +2,8 @@
 #include <cmath>
 #include <deque>
 
+int PmergeMe::nbr_of_comps = 0;
+
 PmergeMe::PmergeMe() {}
 PmergeMe::PmergeMe(const PmergeMe& pm) { (void)pm; }
 PmergeMe& PmergeMe::operator=(const PmergeMe& pm)

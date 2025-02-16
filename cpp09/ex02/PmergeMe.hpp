@@ -14,6 +14,8 @@ class PmergeMe
     void sort_vec(std::vector<int>& vec);
     void sort_deque(std::deque<int>& deque);
 
+	static int nbr_of_comps;
+
   private:
     template <typename T> void _merge_insertion_sort(T& container, int pair_level);
 
@@ -22,7 +24,10 @@ class PmergeMe
 
 long _jacobsthal_number(long n);
 
-template <typename T> bool _comp(T lv, T rv) { return *lv < *rv; }
+template <typename T> bool _comp(T lv, T rv) {
+	PmergeMe::nbr_of_comps++;
+	return *lv < *rv;
+}
 
 template <typename T> T next(T it, int steps)
 {
@@ -69,7 +74,7 @@ template <typename T> void PmergeMe::_merge_insertion_sort(T& container, int pai
     {
         Iterator this_pair = next(it, pair_level - 1);
         Iterator next_pair = next(it, pair_level * 2 - 1);
-        if (*this_pair > *next_pair)
+        if (_comp(next_pair, this_pair))
         {
             _swap_pair(this_pair, pair_level);
         }
@@ -95,6 +100,12 @@ template <typename T> void PmergeMe::_merge_insertion_sort(T& container, int pai
     {
         pend.insert(pend.end(), next(container.begin(), pair_level * (i - 1) - 1));
         main.insert(main.end(), next(container.begin(), pair_level * i - 1));
+    }
+
+    /* Insert an odd element to the pend, if there are any. */
+    if (is_odd)
+    {
+        pend.insert(pend.end(), next(end, pair_level - 1));
     }
 
     /* Insert the pend into the main in the order determined by the
@@ -147,21 +158,10 @@ template <typename T> void PmergeMe::_merge_insertion_sort(T& container, int pai
     {
         typename std::vector<Iterator>::iterator curr_pend = next(pend.begin(), i);
         typename std::vector<Iterator>::iterator curr_bound =
-            next(main.begin(), main.size() - pend.size() + i);
+            next(main.begin(), main.size() - pend.size() + i + is_odd);
         typename std::vector<Iterator>::iterator idx =
             std::upper_bound(main.begin(), curr_bound, *curr_pend, _comp<Iterator>);
         main.insert(idx, *curr_pend);
-    }
-
-    /* Insert an odd number to the main. We can make no assumptions over the odd number,
-       since it can be as low or as big as anything. Hence the bound is the end of the main chain.
-     */
-    if (is_odd)
-    {
-        typename T::iterator odd_pair = next(end, pair_level - 1);
-        typename std::vector<Iterator>::iterator idx =
-            std::upper_bound(main.begin(), main.end(), odd_pair, _comp<Iterator>);
-        main.insert(idx, odd_pair);
     }
 
     /* Use copy vector to store all the numbers, in order not to overwrite the
