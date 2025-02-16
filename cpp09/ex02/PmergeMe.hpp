@@ -125,6 +125,9 @@ template <typename T> void PmergeMe::_merge_insertion_sort(T& container, int pai
             nbr_of_times--;
             pend_it = pend.erase(pend_it);
             std::advance(pend_it, -1);
+            /* Sometimes the inserted number in inserted at the exact index of where the bound should be.
+			   When this happens, it eclipses the bound of the next pend, and it does more comparisons
+			   than it should. We need to offset when this happens. */
             int distance = (inserted - main.begin()) == curr_jacobsthal + inserted_numbers;
 			bound_it = next(main.begin(), curr_jacobsthal + inserted_numbers - distance);
         }
@@ -136,8 +139,8 @@ template <typename T> void PmergeMe::_merge_insertion_sort(T& container, int pai
        perform as less comparisons as possible, so we calculate the starting bound
        to insert pend number to be the pair of the first pend number. If the first
        pend number is b6, the bound is a6, if the pend number is b8, the bound is a8 etc.
-           With the way I do it the index of bound is
-           size_of_main - size_of_pend + index_of_current_pend. */
+       With the way I do it the index of bound is
+       size_of_main - size_of_pend + index_of_current_pend. */
     for (size_t i = 0; i < pend.size(); i++)
     {
         typename std::vector<Iterator>::iterator curr_pend = next(pend.begin(), i);
