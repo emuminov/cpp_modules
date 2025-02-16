@@ -67,8 +67,8 @@ void convert_from_int(const std::string& str) {
 		std::cout << "char: impossible\n";
 	else if (!is_printable_non_numeric(static_cast<char>(int_num)))
 		std::cout << "char: Non displayable\n";
-
-	std::cout << "char: " << static_cast<char>(int_num) << "\n";
+	else
+		std::cout << "char: " << static_cast<char>(int_num) << "\n";
 	std::cout << "int: " << int_num << "\n";
 	std::cout << "float: " << static_cast<float>(int_num) << "f" << "\n";
 	std::cout << "double: " << static_cast<double>(int_num) << "\n";
@@ -80,7 +80,7 @@ void convert_from_float(const std::string& str) {
 
 	if (overflows)
 		return print_error("float", too_big_literal);
-	if ((float_num == 0 && str != "0"))
+	if ((float_num == 0 && str != "0.0f"))
 		return print_error("float", bad_literal);
 
 	if (is_char_overflows(static_cast<int>(float_num)))
@@ -107,7 +107,7 @@ void convert_from_double(const std::string& str) {
 
 	if (overflows)
 		return print_error("double", too_big_literal);
-	if ((double_num == 0 && str != "0"))
+	if ((double_num == 0 && str != "0.0"))
 		return print_error("double", bad_literal);
 
 	if (is_char_overflows(static_cast<int>(double_num)))
@@ -124,7 +124,7 @@ void convert_from_double(const std::string& str) {
 	else
 		std::cout << "int: " << static_cast<int>(double_num) << "\n";
 
-	std::cout << "float: " << static_cast<double>(double_num) << "f" << "\n";
+	std::cout << "float: " << static_cast<float>(double_num) << "f" << "\n";
 	std::cout << "double: " << double_num << "\n";
 }
 
