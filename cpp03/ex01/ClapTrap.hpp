@@ -6,13 +6,12 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 14:30:12 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/01 18:55:21 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/22 19:10:13 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLAPTRAP_HPP
 #define CLAPTRAP_HPP
-
 #include <string>
 
 class ClapTrap {
@@ -26,6 +25,7 @@ class ClapTrap {
     void beRepaired(unsigned int amount);
 
   protected:
+	ClapTrap(std::string name, int hit_points, int energy_points, int attack_damage);
     std::string m_name;
     int m_hit_points;
     int m_energy_points;
@@ -36,5 +36,4 @@ class ClapTrap {
     static const int default_energy_points = 10;
     static const int default_attack_damage = 0;
 };
-
 #endif
