@@ -15,11 +15,11 @@ class Bureaucrat {
 		void dereaseGrade();
 
 		class GradeTooHighException : public std::exception {
-			
+			virtual const char* what() const throw();
 		};
 
 		class GradeTooLowException : public std::exception{
-			
+			virtual const char* what() const throw();
 		};
 
 	private:
@@ -27,6 +27,7 @@ class Bureaucrat {
 		static const int lowest_grade = 150;
 		const std::string m_name;
 		int m_grade;
+		static void check_grade(int grade);
 };
 std::ostream operator<<(std::ostream &o, const Bureaucrat &b);
 #endif
