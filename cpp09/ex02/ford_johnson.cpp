@@ -83,17 +83,18 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 	std::vector<Iterator>::iterator curr_pend = pend.begin();
 	std::advance(curr_bound, 2);
 	int prev_jacobsthal = jacobsthal_number(1);
+	// int inserted_numbers = 0;
 	for (int k = 2; ; k++) {
 		int curr_jacobsthal = jacobsthal_number(k);
 		int jacobsthal_diff = curr_jacobsthal - prev_jacobsthal;
-		(void)jacobsthal_diff;
 		if (jacobsthal_diff > static_cast<int>(pend.size()))
 			break;
+		int nbr_of_times = jacobsthal_diff;
 		std::list<Iterator>::iterator bound_it = curr_bound;
 		std::vector<Iterator>::iterator pend_it = curr_pend;
-		std::advance(bound_it, jacobsthal_diff * 2 - 1);
+		std::advance(bound_it, jacobsthal_diff - 1);
 		std::advance(pend_it, jacobsthal_diff - 1);
-		while (jacobsthal_diff)
+		while (nbr_of_times)
 		{
 			// insert b3 b2; b5 b4; b11 b10 b9 b8 b7 b6;
 			// until  a3 a2; a5 a4; a11 a10 a9 a8 a7 a6;
@@ -109,11 +110,13 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 			// ...
 			std::list<Iterator>::iterator idx = std::upper_bound(main.begin(), bound_it, *pend_it, comp);
 			main.insert(idx, *pend_it);
-			jacobsthal_diff--;
+			nbr_of_times--;
 			pend_it = pend.erase(pend_it);
 			std::advance(pend_it, -1);
 			std::advance(bound_it, -1);
+			// inserted_numbers++;
 		}
+		std::advance(curr_bound, jacobsthal_diff);
 		prev_jacobsthal = curr_jacobsthal;
 	}
 
