@@ -115,6 +115,10 @@ BitcoinExchange::t_error_object BitcoinExchange::_handle_db_line(const std::stri
 void BitcoinExchange::_handle_input_line(const std::string& curr_line) {
 	std::string delim = " | ";
 	size_t delim_pos = curr_line.find(delim);
+	if (delim_pos == std::string::npos) {
+		std::cout << "Error: no ' | ' delimeter or value after it => " << curr_line << "\n";
+		return;
+	}
 	std::string date_str = curr_line.substr(0, delim_pos);
 	std::string value_str = curr_line.substr(delim_pos + delim.length(), std::string::npos);
 
