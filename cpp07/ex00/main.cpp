@@ -81,4 +81,5 @@ int main(void) {
 	subject_tests();
 	std::cout << "----------------------\n";
 	my_tests();
+	return 0;
 }
