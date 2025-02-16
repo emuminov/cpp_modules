@@ -109,7 +109,7 @@ static std::string validate_arg(std::string arg)
 	return "";
 }
 
-std::string validate(int argc, char** argv)
+static std::string validate(int argc, char** argv)
 {
 	if (argc == 1)
 		return "No arguments were provided";
@@ -122,7 +122,7 @@ std::string validate(int argc, char** argv)
 	return "";
 }
 
-std::vector<int> argv_to_vector(int argc, char** argv)
+static std::vector<int> argv_to_vector(int argc, char** argv)
 {
 	std::vector<int> res;
 	res.reserve(argc - 1);
@@ -134,7 +134,7 @@ std::vector<int> argv_to_vector(int argc, char** argv)
 }
 
 template <typename T>
-bool is_sorted(const T& container)
+static bool is_sorted(const T& container)
 {
 	if (container.size() == 0 || container.size() == 1)
 		return true;
