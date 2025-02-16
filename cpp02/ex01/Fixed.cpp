@@ -29,9 +29,9 @@ Fixed::Fixed(const float nbr) : _raw(roundf(nbr * (1 << _scale))) {
     return;
 }
 
-Fixed::~Fixed(void) { 
-	std::cout << "Destructor is called\n";
-	return;
+Fixed::~Fixed(void) {
+    std::cout << "Destructor is called\n";
+    return;
 }
 
 Fixed::Fixed(const Fixed& f) : _raw(f._raw) {
@@ -41,8 +41,8 @@ Fixed::Fixed(const Fixed& f) : _raw(f._raw) {
 
 Fixed& Fixed::operator=(const Fixed& f) {
     std::cout << "Copy assignment operator called\n";
-	if (this != &f)
-		_raw = f.getRawBits();
+    if (this != &f)
+        _raw = f.getRawBits();
     return (*this);
 }
 

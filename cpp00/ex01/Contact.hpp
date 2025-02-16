@@ -18,7 +18,7 @@ class Contact {
   public:
     Contact();
     ~Contact();
-    bool set_first_name(const std::string &first_name);
+    bool set_first_name(const std::string& first_name);
     bool set_last_name(std::string last_name);
     bool set_nickname(std::string nickname);
     bool set_phone_number(std::string phone_number);

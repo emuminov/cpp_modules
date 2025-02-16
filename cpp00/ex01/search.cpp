@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #include "app.hpp"
+#include <cstdlib>
 #include <iomanip>
 #include <iostream>
-#include <cstdlib>
 
 static void display_row_borders() {
     std::cout << "+----------";
@@ -30,7 +30,7 @@ static void display_cell_content(int s, enum column_position pos) {
         std::cout << '\n';
 }
 
-static void display_cell_content(const std::string &s,
+static void display_cell_content(const std::string& s,
                                  enum column_position pos) {
     std::string s_to_print = "";
     if (s.size() > 10) {
@@ -46,7 +46,7 @@ static void display_cell_content(const std::string &s,
     }
 }
 
-static void display_all_contact_fields(Contact &c) {
+static void display_all_contact_fields(Contact& c) {
     std::cout << "First name:     " << c.get_first_name() << '\n';
     std::cout << "Last name:      " << c.get_last_name() << '\n';
     std::cout << "Nickname:       " << c.get_nickname() << '\n';
@@ -54,13 +54,12 @@ static void display_all_contact_fields(Contact &c) {
     std::cout << "Darkest secret: " << c.get_darkest_secret() << '\n';
 }
 
-void search(PhoneBook &pb) {
-	int len = pb.get_len();
-	if (len == 0)
-	{
-		std::cout << "Phonebook is empty!\n";
-		return;
-	}
+void search(PhoneBook& pb) {
+    int len = pb.get_len();
+    if (len == 0) {
+        std::cout << "Phonebook is empty!\n";
+        return;
+    }
     display_row_borders();
     display_cell_content("Index", START);
     display_cell_content("First name", BETWEEN);

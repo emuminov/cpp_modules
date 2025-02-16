@@ -13,7 +13,7 @@
 #include <iostream>
 #include <string>
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
     if (argc == 1) {
         std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
         return 0;
@@ -21,10 +21,10 @@ int main(int argc, char **argv) {
     std::string result = argv[1];
     for (int i = 2; i < argc; i++) {
         result += argv[i];
-	}
+    }
     for (unsigned long i = 0; i < result.size(); i++) {
         result[i] = toupper(result[i]);
-	}
-	std::cout << result << std::endl;
+    }
+    std::cout << result << std::endl;
     return 0;
 }

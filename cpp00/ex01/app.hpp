@@ -21,13 +21,13 @@ enum column_position {
 };
 
 // add.cpp
-void add(PhoneBook &pb);
+void add(PhoneBook& pb);
 
 // search.cpp
-void search(PhoneBook &pb);
+void search(PhoneBook& pb);
 
 // common.cpp
 void exit_phonebook();
-void input_command(std::string *s);
+void input_command(std::string* s);
 std::string ask_for_command();
 #endif

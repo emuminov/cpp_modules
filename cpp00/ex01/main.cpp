@@ -12,7 +12,7 @@
 
 #include "app.hpp"
 
-void execute_command(std::string command, PhoneBook &pb) {
+void execute_command(std::string command, PhoneBook& pb) {
     if (command == "ADD")
         add(pb);
     else if (command == "SEARCH")
