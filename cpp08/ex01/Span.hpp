@@ -11,12 +11,19 @@ class Span {
           ~Span();
 
           void addNumber(int nbr);
+
+		  template <typename Iterator>
+          void insert(Iterator begin, Iterator end) {
+			for (Iterator it = begin; it != end; it++)
+				addNumber(*it);
+		  }
+
           int shortestSpan() const;
           int longestSpan() const;
 		  std::list<int>::const_iterator begin() const;
 		  std::list<int>::const_iterator end() const;
 
-		  class OverCapacityException : public std::exception {
+		  class CapacityExceededException : public std::exception {
 			  virtual const char* what() const throw();
 		  };
 	private:

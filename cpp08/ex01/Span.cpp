@@ -23,13 +23,13 @@ Span& Span::operator=(const Span& s) {
 
 Span::~Span() { return; }
 
-const char* Span::OverCapacityException::what() const throw() {
+const char* Span::CapacityExceededException::what() const throw() {
 	return "The capacity of the Span instance was exceeded";
 }
 
 void Span::addNumber(int nbr) {
 	if ((m_length + 1) > m_capacity)
-		throw OverCapacityException();
+		throw CapacityExceededException();
 	m_length++;
 	std::list<int>::iterator target =
 		std::lower_bound(m_numbers.begin(), m_numbers.end(), nbr);
