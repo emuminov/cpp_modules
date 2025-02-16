@@ -69,15 +69,30 @@
 // b1 a1 b2 a2 b3 a3 b4 a4
 // main: [0 1 2 3 4 5 7 8 9]
 
-void insert_pair_to_vec(const std::vector<int>& vec, std::vector<int>& main, int pair_level, int pair_idx) {
-	main.insert(main.end(), &vec[pair_idx * pair_level], &vec[pair_idx * pair_level + pair_level]);
+typedef std::vector<int>::iterator Iterator;
+void insert_pair_to_vec(std::vector<Iterator>& main, Iterator pair_to_insert, int pair_level) {
+	Iterator end = pair_to_insert + pair_level;
+	main.insert(main.end(), &pair_to_insert, &end);
 }
 
-void swap_pair(std::vector<int>& vec, int i, int pair_level) {
-	int start = i - pair_level + 1;
-	int end = start + pair_level;
+// === 1 === insert the remaing pend numbers to S
+// (0 2) (4 5) (3 8) (1 9) 7
+// b1 a1 b2 a2 b3 a3 b4 a4
+// [0 2 5 8 9]
+// [0 2 5 8 9] insert b3 (3), area of search: 0..2
+// we need to insert idx 4
+// [0 2 3 5 8 9] insert b2 (4), area of search: 0..3
+// we need to insert idx 2
+// void insert_smallest_from_pair(const std::vector<int>& pend, std::vector<int>& main, Iterator pair_to_insert, int pair_level) {
+// 	
+// 	
+// }
+
+void swap_pair(Iterator it, int pair_level) {
+	Iterator start = it - pair_level + 1;
+	Iterator end = start + pair_level;
 	while (start < end) {
-		std::swap(vec[start], vec[start + pair_level]);
+		std::iter_swap(start, (start + pair_level));
 		start++;
 	}
 }
@@ -89,25 +104,27 @@ long jacobsthal_number(long n) {
 }
 
 void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
-	int pairs_nbr = vec.size() / pair_level;
-	if (pairs_nbr < 2)
+	int pair_units_nbr = vec.size() / pair_level;
+	if (pair_units_nbr < 2)
 		return;
 
-	bool is_odd = pairs_nbr % 2 == 1;
+	bool is_odd = pair_units_nbr % 2 == 1;
+	(void)is_odd;
 
-	int start = pair_level - 1;
+	Iterator start = vec.begin() + (pair_level - 1);
+	Iterator end = vec.end() - is_odd;
 	int jump = 2 * pair_level;
-	int end = vec.size() - is_odd;
-	for (int i = start; i < end; i += jump) {
-		if (vec[i] > vec[i + pair_level]) {
-			swap_pair(vec, i, pair_level);
+	for (Iterator it = start; it < end; it += jump) {
+		Iterator next_pair = it + pair_level;
+		if (*it > *next_pair) {
+			swap_pair(it, pair_level);
 		}
 	}
 
 	_merge_insertion_sort(vec, pair_level * 2);
-	
-	std::vector<int> main;
-	std::vector<int> pend;
+
+	std::vector<Iterator> main;
+	std::vector<Iterator> pend;
 
 	main.reserve(vec.size());
 	pend.reserve(vec.size());
@@ -115,30 +132,30 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 	// insert b1, a1, a2...aN
 	// if pair_level = 1, insert 0
 	// insert b1
-	insert_pair_to_vec(vec, main, pair_level, 0);
+	// insert_pair_to_vec(main, vec.begin(), pair_level);
 	// if pair_level = 1, insert 1
 	// insert a1
-	insert_pair_to_vec(vec, main, pair_level, 1);
+	// insert_pair_to_vec(main, vec.begin() + pair_level, pair_level);
 	// if pair_level = 1, insert 3
 	// if pair_level = 1, insert 5
 	// insert the rest of a's, starting from the a2
 	// (2 0) (3 8) (1 9) (5 4) 7
 	// b1 a1 b2 a2 b3 a3 b4 a4
 	// (0 2) (3 8) (1 9) (4 5) 7
-	for (int pair_idx = 3; pair_idx < pairs_nbr; pair_idx += 2) {
-		insert_pair_to_vec(vec, main, pair_level, pair_idx);
-	}
+	// for (Iterator it = vec.begin() + pair_level * 2; it != vec.end(); it += pair_level * 2) {
+	// 	insert_pair_to_vec(main, it, pair_level);
+	// }
 
 	// insert the rest of b's into the pend
 	// b2, b3, ... bn
 	// if pair_level = 1, insert 2
 	// if pair_level = 1, insert 4
-	for (int pair_idx = 2; pair_idx < pairs_nbr; pair_idx += 2) {
-		insert_pair_to_vec(vec, pend, pair_level, pair_idx);
-	}
-	if (is_odd) {
-		pend.insert(pend.end(), vec.back());
-	}
+	// for (int pair_idx = 2; pair_idx < pair_units_nbr; pair_idx += 2) {
+	// 	insert_pair_to_vec(vec, pend, pair_level, pair_idx);
+	// }
+	// if (is_odd) {
+	// 	pend.insert(pend.end(), vec.back());
+	// }
 
 	
 	// === 3 === insert the remaing pend numbers to S
@@ -156,9 +173,33 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 	// === 1 === insert at the start of S the smallest number of the smallest pair (b1)
 	// (0 2) (4 5) (3 8) (1 9) 7
 	// b1 a1 b2 a2 b3 a3 b4 a4
-	for (int pair_idx = 0; pair_idx < pairs_nbr; pair_idx += 2) {
-		
-	}
+	// [0 2 5 8 9]
+
+	// === 1 === insert the remaing pend numbers to S
+	// (0 2) (4 5) (3 8) (1 9) 7
+	// b1 a1 b2 a2 b3 a3 b4 a4
+	// [0 2 5 8 9]
+	// [0 2 5 8 9] insert b3 (3), area of search: 0..2
+	// [0 2 3 5 8 9] insert b2 (4), area of search: 0..3
+	// [0 2 3 5 8 9] insert b5, no b5: insert in order
+	// [0 2 3 4 5 8 9] insert b4 (1), area of search: 0..6
+	// [0 1 2 3 4 5 8 9] insert odd element (7), area of search: [entire main]
+	// [0 1 2 3 4 5 7 8 9]
+	// for (int k = 2; ; k++) {
+	// 	int idx_to_insert = jacobsthal_number(k);
+	// 	int nbr_of_times = idx_to_insert - jacobsthal_number(k - 1);
+	// 	if (idx_to_insert > pair_units_nbr)
+	// 		break;
+	// 	// insert b3 b2
+	// 	while (nbr_of_times--) {
+	// 	   insert_smallest_from_pair(pend, main, idx_to_insert, pair_level);
+	// 	   idx_to_insert--;
+	// 	}
+	// }
+	//
+	// while (!pend.empty()) {
+	//
+	// }
 }
 
 void sort(std::vector<int>& vec) {
