@@ -19,10 +19,16 @@ RNP::~RNP() { return; }
 
 int RNP::solve(const std::string& input) {
 	if (_parse_input(input) == error)
+	{
 		std::cerr << "Error\n";
+		return error;
+	}
 	if (_resolve_equation() == error)
+	{
 		std::cerr << "Error\n";
-	return 0;
+		return error;
+	}
+	return ok;
 }
 
 enum RNP::e_status RNP::_parse_input(const std::string& input) {
@@ -50,7 +56,6 @@ enum RNP::e_status RNP::_parse_input(const std::string& input) {
 	return ok;
 }
 
-// +-/*
 enum RNP::e_status RNP::_resolve_equation() {
 	std::stack<int> res((std::stack<int>()));
 	while (!m_data.empty()) {
