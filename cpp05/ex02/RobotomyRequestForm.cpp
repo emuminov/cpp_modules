@@ -18,8 +18,12 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& s
 }
 
 void RobotomyRequestForm::do_execution() const {
+	static int times_executed;
+	times_executed++;
 	srand(time(NULL));
-	int n = rand();
+	int n;
+	for (int i = 0; i < times_executed; i++)
+		n = rand();
 	if ((n % 2) == 0) {
 		std::cout << m_target << " was robotomized successefully!\n";
 		return;
