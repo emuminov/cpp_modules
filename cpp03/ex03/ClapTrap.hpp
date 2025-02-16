@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 14:30:12 by emuminov          #+#    #+#             */
-/*   Updated: 2024/07/23 17:25:49 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/22 19:17:43 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ class ClapTrap {
     int m_hit_points;
     int m_energy_points;
     int m_attack_damage;
+
+  private:
     static const int default_hit_points = 10;
     static const int default_energy_points = 10;
     static const int default_attack_damage = 0;

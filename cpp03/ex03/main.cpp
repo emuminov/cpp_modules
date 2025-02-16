@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 14:30:16 by emuminov          #+#    #+#             */
-/*   Updated: 2024/07/23 18:21:43 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/23 19:01:44 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@ int main(void) {
 	dt3 = dt1;
     std::string target = "training dummy";
     dt3.attack(target);
-    // dt3.attack(target);
-    // dt3.attack(target);
-    // dt3.attack(target);
-    // dt3.attack(target);
-    // dt3.takeDamage(8);
-    // dt3.beRepaired(3);
-    // dt3.beRepaired(15);
-    // dt3.attack(target);
-    // dt3.attack(target);
-    // dt3.attack(target);
-    // dt3.attack(target);
-    // dt3.attack(target);
-    // dt3.attack(target);
-    // dt3.takeDamage(17);
-    // dt3.attack(target);
+    dt3.attack(target);
+    dt3.attack(target);
+    dt3.attack(target);
+    dt3.attack(target);
+    dt3.takeDamage(8);
+    dt3.beRepaired(3);
+    dt3.beRepaired(15);
+    dt3.attack(target);
+    dt3.attack(target);
+    dt3.attack(target);
+    dt3.attack(target);
+    dt3.attack(target);
+    dt3.attack(target);
+    dt3.takeDamage(17);
+    dt3.attack(target);
     dt1.whoAmI();
     dt2.whoAmI();
     dt3.whoAmI();
