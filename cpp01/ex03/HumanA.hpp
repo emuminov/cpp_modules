@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 17:09:37 by emuminov          #+#    #+#             */
-/*   Updated: 2024/07/17 15:54:25 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/17 16:15:37 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 class HumanA {
   public:
-    HumanA(std::string name, Weapon& weapon);
+    HumanA(std::string name, Weapon& w);
     ~HumanA();
     void attack() const;
 
