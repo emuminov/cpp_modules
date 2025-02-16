@@ -6,9 +6,10 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 14:29:13 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/01 18:46:03 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/06/01 22:45:51 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "ClapTrap.hpp"
 #include <string>
 #include <iostream>
@@ -22,6 +23,17 @@ ClapTrap::ClapTrap(std::string name)
 ClapTrap::~ClapTrap() {
 	std::cout << "ClapTrap suddenly disappears...\n";
 	return;
+}
+
+ClapTrap::ClapTrap(const ClapTrap& ct) : m_name(ct.m_name) {
+	std::cout << "ClapTrap " << m_name << " clones itself!\n";
+	return;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& ct) {
+	m_name = ct.m_name;
+	std::cout << "ClapTrap " << m_name << " clones itself!\n";
+	return *this;
 }
 
 void ClapTrap::attack(const std::string& target) {
@@ -56,11 +68,9 @@ void ClapTrap::beRepaired(unsigned int amount) {
 		std::cout << "Not enought energy...\n";
 		return;
 	}
+	std::cout << "Hit points: " << m_hit_points << "\n";
+	std::cout << "Amount: " << amount << "\n";
 	m_energy_points--;
-	if (m_hit_points + amount > 10) {
-		amount = 10 - m_hit_points;
-	}
 	std::cout << "ClapTrap " << m_name << " was repaired, and now gained " << amount << " hit points!\n";
 	m_hit_points += amount;
 }
-
