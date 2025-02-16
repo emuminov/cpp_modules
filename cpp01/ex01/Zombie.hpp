@@ -6,12 +6,12 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 15:12:23 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/18 16:00:08 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/17 15:42:32 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_H
-#define ZOMBIE_H
+#ifndef ZOMBIE_HPP
+#define ZOMBIE_HPP
 #include <string>
 
 class Zombie {
