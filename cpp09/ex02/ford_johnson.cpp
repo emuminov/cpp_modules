@@ -71,10 +71,6 @@
 // main: [0 1 2 3 4 5 7 8 9]
 
 typedef std::vector<int>::iterator Iterator;
-void insert_pair_to_vec(std::list<int>& main, Iterator pair_to_insert, int pair_level) {
-	Iterator end = pair_to_insert + pair_level;
-	main.insert(main.end(), pair_to_insert, end);
-}
 
 // === 1 === insert the remaing pend numbers to S
 // (0 2) (4 5) (3 8) (1 9) 7
@@ -130,22 +126,27 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 	// insert b1, a1, a2...aN
 	// if pair_level = 1, insert 0
 	// insert b1
-	insert_pair_to_vec(main, vec.begin(), pair_level);
+	main.insert(main.end(), vec.begin(), vec.begin() + pair_level);
 	// if pair_level = 1, insert 1
 	// insert a1
-	insert_pair_to_vec(main, vec.begin() + pair_level, pair_level);
+	main.insert(main.end(), vec.begin() + pair_level, vec.begin() + pair_level * 2);
 	// if pair_level = 1, insert 3
 	// if pair_level = 1, insert 5
 	// insert the rest of a's, starting from the a2
-	// (2 0) (3 8) (1 9) (5 4) 7
-	// b1 a1 b2 a2 b3 a3 b4 a4
-	// (0 2) (3 8) (1 9) (4 5) 7
+	// === 2 === insert at the start of S the smallest number of the smallest pair (b1)
+	// ((0 2) (3 8)) ((4 5) (1 9)) 7
+	//   b1    a1      b2    a2
+	// ((0 2) (3 8)) ((4 5) (1 9)) 7
+	// [0 2 3 8 1 9]
 	for (int i = 3; i < pair_units_nbr; i += 2) {
-		insert_pair_to_vec(main, vec.begin() + i * pair_level, pair_level);
+		// (0 2) (4 5) (3 8) (1 9) 7
+		// b1 a1 b2 a2 b3 a3 b4 a4
+		// insert a2, a3, a4 ... a(n/2)
+		main.insert(main.end(), vec.begin() + pair_level * 3,  vec.begin() + pair_level * 3 + pair_level);
+		// [0 2 5 8 9]
+		// insert b2, b3, b4 ... b(n/2)
+		// [4 3 1]
 	}
-	// for (Iterator it = vec.begin() + pair_level * 2; it != vec.end(); it += pair_level * 2) {
-	// 	insert_pair_to_vec(main, it, pair_level);
-	// }
 
 	// insert the rest of b's into the pend
 	// b2, b3, ... bn
