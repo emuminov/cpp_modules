@@ -133,6 +133,16 @@ static std::vector<int> argv_to_vector(int argc, char** argv)
 	return res;
 }
 
+static std::list<int> argv_to_list(int argc, char** argv)
+{
+	std::list<int> res;
+	for (int i = 0; i < argc - 1; i++)
+	{
+		res.push_back(atoi(argv[i + 1]));
+	}
+	return res;
+}
+
 template <typename T>
 static bool is_sorted(const T& container)
 {
@@ -150,9 +160,6 @@ static bool is_sorted(const T& container)
 	return true;
 }
 
-// 11 2 17 0 16 8 6 15 10 3 1 8 18 9 14 19 12 5 4 20 13 7
-// int arr[] = {11, 36, 21, 2, 22, 35, 17, 0, 34, 16, 8, 23, 6, 24, 32, 37, 15, 38, 25, 39, 10, 40, 26, 41, 31, 42, 3, 43, 8, 44, 1, 27, 18, 9, 14, 45, 28, 48, 19, 12, 5, 4, 29, 20, 13, 30, 7};
-// int arr[] = {35, 36, 34, 37, 39, 41, 43, 44, 45, 48};
 int main(int argc, char** argv) {
 	PmergeMe pm;
 	std::string status = validate(argc, argv);
@@ -163,17 +170,13 @@ int main(int argc, char** argv) {
 	}
 
 	std::vector<int> vec = argv_to_vector(argc, argv);
-	pm.sort(vec);
+	pm.sort_vec(vec);
 
-	for (size_t i = 0; i < vec.size(); i++) {
-		std::cout << vec[i] << "\n";
-	}
-	if (is_sorted(vec))
-	{
-		std::cout << "Success!\n";
-	}
-	else
-	{
-		std::cout << "Fail...\n";
-	}
+	std::list<int> lst = argv_to_list(argc, argv);
+	pm.sort_list(lst);
+
+	if (!is_sorted(vec))
+		std::cout << "Vector was not sorted properly.\n";
+	if (!is_sorted(lst))
+		std::cout << "List was not sorted properly.\n";
 }

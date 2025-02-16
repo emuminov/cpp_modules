@@ -15,6 +15,10 @@ long _jacobsthal_number(long n) {
 	return round((pow(2, n + 1) + pow(-1, n)) / 3);
 }
 
-void PmergeMe::sort(std::vector<int>& vec) {
+void PmergeMe::sort_vec(std::vector<int>& vec) {
 	_merge_insertion_sort<std::vector<int> >(vec, 1);
+}
+
+void PmergeMe::sort_list(std::list<int>& lst) {
+	_merge_insertion_sort<std::list<int> >(lst, 1);
 }
