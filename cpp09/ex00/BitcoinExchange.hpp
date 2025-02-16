@@ -30,6 +30,8 @@ class BitcoinExchange {
 
 		enum e_error _read_db();
 		enum e_error _read_input(const std::string& file_name);
-		t_date _str_to_date(const std::string& str);
+		void _resolve_printing_exchange_rate_line(double value, const std::string& date_str);
+		void _print_exchange_rate_line(double value, double rate, const std::string& date_str) const;
+		t_date _str_to_date(const std::string& str) const;
 };
 #endif
