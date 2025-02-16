@@ -2,25 +2,25 @@
 #define ITER_HPP
 #include <iostream>
 template<typename T>
-void iter(T* arr, int len, void (fn)(T*, int)) {
+void iter(T* arr, const int len, void (fn)(T&, int)) {
 	if (!arr)
 		return;
 	for (int i = 0; i < len; i++) {
-		fn(&arr[i], i);
+		fn(arr[i], i);
 	}
 }
 
 template<typename T>
-void iter(T* arr, int len, void (fn)(T*)) {
+void iter(T* arr, const int len, void (fn)(T&)) {
 	if (!arr)
 		return;
 	for (int i = 0; i < len; i++) {
-		fn(&arr[i]);
+		fn(arr[i]);
 	}
 }
 
 template<typename T>
-void print_arr(T* arr, int len) {
+void print_arr(T* arr, const  int len) {
 	std::cout << "[";
 	for (int i = 0; i < len; i++) {
 		std::cout << arr[i];
@@ -31,9 +31,8 @@ void print_arr(T* arr, int len) {
 }
 
 template<typename T>
-void inc(T* ptr_to_incrementable) {
-	if (ptr_to_incrementable)
-		(*ptr_to_incrementable)++;
+void inc(T& incrementable) {
+		incrementable++;
 }
 
 #endif
