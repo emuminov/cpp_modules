@@ -1,5 +1,6 @@
 #include "ford_johnson.hpp"
 #include <cmath>
+#include <list>
 
 // 2 0 3 8 1 9 5 4 7
 // === 1 === swap pairs of numbers
@@ -70,9 +71,9 @@
 // main: [0 1 2 3 4 5 7 8 9]
 
 typedef std::vector<int>::iterator Iterator;
-void insert_pair_to_vec(std::vector<Iterator>& main, Iterator pair_to_insert, int pair_level) {
+void insert_pair_to_vec(std::list<int>& main, Iterator pair_to_insert, int pair_level) {
 	Iterator end = pair_to_insert + pair_level;
-	main.insert(main.end(), &pair_to_insert, &end);
+	main.insert(main.end(), pair_to_insert, end);
 }
 
 // === 1 === insert the remaing pend numbers to S
@@ -123,25 +124,25 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 
 	_merge_insertion_sort(vec, pair_level * 2);
 
-	std::vector<Iterator> main;
-	std::vector<Iterator> pend;
-
-	main.reserve(vec.size());
-	pend.reserve(vec.size());
+	std::list<int> main;
+	std::list<int> pend;
 	
 	// insert b1, a1, a2...aN
 	// if pair_level = 1, insert 0
 	// insert b1
-	// insert_pair_to_vec(main, vec.begin(), pair_level);
+	insert_pair_to_vec(main, vec.begin(), pair_level);
 	// if pair_level = 1, insert 1
 	// insert a1
-	// insert_pair_to_vec(main, vec.begin() + pair_level, pair_level);
+	insert_pair_to_vec(main, vec.begin() + pair_level, pair_level);
 	// if pair_level = 1, insert 3
 	// if pair_level = 1, insert 5
 	// insert the rest of a's, starting from the a2
 	// (2 0) (3 8) (1 9) (5 4) 7
 	// b1 a1 b2 a2 b3 a3 b4 a4
 	// (0 2) (3 8) (1 9) (4 5) 7
+	for (int i = 3; i < pair_units_nbr; i += 2) {
+		insert_pair_to_vec(main, vec.begin() + i * pair_level, pair_level);
+	}
 	// for (Iterator it = vec.begin() + pair_level * 2; it != vec.end(); it += pair_level * 2) {
 	// 	insert_pair_to_vec(main, it, pair_level);
 	// }
