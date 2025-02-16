@@ -11,6 +11,16 @@ template <typename T, typename Function> void iter(T* arr, const int len, Functi
     }
 }
 
+template <typename T, typename Function> void iter(const T* arr, const int len, Function fn)
+{
+    if (!arr)
+        return;
+    for (int i = 0; i < len; i++)
+    {
+        fn(arr[i], i);
+    }
+}
+
 template <typename T> void iter(T* arr, const int len, void(fn)(T*))
 {
     if (!arr)
