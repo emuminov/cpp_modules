@@ -21,12 +21,12 @@ class Animal {
     Animal(const Animal& a);
     Animal& operator=(const Animal& a);
     virtual ~Animal();
-	virtual void makeSound() const = 0;
-	const std::string& getType() const;
+    virtual void makeSound() const = 0;
+    const std::string& getType() const;
 
   protected:
-	Animal(std::string type);
-	std::string m_type;
+    Animal(std::string type);
+    std::string m_type;
 };
 
 #endif

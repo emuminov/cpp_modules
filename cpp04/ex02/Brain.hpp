@@ -21,11 +21,11 @@ class Brain {
     Brain(const Brain& a);
     Brain& operator=(const Brain& a);
     ~Brain();
-	const std::string& get_idea(int index) const;
-	void set_idea(int index, std::string idea);
+    const std::string& get_idea(int index) const;
+    void set_idea(int index, std::string idea);
 
   private:
-	std::string m_ideas[100];
+    std::string m_ideas[100];
 };
 
 #endif

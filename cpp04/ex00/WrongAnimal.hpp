@@ -21,12 +21,12 @@ class WrongAnimal {
     WrongAnimal(const WrongAnimal& a);
     WrongAnimal& operator=(const WrongAnimal& a);
     ~WrongAnimal();
-	void makeSound() const;
-	const std::string& getType() const;
+    void makeSound() const;
+    const std::string& getType() const;
 
   protected:
-	WrongAnimal(std::string type);
-	std::string m_type;
+    WrongAnimal(std::string type);
+    std::string m_type;
 };
 
 #endif

@@ -23,15 +23,15 @@ class Dog : public Animal {
     Dog(const Dog& a);
     Dog& operator=(const Dog& a);
     ~Dog();
-	void makeSound() const;
-	const std::string& get_idea(int index) const;
-	void set_idea(int index, std::string idea);
+    void makeSound() const;
+    const std::string& get_idea(int index) const;
+    void set_idea(int index, std::string idea);
 
   protected:
-	std::string m_type;
+    std::string m_type;
 
   private:
-	Brain* m_brain;
+    Brain* m_brain;
 };
 
 #endif

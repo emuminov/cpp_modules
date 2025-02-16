@@ -22,10 +22,10 @@ class WrongCat : public WrongAnimal {
     WrongCat(const WrongCat& a);
     WrongCat& operator=(const WrongCat& a);
     ~WrongCat();
-	void makeSound() const;
+    void makeSound() const;
 
   protected:
-	std::string m_type;
+    std::string m_type;
 };
 
 #endif
