@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 16:19:13 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/10 16:19:26 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/10 17:16:05 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void PhoneBook::add_contact(Contact contact) {
     return;
 }
 
-Contact PhoneBook::get_contact(unsigned int index) {
+Contact PhoneBook::get_contact(unsigned int index) const {
     if (index > this->_len - 1) {
         return this->_contacts[this->_len - 1];
     }
     return this->_contacts[index];
 }
 
-unsigned int PhoneBook::get_len() { return this->_len; }
+unsigned int PhoneBook::get_len() const { return this->_len; }

@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 16:28:36 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/10 16:42:07 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/10 17:03:26 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void display_cell_content(int s, enum column_position pos) {
 
 static void display_cell_content(const std::string &s,
                                  enum column_position pos) {
-    std::string s_to_print{};
+    std::string s_to_print = "";
     if (s.size() > 10) {
         s_to_print = s.substr(0, 9);
         s_to_print += '.';
@@ -68,7 +68,7 @@ void search(PhoneBook &pb) {
     if (len > 0)
         display_row_borders();
     std::cout << "Please choose an entry with the correct index: ";
-    std::string str_index{};
+    std::string str_index = "";
     input_command(str_index);
     int nbr_index = std::atoi(str_index.c_str());
     if (str_index.length() > 1 || !std::isdigit(str_index[0]) ||

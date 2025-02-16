@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 16:31:16 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/10 16:33:03 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/10 17:03:04 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void input_command(std::string &s) {
 }
 
 std::string ask_for_command() {
-    std::string command{};
+    std::string command = "";
     std::cout << "Enter a new command: ";
     input_command(command);
     return command;
