@@ -1,9 +1,9 @@
-CXX=c++
+CXX=g++
 CFLAGS=-Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 
 NAME=main
-SRCS=main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
-HEADER=Animal.hpp Cat.hpp Dog.hpp Brain.hpp
+SRCS=main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
+HEADER=AMateria.hpp Character.hpp Cure.hpp Ice.hpp MateriaSource.hpp
 OBJS=$(SRCS:%.cpp=objs/%.o)
 
 all: $(NAME)

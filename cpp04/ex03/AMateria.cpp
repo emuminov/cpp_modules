@@ -1,4 +1,6 @@
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
+#include <iostream>
 
 AMateria::AMateria(std::string const& type) : m_type(type) { return; }
 
@@ -13,3 +15,8 @@ AMateria& AMateria::operator=(AMateria const& m) {
 }
 
 std::string const& AMateria::getType() const { return m_type; }
+
+
+void AMateria::use(ICharacter& target) {
+	std::cout << "* heals " << target.getName() << "’s wound *\n";
+}
