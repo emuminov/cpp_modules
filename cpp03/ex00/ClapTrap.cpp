@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 14:29:13 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/01 18:42:59 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/06/01 22:18:38 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@ ClapTrap::ClapTrap(std::string name)
 ClapTrap::~ClapTrap() {
 	std::cout << "ClapTrap suddenly disappears...\n";
 	return;
+}
+
+ClapTrap::ClapTrap(const ClapTrap& ct) : m_name(ct.m_name) {
+	std::cout << "ClapTrap " << m_name << " clones itself!\n";
+	return;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& ct) {
+	m_name = ct.m_name;
+	std::cout << "ClapTrap " << m_name << " clones itself!\n";
+	return *this;
 }
 
 void ClapTrap::attack(const std::string& target) {
