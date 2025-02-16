@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                        :::      ::::::::   */ /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/18 15:36:03 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/18 17:08:07 by emuminov         ###   ########.fr       */
+/*   Created: 2024/05/18 17:04:38 by emuminov          #+#    #+#             */
+/*   Updated: 2024/05/18 17:12:10 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
 
-Zombie *zombieHorde(int N, std::string name);
+Weapon::Weapon(std::string type) : type(type) {
+	return;
+}
 
-int main(void) {
-    Zombie *horde = zombieHorde(5, "Joe");
-    for (int i = 0; i < 5; i++) {
-        horde[i].announce();
-    }
-    delete[] horde;
-    return 0;
+Weapon::~Weapon() {
+	return;
+}
+
+const std::string& Weapon::getType() {
+	return this->type;
+}
+
+void Weapon::setType(std::string type) {
+	this->type = type;
 }
