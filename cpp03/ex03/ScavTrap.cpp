@@ -14,7 +14,9 @@
 #include <iostream>
 #include <string>
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name, default_hit_points, default_energy_points, default_attack_damage) {
+ScavTrap::ScavTrap(std::string name)
+    : ClapTrap(name, default_hit_points, default_energy_points,
+               default_attack_damage) {
     std::cout << "A wild ScavTrap appears!\n";
 }
 
@@ -23,7 +25,9 @@ ScavTrap::~ScavTrap() {
     return;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& st) : ClapTrap(st.m_name, default_hit_points, default_energy_points, default_attack_damage) {
+ScavTrap::ScavTrap(const ScavTrap& st)
+    : ClapTrap(st.m_name, default_hit_points, default_energy_points,
+               default_attack_damage) {
     std::cout << "ScavTrap " << m_name << " clones itself!\n";
     return;
 }
@@ -38,7 +42,7 @@ void ScavTrap::guardGate(void) {
     if (m_hit_points <= 0) {
         std::cout << "ScavTrap is dead!..\n";
         return;
-	} else if (m_energy_points <= 0) {
+    } else if (m_energy_points <= 0) {
         std::cout << "Not enough energy...\n";
         return;
     }

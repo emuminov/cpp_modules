@@ -16,7 +16,7 @@ int main(void) {
     DiamondTrap dt1("Leonard");
     DiamondTrap dt2(dt1);
     DiamondTrap dt3("Don");
-	dt3 = dt1;
+    dt3 = dt1;
     std::string target = "training dummy";
     dt3.attack(target);
     dt3.attack(target);

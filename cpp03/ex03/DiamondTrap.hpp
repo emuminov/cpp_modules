@@ -12,8 +12,8 @@
 
 #ifndef DIAMONDTRAP_HPP
 #define DIAMONDTRAP_HPP
-#include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 #include <string>
 
 class DiamondTrap : public FragTrap, public ScavTrap {
@@ -22,7 +22,7 @@ class DiamondTrap : public FragTrap, public ScavTrap {
     DiamondTrap(const DiamondTrap& dt);
     DiamondTrap& operator=(const DiamondTrap& dt);
     ~DiamondTrap();
-	using FragTrap::attack;
+    using FragTrap::attack;
     void whoAmI();
 
   private:

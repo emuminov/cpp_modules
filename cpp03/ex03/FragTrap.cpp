@@ -14,7 +14,9 @@
 #include <iostream>
 #include <string>
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name, default_hit_points, default_energy_points, default_attack_damage) {
+FragTrap::FragTrap(std::string name)
+    : ClapTrap(name, default_hit_points, default_energy_points,
+               default_attack_damage) {
     std::cout << "A wild FragTrap appears!\n";
 }
 
@@ -23,7 +25,9 @@ FragTrap::~FragTrap() {
     return;
 }
 
-FragTrap::FragTrap(const FragTrap& ft) : ClapTrap(ft.m_name, default_hit_points, default_energy_points, default_attack_damage) {
+FragTrap::FragTrap(const FragTrap& ft)
+    : ClapTrap(ft.m_name, default_hit_points, default_energy_points,
+               default_attack_damage) {
     std::cout << "FragTrap " << m_name << " clones itself!\n";
     return;
 }
@@ -35,7 +39,7 @@ FragTrap& FragTrap::operator=(const FragTrap& ft) {
 }
 
 void FragTrap::highFiveGuys() {
-	if (m_hit_points <= 0) {
+    if (m_hit_points <= 0) {
         std::cout << "FragTrap is dead!..\n";
         return;
     } else if (m_energy_points <= 0) {
