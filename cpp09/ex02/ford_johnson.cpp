@@ -33,10 +33,10 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 	It will go to the pend as the last pair. */
 	bool is_odd = pair_units_nbr % 2 == 1;
 
-	/* It's important to caluclate the end position until we iterate.
+	/* It's important to caluclate the end position until which we should iterate.
 	We can have a set of values like:
 	((1 2) (3 4)) ((3 8) (2 6)) | 0
-	where the are numbers (0 in this case) which can't even form a pair.
+	where there are numbers (0 in this case) which can't even form a pair.
 	Those values should be ignored. */
 	Iterator start = vec.begin();
 	Iterator last = vec.begin() + pair_level * (pair_units_nbr);
@@ -79,35 +79,22 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 	in order to save number of comparisons, as we know already that, for example,
 	b5 is lesser than a5, we binary search only until a5, not until the end
 	of the container. */
-	std::list<Iterator>::iterator curr_bound = main.begin();
-	std::vector<Iterator>::iterator curr_pend = pend.begin();
-	/* Bound to insert elements start with a2, since pend starts with b2. */
-	std::advance(curr_bound, 2);
 	int prev_jacobsthal = jacobsthal_number(1);
+	int inserted_numbers = 0;
 	for (int k = 2; ; k++) {
 		int curr_jacobsthal = jacobsthal_number(k);
 		int jacobsthal_diff = curr_jacobsthal - prev_jacobsthal;
 		if (jacobsthal_diff > static_cast<int>(pend.size()))
 			break;
 		int nbr_of_times = jacobsthal_diff;
-		std::list<Iterator>::iterator bound_it = curr_bound;
-		std::vector<Iterator>::iterator pend_it = curr_pend;
-		std::advance(bound_it, jacobsthal_diff - 1);
+		std::vector<Iterator>::iterator pend_it = pend.begin();
+		std::list<Iterator>::iterator bound_it = main.begin();
 		std::advance(pend_it, jacobsthal_diff - 1);
+		std::advance(bound_it, curr_jacobsthal + inserted_numbers);
+		// std::list<Iterator>::iterator tmp_bound_it = bound_it;
+		// std::vector<Iterator>::iterator tmp_pend_it = pend_it;
 		while (nbr_of_times)
 		{
-			// insert b3 b2; b5 b4; b11 b10 b9 b8 b7 b6;
-			// until  a3 a2; a5 a4; a11 a10 a9 a8 a7 a6;
-			// === 1 === insert the remaing pend numbers to S
-			// (0 2) (4 5) (3 8) (1 9) 7
-			// b1 a1 b2 a2 b3 a3 b4 a4
-			// main: [b1 a1 a2 a3 a4 a5 a6 a7]
-			// pend: [      b2 b3 b4 b5 b6 b7]
-			// 1. we try to insert b3 to {b1, a1, a2}
-			// 2. we try to insert b2 to {b1, a1, b3}
-			// 3. we try to insert b5 to {b1, a1, b2, a2, b3, a3, a4}
-			// 4. we try to insert b4 to {b1, a1, b2, a2, b3, a3, b5}
-			// ...
 			std::list<Iterator>::iterator idx = std::upper_bound(main.begin(), bound_it, *pend_it, comp);
 			main.insert(idx, *pend_it);
 			nbr_of_times--;
@@ -115,11 +102,18 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 			std::advance(pend_it, -1);
 			std::advance(bound_it, -1);
 		}
-		std::advance(curr_bound, jacobsthal_diff);
+		pend_it = pend.begin();
 		prev_jacobsthal = curr_jacobsthal;
+		inserted_numbers += jacobsthal_diff;
 	}
 
-	/* Insert the remaining elements in the sequential order. */
+	/* Insert the remaining elements in the sequential order. Here we also want to
+	perform as less comparisons as possible, so we calculate the starting bound
+	to insert pend number to be the pair of the first pend number. If the first
+	pend number is b6, the bound is a6, if the pend number is b8, the bound is a8 etc. */
+	std::list<Iterator>::iterator curr_bound = main.begin();
+	std::vector<Iterator>::iterator curr_pend = pend.begin();
+	std::advance(curr_bound, main.size() - pend.size());
 	while (!pend.empty()) {
 		std::list<Iterator>::iterator idx = std::upper_bound(main.begin(), curr_bound, *curr_pend, comp);
 		main.insert(idx, *curr_pend);
@@ -128,7 +122,8 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 		std::advance(curr_bound, 1);
 	}
 
-	/* Insert an odd number to the main. */
+	/* Insert an odd number to the main. We can make no assumptions over the odd number,
+	since it can be as low or as big as anything. Hence the bound is the end of the main chain. */
 	if (is_odd) {
 		std::vector<int>::iterator odd_pair = end + pair_level - 1;
 		std::list<Iterator>::iterator idx = std::upper_bound(main.begin(), main.end(), odd_pair, comp);
