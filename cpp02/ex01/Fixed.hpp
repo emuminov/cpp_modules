@@ -6,9 +6,11 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 16:39:13 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/30 02:12:31 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:27:01 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <iostream>
 
 class Fixed {
 public:
@@ -20,9 +22,12 @@ public:
 	~Fixed(void);
 	int getRawBits(void) const;
 	void setRawBits(int const raw);
+	float toFloat(void) const;
+	int toInt(void) const;
 
 private:
 	int _raw;
-	static const int fractional_bits = 8;
+	static const int scale = 8;
 };
 
+std::ostream& operator<<(std::ostream& out, const Fixed& f);
