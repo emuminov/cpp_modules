@@ -11,6 +11,15 @@ void iter(T* arr, const int len, void (fn)(T&, int)) {
 }
 
 template<typename T>
+void iter(T* arr, const int len, void (fn)(T*)) {
+	if (!arr)
+		return;
+	for (int i = 0; i < len; i++) {
+		fn(&arr[i]);
+	}
+}
+
+template<typename T>
 void iter(T* arr, const int len, void (fn)(T&)) {
 	if (!arr)
 		return;
@@ -34,5 +43,4 @@ template<typename T>
 void inc(T& incrementable) {
 		incrementable++;
 }
-
 #endif
