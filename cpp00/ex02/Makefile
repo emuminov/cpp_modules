@@ -24,4 +24,10 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-.PHONY: all clean fclean re
+test: $(NAME)
+	@./$(NAME) | awk '{print $$2 onward}' > our_logs
+	@cat 19920104_091532.log | awk '{print $$2 onward}' > their_logs
+	@diff our_logs their_logs -s
+	@rm -f our_logs their_logs
+
+.PHONY: all clean fclean re test
