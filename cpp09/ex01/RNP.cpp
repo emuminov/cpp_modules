@@ -100,6 +100,8 @@ enum RNP::e_status RNP::_resolve_equation()
                     return error;
                 n1 = res.top();
                 res.pop();
+				if (n1 == 0)
+					return error;
                 n2 = res.top();
                 res.pop();
                 res.push(n2 / n1);
