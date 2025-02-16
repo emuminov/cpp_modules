@@ -1,7 +1,7 @@
 #include "ford_johnson.hpp"
 #include <cmath>
-#include <list>
 #include <algorithm>
+#include <list>
 
 // 2 0 3 8 1 9 5 4 7
 // === 1 === swap pairs of numbers
@@ -111,8 +111,10 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 		return;
 
 	bool is_odd = pair_units_nbr % 2 == 1;
-	(void)is_odd;
 
+
+	/* Swap pairs of numbers, pairs, pairs of pairs etc by the biggest pair
+	number. After each swap we recurse. */
 	Iterator start = vec.begin() + (pair_level - 1);
 	Iterator end = vec.end() - is_odd;
 	int jump = 2 * pair_level;
@@ -122,73 +124,67 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 			swap_pair(it, pair_level);
 		}
 	}
-
 	_merge_insertion_sort(vec, pair_level * 2);
 
-	// 1 insert iterators of vec into the main
-	// 2 insert iterators of vec into the pend
-	// 3 perform binary search of pend elements on main
-	// 4 insert pend elements into the main
-	// 5 copy main elemnents into a vector of ints
-	// 6 rewrite an original vector with the new vector
+	/* Main contains an already sorted sequence.
+	Pend stores a yet to be sorted numbers.
+	List data structure for quick random insertion and deletion.
+	They contain iterators instead of the numbers themselves because
+	iterators + pair_level contain all the information about the stored
+	ranges of numbers. */
 	std::list<Iterator> main;
-	std::list<Iterator> pend;
+	std::vector<Iterator> pend;
 	
+	/* Initialize the main chain with the {b1, a1}. */
 	main.insert(main.end(), vec.begin() + pair_level - 1);
 	main.insert(main.end(), vec.begin() + pair_level * 2 - 1);
 	
+	/* Insert the rest of a's into the main chain. */
 	for (int i = 4; i <= pair_units_nbr; i += 2) {
-		//     1     3             7            11
-		// ((0 2) (3 8)) ((4 5) (1 9)) ((2 3) (8 3)) 7
-		//   b1    a1      b2    a2      b3    a3
-		// pair_level = 2
-		// insert 1
-		// insert 3
-
-		// insert 7
-		// insert 11
-		// insert 15
-
-		//            3             7                            15                            23
-		// (((0 2) (3 8)) ((4 5) (1 9))) (((0 2) (3 8)) ((4 5) (1 9))) (((0 2) (3 8)) ((4 5) (1 9))) 7
-		//       b1            a1              b2            a2              b3            a3
-		// pair_level = 4
-		// insert 3
-		// insert 7
-
-		// insert 15
-		// insert 23
-		// insert 31
 		pend.insert(pend.end(), vec.begin() + pair_level * (i - 1) - 1);
 		main.insert(main.end(), vec.begin() + pair_level * i - 1);
 	}
 
+	/* Insert an odd number to the pend */
 	if (is_odd) {
 		pend.insert(pend.end(), --vec.end());
 	}
 
-	std::list<Iterator>::iterator curr_pend = pend.begin();
+	/* Insert the pend into the main in the order determined by the
+	Jacobsthal numbers. For example: 3 2 -> 5 4 -> 11 10 9 8 7 6 -> etc */
 	std::list<Iterator>::iterator curr_bound = main.begin();
-	std::advance(curr_bound, 2);
+	std::vector<Iterator>::iterator curr_pend = pend.begin();
 	int prev_jacobsthal = jacobsthal_number(1);
 	for (int k = 2; ; k++) {
 		int curr_jacobsthal = jacobsthal_number(k);
-		int nbr_of_times = curr_jacobsthal - prev_jacobsthal;
-		(void)nbr_of_times;
-		if (curr_jacobsthal > pair_units_nbr)
+		int jacobstal_diff = curr_jacobsthal - prev_jacobsthal;
+		if (curr_jacobsthal > static_cast<int>(pend.size()))
 			break;
-		// insert b3 b2
-		// while (nbr_of_times) {
-		// 	std::advance(curr_bound, 1);
-		// 	std::list<Iterator>::iterator idx = std::upper_bound(main.begin(), curr_bound, curr_pend);
-		// 	main.insert(idx, curr_pend);
-		// 	(void)idx;
-		// 	nbr_of_times--;
-		//    // insert_smallest_from_pair(pend, main, curr_jacobsthal, pair_level);
-		// }
+		std::list<Iterator>::iterator bound_it = curr_bound;
+		std::vector<Iterator>::iterator pend_it = curr_pend;
+		std::advance(bound_it, jacobstal_diff);
+		std::advance(pend_it, jacobstal_diff - 1);
+		while (jacobstal_diff)
+		{
+			// insert b3 b2; b5 b4; b11 b10 b9 b8 b7 b6;
+			// until  a3 a2; a5 a4; a11 a10 a9 a8 a7 a6;
+			// === 1 === insert the remaing pend numbers to S
+			// (0 2) (4 5) (3 8) (1 9) 7
+			// b1 a1 b2 a2 b3 a3 b4 a4
+			// main: [b1 a1 a2 a3 a4 a5 a6 a7]
+			// pend: [      b2 b3 b4 b5 b6 b7]
+			// 1. we try to insert b3 to {b1, a1, a2}
+			// 2. we try to insert b2 to {b1, a1, b3}
+			// 3. we try to insert b5 to {b1, a1, b2, a2, b3, a3, a4}
+			// 4. we try to insert b4 to {b1, a1, b2, a2, b3, a3, b5}
+			jacobstal_diff--;
+			std::advance(bound_it, -1);
+			std::advance(pend_it, -1);
+		}
 		prev_jacobsthal = curr_jacobsthal;
 	}
 
+	// Insert the remaining elements in the sequential order.
 	while (!pend.empty()) {
 		std::list<Iterator>::iterator idx = std::upper_bound(main.begin(), curr_bound, *curr_pend, comp);
 		main.insert(idx, *curr_pend);
@@ -197,14 +193,19 @@ void _merge_insertion_sort(std::vector<int>& vec, int pair_level) {
 		std::advance(curr_bound, 1);
 	}
 
+	/* Use copy vector to store all the numbers, in order not to overwrite the
+	original iterators. */
 	std::vector<int> copy;
 	copy.reserve(vec.size());
 	for (std::list<Iterator>::iterator it = main.begin(); it != main.end(); it++) {
-		int* end = it->base();
-		int* begin = (end - pair_level + 1);
-		copy.insert(copy.end(), begin, ++end);
+		for (int i = 0; i < pair_level; i++) {
+			Iterator pair_start = *it;
+			std::advance(pair_start, -pair_level + i + 1);
+			copy.insert(copy.end(), *pair_start);
+		}
 	}
 
+	// Replace values in the original container
 	Iterator vec_it = vec.begin();
 	Iterator copy_it = copy.begin();
 	while (copy_it != copy.end()) {
