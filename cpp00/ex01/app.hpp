@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 16:24:21 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/10 17:05:53 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/10 19:52:21 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void search(PhoneBook &pb);
 
 // common.cpp
 void exit_phonebook();
-void input_command(std::string &s);
+void input_command(std::string* s);
 std::string ask_for_command();
 #endif

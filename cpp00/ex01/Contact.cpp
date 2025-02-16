@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 16:15:57 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/10 17:16:41 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/10 19:49:16 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Contact::Contact()
 
 Contact::~Contact() { return; }
 
-bool Contact::set_first_name(std::string first_name) {
+bool Contact::set_first_name(const std::string& first_name) {
     if (first_name == "")
         return false;
     this->first_name = first_name;

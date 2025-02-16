@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 15:43:04 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/10 17:17:28 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/10 19:49:29 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ class Contact {
   public:
     Contact();
     ~Contact();
-    bool set_first_name(std::string first_name);
+    bool set_first_name(const std::string& first_name);
     bool set_last_name(std::string last_name);
     bool set_nickname(std::string nickname);
     bool set_phone_number(std::string phone_number);
