@@ -1,5 +1,5 @@
 CXX=c++
-CFLAGS=-Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
+CFLAGS=-Wall -Wextra -Werror -std=c++98 -O2
 
 NAME=main
 SRCS=main.cpp Span.cpp
