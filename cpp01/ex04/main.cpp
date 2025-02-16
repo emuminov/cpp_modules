@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 17:52:47 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/20 18:32:04 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/05/20 18:34:25 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ std::string* search_and_replace(const std::string& s1, const std::string& s2,
 std::string* read_file(const std::string& filename) {
     std::ifstream input_file(filename.c_str());
     if (!input_file) {
-        return (NULL);
+        return NULL;
     }
     std::string* file_contents = new std::string("");
     std::string file_current_line = "";
@@ -39,7 +39,9 @@ std::string* read_file(const std::string& filename) {
             if (!input_file.eof())
                 *file_contents += '\n';
         }
-    }
+    } else {
+		return NULL;
+	}
     input_file.close();
     return file_contents;
 }
@@ -50,7 +52,6 @@ std::string* write_to_replaced_file(const std::string& filename,
     new_filename += ".replace";
     std::ofstream output_file(new_filename.c_str());
     if (!output_file) {
-        std::cout << "here";
         return NULL;
     }
     output_file << *file_contents;
@@ -80,7 +81,11 @@ int main(int argc, char* argv[]) {
     }
 
     search_and_replace(s1, s2, file_contents);
-    write_to_replaced_file(filename, file_contents);
+    
+	if (!write_to_replaced_file(filename, file_contents)) {
+        std::cerr << "Could not write to the file" << std::endl;
+        return EXIT_FAILURE;
+	}
 
     delete file_contents;
     return 0;
