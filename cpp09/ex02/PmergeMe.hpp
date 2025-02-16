@@ -103,8 +103,8 @@ template <typename T> void PmergeMe::_merge_insertion_sort(T& container, int pai
        in order to save number of comparisons, as we know already that, for example,
        b5 is lesser than a5, we binary search only until a5, not until the end
        of the container.
-	   We can calculate the index of the bound element. With the way I do it,
-	   the index of the bound is inserted_numbers + current_jacobsthal_number. */
+           We can calculate the index of the bound element. With the way I do it,
+           the index of the bound is inserted_numbers + current_jacobsthal_number. */
     int prev_jacobsthal = _jacobsthal_number(1);
     int inserted_numbers = 0;
     for (int k = 2;; k++)
@@ -121,11 +121,12 @@ template <typename T> void PmergeMe::_merge_insertion_sort(T& container, int pai
         {
             typename std::vector<Iterator>::iterator idx =
                 std::upper_bound(main.begin(), bound_it, *pend_it, _comp<Iterator>);
-            main.insert(idx, *pend_it);
+            typename std::vector<Iterator>::iterator inserted = main.insert(idx, *pend_it);
             nbr_of_times--;
             pend_it = pend.erase(pend_it);
             std::advance(pend_it, -1);
-            bound_it = next(main.begin(), curr_jacobsthal + inserted_numbers);
+            int distance = (inserted - main.begin()) == curr_jacobsthal + inserted_numbers;
+			bound_it = next(main.begin(), curr_jacobsthal + inserted_numbers - distance);
         }
         prev_jacobsthal = curr_jacobsthal;
         inserted_numbers += jacobsthal_diff;
@@ -135,8 +136,8 @@ template <typename T> void PmergeMe::_merge_insertion_sort(T& container, int pai
        perform as less comparisons as possible, so we calculate the starting bound
        to insert pend number to be the pair of the first pend number. If the first
        pend number is b6, the bound is a6, if the pend number is b8, the bound is a8 etc.
-	   With the way I do it the index of bound is
-	   size_of_main - size_of_pend + index_of_current_pend. */
+           With the way I do it the index of bound is
+           size_of_main - size_of_pend + index_of_current_pend. */
     for (size_t i = 0; i < pend.size(); i++)
     {
         typename std::vector<Iterator>::iterator curr_pend = next(pend.begin(), i);
