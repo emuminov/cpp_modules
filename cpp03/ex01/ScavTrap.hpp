@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 16:37:46 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/31 17:00:16 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/06/01 18:54:31 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ public:
 	~ScavTrap();
 
 private:
-	
+	static const int default_hit_points = 100;
+	static const int default_energy_points = 100;
+	static const int default_attack_damage = 20;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 14:30:16 by emuminov          #+#    #+#             */
-/*   Updated: 2024/05/31 17:07:04 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/06/01 18:54:47 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int main (void) {
 	ClapTrap ct("George");
 	ScavTrap st("Leonard");
 	std::string target = "training dummy";
+	st.attack(target);
 	st.attack(target);
 	st.attack(target);
 	st.attack(target);
