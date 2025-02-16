@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:27:33 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/04 15:54:04 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:08:45 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ Cat::Cat(const Cat& a) : m_type(a.m_type), m_brain(new Brain(*a.m_brain)) {
 
 Cat& Cat::operator=(const Cat& a) {
 	std::cout << "Cat copy assign operator is called\n";
-	m_type = a.m_type;
-	*m_brain = *a.m_brain;
+	if (this != &a) {
+		m_type = a.m_type;
+		*m_brain = *a.m_brain;
+	}
 	return *this;
 }
 

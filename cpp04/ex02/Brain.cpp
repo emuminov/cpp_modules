@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:41:53 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/04 15:00:12 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:08:33 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ Brain::Brain(const Brain& a) {
 
 Brain& Brain::operator=(const Brain& a) {
 	std::cout << "Brain copy assign operator is called\n";
-	for (int i = 0; i < 100; i++) {
-		m_ideas[i] = a.m_ideas[i];
+	if (this != &a) {
+		for (int i = 0; i < 100; i++) {
+			m_ideas[i] = a.m_ideas[i];
+		}
 	}
 	return *this;
 }

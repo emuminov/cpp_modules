@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:27:26 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/04 15:57:00 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:08:18 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ Animal::Animal(const Animal& a) : m_type(a.m_type) {
 
 Animal& Animal::operator=(const Animal& a) {
 	std::cout << "Animal copy assign operator is called\n";
-	m_type = a.m_type;
+	if (this != &a)
+		m_type = a.m_type;
 	return *this;
 }
 

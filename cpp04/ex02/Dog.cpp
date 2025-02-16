@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:27:36 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/04 16:04:14 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:08:51 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ Dog::Dog(const Dog& a) : m_type(a.m_type), m_brain(new Brain(*a.m_brain)) {
 
 Dog& Dog::operator=(const Dog& a) {
 	std::cout << "Dog copy assign operator is called\n";
-	m_type = a.m_type;
-	*m_brain = *a.m_brain;
+	if (this != &a) {
+		m_type = a.m_type;
+		*m_brain = *a.m_brain;
+	}
 	return *this;
 }
 

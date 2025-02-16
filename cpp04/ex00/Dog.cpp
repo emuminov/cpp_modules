@@ -6,7 +6,7 @@
 /*   By: emuminov <emuminov@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 14:27:36 by emuminov          #+#    #+#             */
-/*   Updated: 2024/06/04 15:59:38 by emuminov         ###   ########.fr       */
+/*   Updated: 2024/07/24 14:07:20 by emuminov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ Dog::Dog(const Dog& a) : m_type(a.m_type) {
 
 Dog& Dog::operator=(const Dog& a) {
 	std::cout << "Dog copy assign operator is called\n";
-	m_type = a.m_type;
+	if (this != &a)
+		m_type = a.m_type;
 	return *this;
 }
 
