@@ -154,7 +154,7 @@ template <typename T> void PmergeMe::_merge_insertion_sort(T& container, int pai
        pend number is b6, the bound is a6, if the pend number is b8, the bound is a8 etc.
        With the way I do it the index of bound is
        size_of_main - size_of_pend + index_of_current_pend. */
-    for (size_t i = 0; i < pend.size(); i++)
+    for (ssize_t i = pend.size() - 1; i >= 0; i--)
     {
         typename std::vector<Iterator>::iterator curr_pend = next(pend.begin(), i);
         typename std::vector<Iterator>::iterator curr_bound =
