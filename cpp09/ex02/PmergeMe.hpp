@@ -148,10 +148,10 @@ template <typename T> void PmergeMe::_merge_insertion_sort(T& container, int pai
 		offset = 0;
     }
 
-    /* Insert the remaining elements in the sequential order. Here we also want to
+    /* Insert the remaining elements in the reversed order. Here we also want to
        perform as less comparisons as possible, so we calculate the starting bound
        to insert pend number to be the pair of the first pend number. If the first
-       pend number is b6, the bound is a6, if the pend number is b8, the bound is a8 etc.
+       pend number is b8, the bound is a8, if the pend number is b7, the bound is a7 etc.
        With the way I do it the index of bound is
        size_of_main - size_of_pend + index_of_current_pend. */
     for (ssize_t i = pend.size() - 1; i >= 0; i--)
