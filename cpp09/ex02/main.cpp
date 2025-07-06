@@ -53,14 +53,25 @@ static std::deque<int> argv_to_deque(int argc, char** argv)
     return res;
 }
 
-static std::set<int> argv_to_set(int argc, char** argv)
+static std::vector<int> argv_to_vector_copy(int argc, char** argv)
 {
-    std::set<int> res;
+    std::vector<int> res;
+    res.reserve(argc - 1);
     for (int i = 1; i < argc; i++)
     {
-        res.insert(atoi(argv[i]));
+        res.push_back(atoi(argv[i]));
     }
     return res;
+}
+
+// static std::set<int> argv_to_set(int argc, char** argv)
+// {
+//     std::set<int> res;
+//     for (int i = 1; i < argc; i++)
+//     {
+//         res.insert(atoi(argv[i]));
+//     }
+//     return res;
 }
 
 template <typename T> static bool is_sorted(const T& container)
@@ -106,15 +117,17 @@ static std::string vec_to_str(std::vector<int>& vec)
     return ss.str();
 }
 
-static bool retained_original_values(std::set<int>& original_values, std::vector<int>& vec)
+static bool retained_original_values(std::vector<int>& original_values, std::vector<int>& vec)
 {
-	for (int i = 0; i < (int)vec.size(); i++)
-	{
-		if (original_values.find(vec[i]) == original_values.end())
-			return false;
-		original_values.erase(vec[i]);
+	if (original_values.size() != vec.size()){
+		return false;
 	}
-	return true;
+	std::vector<int> orig_copy = original_values;
+	std::vector<int> vec_copy = vec;
+	std::sort(orig_copy.begin(), orig_copy.end());
+	std::sort(vec_copy.begin(), vec_copy.end());
+	
+	return orig_copy == vec_copy;
 }
 
 int main(int argc, char** argv)
@@ -127,7 +140,7 @@ int main(int argc, char** argv)
         std::cerr << "Error: " << status << "\n";
         return EXIT_FAILURE;
     }
-	std::set<int> original_values = argv_to_set(argc, argv);
+	std::set<int> original_values = argv_to_vector_copy(argc, argv);
 
     clock_t start_vec = clock();
     std::vector<int> vec = argv_to_vector(argc, argv);
