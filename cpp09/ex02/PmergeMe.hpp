@@ -61,7 +61,9 @@ template <typename T> void PmergeMe::_merge_insertion_sort(T& container, int pai
     /* It's important to caluclate the end position until which we should iterate.
        We can have a set of values like:
        ((1 2) (3 4)) ((3 8) (2 6)) | 0
-       where there are numbers (0 in this case) which can't even form a pair.
+	   where the smallest possible element is a pair of two numbers, like (1 2) or (3 4). Those elements form pairs.
+       However, there could be numbers (0 in this case) which can't even form a single element necessary to form a pair.
+	   It's not even enough to be an odd element.
        Those values should be ignored. */
     Iterator start = container.begin();
     Iterator last = next(container.begin(), pair_level * (pair_units_nbr));
@@ -82,15 +84,15 @@ template <typename T> void PmergeMe::_merge_insertion_sort(T& container, int pai
     _merge_insertion_sort(container, pair_level * 2);
 
     /* Main contains an already sorted sequence.
-       Pend stores a yet to be sorted numbers.
-       List data structure for quick random insertion and deletion.
+       Pend stores yet to be sorted numbers.
        They contain iterators instead of the numbers themselves because
-       iterators + pair_level contain all the information about the stored
-       ranges of numbers. */
+       iterators + pair_level contain all the information about any stored
+       range of numbers. */
     std::vector<Iterator> main;
     std::vector<Iterator> pend;
 
-    /* Initialize the main chain with the {b1, a1}. */
+    /* Initialize the main chain with the {b1, a1}.
+	   Remember that we already know that b1 is going to be the smallest element in the main chain. */
     main.insert(main.end(), next(container.begin(), pair_level - 1));
     main.insert(main.end(), next(container.begin(), pair_level * 2 - 1));
 
@@ -110,12 +112,12 @@ template <typename T> void PmergeMe::_merge_insertion_sort(T& container, int pai
 
     /* Insert the pend into the main in the order determined by the
        Jacobsthal numbers. For example: 3 2 -> 5 4 -> 11 10 9 8 7 6 -> etc.
-       During insertion, main numbers serve as an upper bound for inserting numbers,
+       During insertion, elements from the main chain serve as an upper bound for inserting elements,
        in order to save number of comparisons, as we know already that, for example,
-       b5 is lesser than a5, we binary search only until a5, not until the end
-       of the container.
-           We can calculate the index of the bound element. With the way I do it,
-           the index of the bound is inserted_numbers + current_jacobsthal_number. */
+       b5 is lesser than a5, we binary search only until a5, not until the end of the container.
+
+	   We can calculate the index of the bound element. With the way I do it,
+	   the index of the bound is inserted_numbers + current_jacobsthal_number. */
     int prev_jacobsthal = _jacobsthal_number(1);
     int inserted_numbers = 0;
     for (int k = 2;; k++)
